@@ -1,0 +1,22 @@
+{
+  "guides": [
+    {
+      "slug": "delay-times-explained",
+      "title": "How to Use Delay Times in Music Production",
+      "description": "Learn how to sync delay effects to your track's BPM for professional-sounding mixes. Covers note divisions, dotted delays, and practical tips.",
+      "category": "Production"
+    },
+    {
+      "slug": "camelot-wheel-guide",
+      "title": "The Camelot Wheel Explained: Harmonic Mixing for DJs",
+      "description": "Master harmonic mixing using the Camelot Wheel system. Learn how to create seamless transitions between tracks.",
+      "category": "DJing"
+    },
+    {
+      "slug": "bpm-genres",
+      "title": "BPM Guide: Tempo Ranges for Every Music Genre",
+      "description": "Discover the typical BPM ranges for different music genres, from hip-hop to drum & bass. Essential reference for DJs and producers.",
+      "category": "Reference"
+    }
+  ]
+}
