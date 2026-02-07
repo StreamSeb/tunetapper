@@ -41,7 +41,7 @@ export default function BpmDelayPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
       />
       <div className="mx-auto max-w-4xl px-4 pt-6">
-        <Breadcrumbs items={[{ name: "Tools", path: "/tools/bpm-delay" }, { name: "BPM Delay Calculator", path: "/tools/bpm-delay" }]} />
+        <Breadcrumbs items={[{ name: "BPM Delay Calculator", path: "/tools/bpm-delay" }]} />
       </div>
       <BpmDelayTool />
     </>

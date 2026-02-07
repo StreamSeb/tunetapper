@@ -24,7 +24,7 @@ export function Breadcrumbs({ items }: { items: BreadcrumbItem[] }) {
       <nav aria-label="Breadcrumb" className="mb-4">
         <ol className="flex items-center gap-1 text-sm text-[var(--muted-foreground)]">
           {allItems.map((item, index) => (
-            <li key={item.path} className="flex items-center gap-1">
+            <li key={`${index}-${item.path}`} className="flex items-center gap-1">
               {index > 0 && <ChevronRight className="h-3.5 w-3.5 shrink-0" />}
               {index === allItems.length - 1 ? (
                 <span className="text-[var(--foreground)] font-medium truncate">

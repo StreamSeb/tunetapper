@@ -41,7 +41,7 @@ export default function CamelotPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
       />
       <div className="mx-auto max-w-4xl px-4 pt-6">
-        <Breadcrumbs items={[{ name: "Tools", path: "/tools/camelot" }, { name: "Camelot Wheel", path: "/tools/camelot" }]} />
+        <Breadcrumbs items={[{ name: "Camelot Wheel", path: "/tools/camelot" }]} />
       </div>
       <CamelotTool />
     </>

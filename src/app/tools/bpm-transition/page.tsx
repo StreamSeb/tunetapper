@@ -41,7 +41,7 @@ export default function BpmTransitionPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
       />
       <div className="mx-auto max-w-4xl px-4 pt-6">
-        <Breadcrumbs items={[{ name: "Tools", path: "/tools/bpm-transition" }, { name: "BPM Transition", path: "/tools/bpm-transition" }]} />
+        <Breadcrumbs items={[{ name: "BPM Transition Helper", path: "/tools/bpm-transition" }]} />
       </div>
       <BpmTransitionTool />
     </>

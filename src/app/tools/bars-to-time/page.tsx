@@ -41,7 +41,7 @@ export default function BarsToTimePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
       />
       <div className="mx-auto max-w-4xl px-4 pt-6">
-        <Breadcrumbs items={[{ name: "Tools", path: "/tools/bars-to-time" }, { name: "Bars to Time", path: "/tools/bars-to-time" }]} />
+        <Breadcrumbs items={[{ name: "Bars to Time Calculator", path: "/tools/bars-to-time" }]} />
       </div>
       <BarsToTimeTool />
     </>

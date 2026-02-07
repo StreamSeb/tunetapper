@@ -41,7 +41,7 @@ export default function TapTempoPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
       />
       <div className="mx-auto max-w-2xl px-4 pt-6">
-        <Breadcrumbs items={[{ name: "Tools", path: "/tools/tap-tempo" }, { name: "Tap Tempo", path: "/tools/tap-tempo" }]} />
+        <Breadcrumbs items={[{ name: "Tap Tempo", path: "/tools/tap-tempo" }]} />
       </div>
       <TapTempoTool />
     </>
