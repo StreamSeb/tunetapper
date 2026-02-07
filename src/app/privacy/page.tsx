@@ -52,6 +52,34 @@ export default function PrivacyPage() {
           </li>
         </ul>
 
+        <h3>Anonymous Analytics</h3>
+        <p>
+          We use Vercel Web Analytics to collect anonymous, aggregated usage
+          data. This service does <strong>not</strong> use cookies, does{" "}
+          <strong>not</strong> track individual users, and does{" "}
+          <strong>not</strong> collect personal data such as IP addresses,
+          user agents, or any information that could identify you.
+        </p>
+        <p>
+          Vercel Web Analytics only records page-level metrics (e.g., which
+          pages were visited and how often) in a fully anonymized and aggregated
+          form. Because no personal data is collected and no cookies are used,
+          this analytics service does not require consent under the GDPR, the
+          ePrivacy Directive, or similar privacy regulations. It runs on all
+          visits regardless of your cookie consent preference.
+        </p>
+        <p>
+          Learn more about Vercel Web Analytics and its privacy practices at{" "}
+          <a
+            href="https://vercel.com/docs/analytics/privacy-policy"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Vercel Analytics Privacy Policy
+          </a>
+          .
+        </p>
+
         <h2>Cookies and Tracking</h2>
         <h3>What Are Cookies?</h3>
         <p>
@@ -76,6 +104,13 @@ export default function PrivacyPage() {
                 Store your cookie consent preference, theme preference
               </td>
               <td>No</td>
+            </tr>
+            <tr>
+              <td>Analytics (Vercel Web Analytics)</td>
+              <td>
+                Anonymous, aggregated page-view statistics. No cookies used, no personal data collected.
+              </td>
+              <td>No (cookie-free)</td>
             </tr>
             <tr>
               <td>Analytics (Google Analytics)</td>
@@ -124,6 +159,14 @@ export default function PrivacyPage() {
         </ul>
 
         <h2>Third-Party Services</h2>
+        <h3>Vercel Web Analytics</h3>
+        <p>
+          We use Vercel Web Analytics on all pages to collect anonymous,
+          aggregated page-view data. This service is privacy-friendly by design:
+          it uses no cookies, collects no personal data, and cannot identify
+          individual users. No consent is required.
+        </p>
+
         <h3>Google Analytics</h3>
         <p>
           If you consent to cookies, we use Google Analytics to understand site

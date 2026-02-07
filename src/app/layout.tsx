@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/layout/theme-provider"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
@@ -70,6 +71,7 @@ export default function RootLayout({
             <Footer />
             <CookieConsent />
             <Analytics />
+            <VercelAnalytics />
           </TooltipProvider>
         </ThemeProvider>
       </body>
