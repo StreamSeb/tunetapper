@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ExternalLink } from "lucide-react"
+import { analytics } from "@/lib/analytics"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -68,6 +69,11 @@ export function CamelotTool() {
 
   const currentKey = getCamelotKey(selectedKey)
   const compatible = currentKey ? getCompatibleKeys(currentKey) : null
+
+  // Track key selections
+  useEffect(() => {
+    analytics.camelotKeySelected(selectedKey)
+  }, [selectedKey])
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 lg:py-12">

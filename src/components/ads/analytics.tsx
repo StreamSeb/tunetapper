@@ -5,7 +5,7 @@ import Script from "next/script"
 import { getConsentStatus, type ConsentStatus } from "@/components/cookie-consent/cookie-consent"
 
 // Replace with your actual GA4 Measurement ID when you have it
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || ""
 
 export function Analytics() {
   const [consent, setConsent] = useState<ConsentStatus>("pending")

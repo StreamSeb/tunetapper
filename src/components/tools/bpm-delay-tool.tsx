@@ -1,8 +1,9 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useEffect } from "react"
 import Link from "next/link"
 import { Copy, Check, ExternalLink } from "lucide-react"
+import { analytics } from "@/lib/analytics"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -36,10 +37,19 @@ export function BpmDelayTool() {
   const delayTimes = getAllDelayTimes(bpm)
   const genres = getGenreForBpm(bpm)
 
+  // Track BPM calculations (debounced)
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      analytics.bpmDelayCalculated(bpm)
+    }, 1000) // Wait 1s after user stops typing
+    return () => clearTimeout(timeout)
+  }, [bpm])
+
   const copyToClipboard = useCallback(async (value: number, id: string) => {
     try {
       await navigator.clipboard.writeText(value.toFixed(2))
       setCopiedValue(id)
+      analytics.valueCopied("delay_time", id)
       setTimeout(() => setCopiedValue(null), 2000)
     } catch (err) {
       console.error("Failed to copy:", err)

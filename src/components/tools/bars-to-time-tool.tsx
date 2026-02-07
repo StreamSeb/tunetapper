@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ExternalLink } from "lucide-react"
+import { analytics } from "@/lib/analytics"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -42,6 +43,14 @@ export function BarsToTimeTool() {
   const duration = calculateBarsDuration(bars, bpm, beatsPerBar)
   const formattedDuration = formatDuration(duration)
   const durationTable = getBarsDurationTable(bpm, beatsPerBar)
+
+  // Track calculations (debounced)
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      analytics.barsToTimeCalculated(bars, bpm)
+    }, 1000)
+    return () => clearTimeout(timeout)
+  }, [bars, bpm])
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 lg:py-12">

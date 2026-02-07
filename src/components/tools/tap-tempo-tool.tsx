@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from "react"
 import Link from "next/link"
 import { Copy, Check, RotateCcw, Keyboard, Mouse } from "lucide-react"
+import { analytics } from "@/lib/analytics"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -68,22 +69,29 @@ export function TapTempoTool() {
   }, [calculateBpm])
 
   const handleReset = useCallback(() => {
+    // Track tap tempo usage before reset
+    if (bpm && taps.length >= 2) {
+      analytics.tapTempoUsed(bpm, taps.length)
+    }
+    analytics.tapTempoReset()
     setTaps([])
     setBpm(null)
     setLastTap(null)
-  }, [])
+  }, [bpm, taps.length])
 
   const handleCopy = useCallback(async () => {
     if (bpm) {
       try {
         await navigator.clipboard.writeText(bpm.toString())
         setCopied(true)
+        analytics.valueCopied("bpm", bpm.toString())
+        analytics.tapTempoUsed(bpm, taps.length)
         setTimeout(() => setCopied(false), 2000)
       } catch (err) {
         console.error("Failed to copy:", err)
       }
     }
-  }, [bpm])
+  }, [bpm, taps.length])
 
   // Keyboard support
   useEffect(() => {

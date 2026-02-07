@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { ArrowRight, Lightbulb } from "lucide-react"
+import { analytics } from "@/lib/analytics"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -99,8 +100,21 @@ function getTransitionStrategies(
 export function BpmTransitionTool() {
   const [bpmA, setBpmA] = useState(128)
   const [bpmB, setBpmB] = useState(140)
+  const hasTracked = useRef(false)
 
   const strategies = getTransitionStrategies(bpmA, bpmB)
+
+  // Track transition calculations (debounced)
+  useEffect(() => {
+    hasTracked.current = false
+    const timeout = setTimeout(() => {
+      if (!hasTracked.current) {
+        analytics.bpmTransitionCalculated(bpmA, bpmB)
+        hasTracked.current = true
+      }
+    }, 1000)
+    return () => clearTimeout(timeout)
+  }, [bpmA, bpmB])
   const genresA = getGenreForBpm(bpmA)
   const genresB = getGenreForBpm(bpmB)
   const diff = Math.abs(bpmA - bpmB)
