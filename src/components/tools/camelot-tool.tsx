@@ -19,7 +19,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import {
   CAMELOT_KEYS,
@@ -38,28 +37,24 @@ function KeyBadge({
   selected?: boolean
 }) {
   const colorClasses = {
-    same: "bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/30",
-    compatible:
-      "bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30",
-    relative:
-      "bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/30",
-    energy:
-      "bg-orange-500/20 text-orange-700 dark:text-orange-300 border-orange-500/30",
+    same: "bg-key-green-bg text-key-green border-key-green-border",
+    compatible: "bg-key-blue-bg text-key-blue border-key-blue-border",
+    relative: "bg-key-purple-bg text-key-purple border-key-purple-border",
+    energy: "bg-key-orange-bg text-key-orange border-key-orange-border",
   }
 
   return (
     <Link href={`/camelot/${keyData.camelot.toLowerCase()}`}>
-      <Badge
-        variant="outline"
+      <div
         className={cn(
-          "text-base px-4 py-2 cursor-pointer transition-all hover:scale-105",
+          "inline-flex items-center rounded-md border px-4 py-2 text-base font-semibold cursor-pointer transition-all hover:scale-105",
           colorClasses[type],
           selected && "ring-2 ring-[var(--primary)]"
         )}
       >
         <span className="font-bold mr-2">{keyData.camelot}</span>
-        <span className="opacity-75">{keyData.musical}</span>
-      </Badge>
+        <span className="opacity-90">{keyData.musical}</span>
+      </div>
     </Link>
   )
 }

@@ -73,10 +73,10 @@ export default async function CamelotKeyPage({ params }: Props) {
   }
 
   const colorClasses = {
-    same: "bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/30",
-    compatible: "bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30",
-    relative: "bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/30",
-    energy: "bg-orange-500/20 text-orange-700 dark:text-orange-300 border-orange-500/30",
+    same: "bg-key-green-bg text-key-green border-key-green-border",
+    compatible: "bg-key-blue-bg text-key-blue border-key-blue-border",
+    relative: "bg-key-purple-bg text-key-purple border-key-purple-border",
+    energy: "bg-key-orange-bg text-key-orange border-key-orange-border",
   }
 
   return (

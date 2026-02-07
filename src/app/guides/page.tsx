@@ -26,9 +26,9 @@ const categoryIcons: Record<string, React.ReactNode> = {
 }
 
 const categoryColors: Record<string, string> = {
-  Production: "bg-purple-500/10 text-purple-500 hover:bg-purple-500/20",
-  DJing: "bg-blue-500/10 text-blue-500 hover:bg-blue-500/20",
-  Reference: "bg-green-500/10 text-green-500 hover:bg-green-500/20",
+  Production: "bg-key-purple-bg text-key-purple border-key-purple-border",
+  DJing: "bg-key-blue-bg text-key-blue border-key-blue-border",
+  Reference: "bg-key-green-bg text-key-green border-key-green-border",
 }
 
 export default function GuidesPage() {

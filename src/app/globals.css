@@ -5,6 +5,19 @@
   --color-foreground: var(--foreground);
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+  --color-key-green: var(--key-green-text);
+  --color-key-green-bg: var(--key-green-bg);
+  --color-key-green-border: var(--key-green-border);
+  --color-key-blue: var(--key-blue-text);
+  --color-key-blue-bg: var(--key-blue-bg);
+  --color-key-blue-border: var(--key-blue-border);
+  --color-key-purple: var(--key-purple-text);
+  --color-key-purple-bg: var(--key-purple-bg);
+  --color-key-purple-border: var(--key-purple-border);
+  --color-key-orange: var(--key-orange-text);
+  --color-key-orange-bg: var(--key-orange-bg);
+  --color-key-orange-border: var(--key-orange-border);
 }
 
 :root {
@@ -28,6 +41,18 @@
   --input: #e4e4e7;
   --ring: #18181b;
   --radius: 0.5rem;
+  --key-green-bg: #dcfce7;
+  --key-green-text: #14532d;
+  --key-green-border: #86efac;
+  --key-blue-bg: #dbeafe;
+  --key-blue-text: #1e3a5f;
+  --key-blue-border: #93c5fd;
+  --key-purple-bg: #f3e8ff;
+  --key-purple-text: #3b0764;
+  --key-purple-border: #c4b5fd;
+  --key-orange-bg: #ffedd5;
+  --key-orange-text: #431407;
+  --key-orange-border: #fdba74;
 }
 
 .dark {
@@ -50,6 +75,18 @@
   --border: #27272a;
   --input: #27272a;
   --ring: #d4d4d8;
+  --key-green-bg: rgba(34, 197, 94, 0.2);
+  --key-green-text: #86efac;
+  --key-green-border: rgba(34, 197, 94, 0.3);
+  --key-blue-bg: rgba(59, 130, 246, 0.2);
+  --key-blue-text: #93c5fd;
+  --key-blue-border: rgba(59, 130, 246, 0.3);
+  --key-purple-bg: rgba(168, 85, 247, 0.2);
+  --key-purple-text: #c4b5fd;
+  --key-purple-border: rgba(168, 85, 247, 0.3);
+  --key-orange-bg: rgba(249, 115, 22, 0.2);
+  --key-orange-text: #fdba74;
+  --key-orange-border: rgba(249, 115, 22, 0.3);
 }
 
 * {
@@ -103,6 +140,7 @@ body {
   outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
+
 
 /* Prose typography for guide content */
 .prose {

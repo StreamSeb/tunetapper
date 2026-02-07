@@ -124,8 +124,8 @@ export default function CamelotHubPage() {
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-lg bg-green-500/10 p-4 border border-green-500/20">
-              <h4 className="font-semibold text-green-700 dark:text-green-300">
+            <div className="rounded-lg p-4 border bg-key-green-bg text-key-green border-key-green-border">
+              <h4 className="font-semibold">
                 Same Number
               </h4>
               <p className="text-sm mt-1">
@@ -133,8 +133,8 @@ export default function CamelotHubPage() {
                 major/minor switch.
               </p>
             </div>
-            <div className="rounded-lg bg-blue-500/10 p-4 border border-blue-500/20">
-              <h4 className="font-semibold text-blue-700 dark:text-blue-300">
+            <div className="rounded-lg p-4 border bg-key-blue-bg text-key-blue border-key-blue-border">
+              <h4 className="font-semibold">
                 +1 or -1
               </h4>
               <p className="text-sm mt-1">
@@ -142,8 +142,8 @@ export default function CamelotHubPage() {
                 move.
               </p>
             </div>
-            <div className="rounded-lg bg-purple-500/10 p-4 border border-purple-500/20">
-              <h4 className="font-semibold text-purple-700 dark:text-purple-300">
+            <div className="rounded-lg p-4 border bg-key-purple-bg text-key-purple border-key-purple-border">
+              <h4 className="font-semibold">
                 A ↔ B Switch
               </h4>
               <p className="text-sm mt-1">
@@ -151,8 +151,8 @@ export default function CamelotHubPage() {
                 tonal center.
               </p>
             </div>
-            <div className="rounded-lg bg-orange-500/10 p-4 border border-orange-500/20">
-              <h4 className="font-semibold text-orange-700 dark:text-orange-300">
+            <div className="rounded-lg p-4 border bg-key-orange-bg text-key-orange border-key-orange-border">
+              <h4 className="font-semibold">
                 +2 Energy Boost
               </h4>
               <p className="text-sm mt-1">
