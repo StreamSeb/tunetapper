@@ -7,6 +7,7 @@ import {
   ArrowLeftRight,
   Keyboard,
 } from "lucide-react"
+import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -82,6 +83,20 @@ const features = [
 export default function HomePage() {
   return (
     <div className="flex flex-col">
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateOrganizationSchema()),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(generateWebSiteSchema()),
+        }}
+      />
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[var(--muted)]/50 to-transparent">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:py-24 lg:px-8">

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -408,6 +409,7 @@ export default async function GuidePage({ params }: Props) {
         }}
       />
       <div className="mx-auto max-w-4xl px-4 py-8 lg:py-12">
+        <Breadcrumbs items={[{ name: "Guides", path: "/guides" }, { name: guide.title, path: `/guides/${slug}` }]} />
         {/* Header */}
         <div className="mb-8">
           <Badge variant="secondary" className="mb-2">

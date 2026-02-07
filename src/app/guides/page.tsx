@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { BookOpen, Music, Disc, BarChart3 } from "lucide-react"
+import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import guidesData from "@/data/guides.json"
@@ -36,6 +37,7 @@ export default function GuidesPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12">
+      <Breadcrumbs items={[{ name: "Guides", path: "/guides" }]} />
       {/* Hero Section */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--primary)]/10 mb-6">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { TapTempoTool } from "@/components/tools/tap-tempo-tool"
+import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { generateToolSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
@@ -39,6 +40,9 @@ export default function TapTempoPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
       />
+      <div className="mx-auto max-w-2xl px-4 pt-6">
+        <Breadcrumbs items={[{ name: "Tools", path: "/tools/tap-tempo" }, { name: "Tap Tempo", path: "/tools/tap-tempo" }]} />
+      </div>
       <TapTempoTool />
     </>
   )

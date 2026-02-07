@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 
-const SITE_NAME = "TuneTapper"
-const SITE_URL = "https://tunetapper.com"
+export const SITE_NAME = "TuneTapper"
+export const SITE_URL = "https://tunetapper.com"
 
 export function generateMetadata({
   title,
@@ -103,5 +103,49 @@ export function generateToolSchema({
       price: "0",
       priceCurrency: "USD",
     },
+  }
+}
+
+export function generateOrganizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/icon.png`,
+    description:
+      "Free music production tools for DJs and producers. Calculate BPM delay times, find compatible keys, convert bars to time, and more.",
+    sameAs: [],
+  }
+}
+
+export function generateWebSiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: SITE_URL,
+    description:
+      "Free music production tools for DJs and producers.",
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+  }
+}
+
+export function generateBreadcrumbSchema(
+  items: { name: string; path: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: `${SITE_URL}${item.path}`,
+    })),
   }
 }

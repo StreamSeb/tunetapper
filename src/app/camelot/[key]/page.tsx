@@ -1,6 +1,7 @@
 import Link from "next/link"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -81,6 +82,7 @@ export default async function CamelotKeyPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 lg:py-12">
+      <Breadcrumbs items={[{ name: "Camelot Keys", path: "/camelot" }, { name: `${keyData.camelot} (${keyData.musical})`, path: `/camelot/${key}` }]} />
       {/* Header */}
       <div className="mb-8">
         <Badge variant="secondary" className="mb-2">

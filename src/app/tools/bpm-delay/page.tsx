@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { BpmDelayTool } from "@/components/tools/bpm-delay-tool"
+import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { generateToolSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
@@ -39,6 +40,9 @@ export default function BpmDelayPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema) }}
       />
+      <div className="mx-auto max-w-4xl px-4 pt-6">
+        <Breadcrumbs items={[{ name: "Tools", path: "/tools/bpm-delay" }, { name: "BPM Delay Calculator", path: "/tools/bpm-delay" }]} />
+      </div>
       <BpmDelayTool />
     </>
   )
