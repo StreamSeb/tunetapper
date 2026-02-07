@@ -66,7 +66,7 @@ export function CookieConsent() {
                   href="/privacy"
                   className="underline hover:text-[var(--primary)]"
                 >
-                  Learn more
+                  Read our Privacy & Cookie Policy
                 </Link>
               </p>
             </div>
