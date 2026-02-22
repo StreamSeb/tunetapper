@@ -62,3 +62,7 @@ NEXT_PUBLIC_ADSENSE_ID=ca-pub-XXXXXXXX   # AdSense publisher ID
 ```
 
 Vercel Analytics loads unconditionally (no PII, no consent needed).
+
+## Project Roadmap
+
+See `PROJECT-STATUS.md` for the full phase breakdown, completed work, and Phase 2 expansion tasks (BPM/bars page targets, guide topics, rollout strategy).
