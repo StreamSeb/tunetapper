@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/footer"
 import { CookieConsent } from "@/components/cookie-consent/cookie-consent"
 import { Analytics } from "@/components/ads/analytics"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { generateWebSiteSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: {
@@ -56,6 +57,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebSiteSchema()) }}
+        />
+      </head>
       <body
         className="antialiased min-h-screen flex flex-col"
       >
