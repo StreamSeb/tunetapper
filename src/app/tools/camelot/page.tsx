@@ -6,7 +6,7 @@ import { generateToolSchema } from "@/lib/seo"
 export const metadata: Metadata = {
   title: "Camelot Wheel - Find Compatible Keys for Harmonic Mixing",
   description:
-    "Find compatible keys for harmonic DJ mixing using the Camelot Wheel. Discover which keys blend perfectly together. Free online tool for DJs.",
+    "Select any Camelot key and instantly see every compatible key for harmonic mixing. Includes relative major/minor, energy boosts, and mixing tips. Free for DJs.",
   keywords: [
     "Camelot wheel",
     "harmonic mixing",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Camelot Wheel - Harmonic Mixing Tool | TuneTapper",
     description:
-      "Find compatible keys for harmonic DJ mixing using the Camelot Wheel system.",
+      "Select any Camelot key and instantly see every compatible key for harmonic mixing. Includes relative major/minor, energy boosts, and mixing tips. Free for DJs.",
     url: "https://tunetapper.com/tools/camelot",
   },
 }

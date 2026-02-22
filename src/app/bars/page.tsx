@@ -21,9 +21,9 @@ import barsData from "@/data/bars-list.json"
 import { calculateBarsDuration, formatDuration } from "@/lib/calculations"
 
 export const metadata: Metadata = {
-  title: "Bars Duration Reference - Time Calculator",
+  title: "Bars to Time Calculator — How Long is X Bars at Any BPM?",
   description:
-    "Calculate how long bars last at different BPMs. Quick reference for music producers and DJs.",
+    "Instantly find how long 8, 16, 32 or 64 bars last at 120, 128, 140 BPM and more. Free reference for DJs and producers.",
 }
 
 export default function BarsHubPage() {
