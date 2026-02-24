@@ -1,0 +1,47 @@
+# TuneTapper
+
+> Free music production tools for DJs and producers. Calculate BPM delay times, find compatible Camelot keys for harmonic mixing, convert bars to time, detect audio BPM and key, and more. All tools run entirely in the browser — no sign-up, no downloads, no cost.
+
+## Tools
+
+- [BPM Delay Calculator](https://tunetapper.com/tools/bpm-delay): Calculate precise delay times in milliseconds for any BPM. Returns values for 1/4, 1/8, and 1/16 note divisions with dotted and triplet variants.
+- [Bars to Time Calculator](https://tunetapper.com/tools/bars-to-time): Convert a number of bars to an exact time duration given a BPM. Useful for structuring arrangements and timing DJ transitions.
+- [Tap Tempo](https://tunetapper.com/tools/tap-tempo): Detect the BPM of any song by tapping along with a mouse or keyboard. Averages multiple taps for accuracy.
+- [Camelot Wheel](https://tunetapper.com/tools/camelot): Interactive Camelot Wheel tool for harmonic mixing. Shows compatible adjacent keys for any selected Camelot position.
+- [BPM Transition Helper](https://tunetapper.com/tools/bpm-transition): Plan smooth tempo transitions between two tracks. Suggests half-time, double-time, and gradual step values.
+- [Audio BPM & Key Analyzer](https://tunetapper.com/tools/audio-analyzer): Upload an audio file to detect its BPM and musical key entirely in the browser. Returns the Camelot wheel code. No file is sent to any server.
+
+## BPM Reference Pages
+
+Per-BPM pages listing delay times, bar durations, and genre context for a specific tempo.
+
+- [BPM Reference Hub](https://tunetapper.com/bpm): Index of all BPM reference pages.
+- [128 BPM](https://tunetapper.com/bpm/128): Delay times and bar durations at 128 BPM (house, techno).
+- [140 BPM](https://tunetapper.com/bpm/140): Delay times and bar durations at 140 BPM (UK garage, dubstep).
+- [174 BPM](https://tunetapper.com/bpm/174): Delay times and bar durations at 174 BPM (drum & bass).
+
+## Bars Duration Pages
+
+Per-entry pages showing how long a specific bar count lasts at a specific BPM.
+
+- [Bars Hub](https://tunetapper.com/bars): Index of all bars-to-time reference pages.
+- [32 Bars at 128 BPM](https://tunetapper.com/bars/32-at-128-bpm): Exact duration of 32 bars at 128 BPM.
+
+## Camelot Key Pages
+
+Per-key pages listing compatible Camelot neighbours for harmonic mixing.
+
+- [Camelot Hub](https://tunetapper.com/camelot): Index of all 24 Camelot key reference pages.
+- [8A Camelot Key](https://tunetapper.com/camelot/8a): Compatible keys for 8A (A minor / C major family).
+- [8B Camelot Key](https://tunetapper.com/camelot/8b): Compatible keys for 8B (C major).
+
+## Guides
+
+- [Guides Hub](https://tunetapper.com/guides): Index of all music production guides.
+- [How to Use Delay Times in Music Production](https://tunetapper.com/guides/delay-times-explained): Explains how to sync delay effects to a track's BPM. Covers note divisions, dotted delays, and practical tips.
+- [The Camelot Wheel Explained](https://tunetapper.com/guides/camelot-wheel-guide): Full guide to harmonic mixing using the Camelot system, including how to read the wheel and plan key-compatible transitions.
+- [BPM Guide: Tempo Ranges for Every Music Genre](https://tunetapper.com/guides/bpm-genres): Reference table of typical BPM ranges across genres from hip-hop to drum & bass.
+
+## About
+
+- [About TuneTapper](https://tunetapper.com/about): Mission and overview of the project.
