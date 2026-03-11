@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.reddit.com)",
+      "WebSearch",
+      "WebFetch(domain:buzzsonic.com)",
+      "WebFetch(domain:unlockyoursound.com)"
+    ]
+  }
+}

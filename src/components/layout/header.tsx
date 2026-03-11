@@ -23,6 +23,7 @@ const navigation = [
     href: "/tools/camelot",
     children: [
       { name: "Camelot Wheel", href: "/tools/camelot" },
+      { name: "Audio Analyzer", href: "/tools/audio-analyzer" },
       { name: "BPM Transition", href: "/tools/bpm-transition" },
       { name: "Key Reference", href: "/camelot" },
     ],
