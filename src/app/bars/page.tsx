@@ -19,29 +19,69 @@ import {
 } from "@/components/ui/table"
 import barsData from "@/data/bars-list.json"
 import { calculateBarsDuration, formatDuration } from "@/lib/calculations"
+import { generateFaqSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "Bars to Time Calculator — How Long is X Bars at Any BPM?",
+  title: "How Long is X Bars? Bars to Seconds Reference for DJs",
   description:
-    "Instantly find how long 8, 16, 32 or 64 bars last at 120, 128, 140 BPM and more. Free reference for DJs and producers.",
+    "16 bars at 128 BPM = 30 seconds. 32 bars at 120 BPM = 64 seconds. Instant bar duration reference for DJs and producers at any BPM.",
 }
+
+const faqs = [
+  {
+    question: "How long is 16 bars at 128 BPM?",
+    answer: "16 bars at 128 BPM lasts exactly 30 seconds.",
+  },
+  {
+    question: "How long is 32 bars at 128 BPM?",
+    answer: "32 bars at 128 BPM lasts exactly 60 seconds (1 minute).",
+  },
+  {
+    question: "How long is 16 bars at 120 BPM?",
+    answer: "16 bars at 120 BPM lasts exactly 32 seconds.",
+  },
+  {
+    question: "How long is 32 bars at 120 BPM?",
+    answer: "32 bars at 120 BPM lasts exactly 64 seconds (1 minute 4 seconds).",
+  },
+  {
+    question: "How long is 16 bars at 140 BPM?",
+    answer: "16 bars at 140 BPM lasts approximately 27.4 seconds.",
+  },
+  {
+    question: "How long is 8 bars in seconds?",
+    answer:
+      "8 bars at 128 BPM = 15 seconds. At 120 BPM = 16 seconds. At 140 BPM ≈ 13.7 seconds.",
+  },
+  {
+    question: "How do you calculate bar duration from BPM?",
+    answer:
+      "Multiply the number of bars by 4 (beats per bar) then by 60 divided by BPM. Formula: bars × 4 × (60 ÷ BPM) = seconds.",
+  },
+]
 
 export default function BarsHubPage() {
   const quickReference = [
-    { bars: 16, bpms: [120, 128, 140, 174] },
-    { bars: 32, bpms: [120, 128, 140, 174] },
-    { bars: 64, bpms: [120, 128, 140, 174] },
+    { bars: 8, bpms: [120, 128, 140, 150, 174] },
+    { bars: 16, bpms: [120, 128, 140, 150, 174] },
+    { bars: 32, bpms: [120, 128, 140, 150, 174] },
+    { bars: 64, bpms: [120, 128, 140, 150, 174] },
   ]
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 lg:py-12">
       <Breadcrumbs items={[{ name: "Bars Reference", path: "/bars" }]} />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqSchema(faqs)) }}
+      />
+
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold lg:text-4xl">Bars Duration Reference</h1>
+        <h1 className="text-3xl font-bold lg:text-4xl">How Long is X Bars?</h1>
         <p className="mt-3 text-lg text-[var(--muted-foreground)]">
-          Quick reference for bar durations at common BPMs. Essential for
-          arrangement and DJ mixing.
+          Instant bar duration reference for DJs and producers. 16 bars at 128 BPM = 30 seconds. 32 bars at 128 BPM = 60 seconds.
         </p>
       </div>
 
@@ -50,7 +90,7 @@ export default function BarsHubPage() {
         <CardHeader>
           <CardTitle>Interactive Calculator</CardTitle>
           <CardDescription>
-            Need a specific calculation? Use our interactive tool
+            Enter any bar count and BPM for an exact duration
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -64,7 +104,7 @@ export default function BarsHubPage() {
       {quickReference.map(({ bars, bpms }) => (
         <Card key={bars} className="mb-6">
           <CardHeader>
-            <CardTitle>{bars} Bars at Common BPMs</CardTitle>
+            <CardTitle>{bars} Bars — How Long at Common BPMs?</CardTitle>
           </CardHeader>
           <CardContent>
             <Table>
@@ -91,7 +131,7 @@ export default function BarsHubPage() {
                       <TableCell className="text-right">
                         <Button variant="ghost" size="sm" asChild>
                           <Link href={`/bars/${bars}-at-${bpm}-bpm`}>
-                            View →
+                            Details →
                           </Link>
                         </Button>
                       </TableCell>
@@ -107,8 +147,8 @@ export default function BarsHubPage() {
       {/* Common Combinations */}
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Common Bar/BPM Combinations</CardTitle>
-          <CardDescription>Quick links to popular configurations</CardDescription>
+          <CardTitle>All Bar/BPM Combinations</CardTitle>
+          <CardDescription>Quick links to every combination</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-wrap gap-2">
@@ -128,13 +168,24 @@ export default function BarsHubPage() {
         </CardContent>
       </Card>
 
-      {/* SEO Content */}
+      {/* FAQ */}
       <section className="mt-12 prose prose-neutral dark:prose-invert max-w-none">
+        <h2>Frequently Asked Questions</h2>
+        <dl>
+          {faqs.map((faq) => (
+            <div key={faq.question} className="mb-6">
+              <dt className="font-semibold text-base not-prose mb-1">{faq.question}</dt>
+              <dd className="text-[var(--muted-foreground)] not-prose">{faq.answer}</dd>
+            </div>
+          ))}
+        </dl>
+
         <h2>Understanding Bars and Musical Structure</h2>
         <p>
           In music, a bar (or measure) is a segment of time defined by a given
           number of beats. Most electronic and pop music uses 4/4 time signature,
-          meaning 4 beats per bar.
+          meaning 4 beats per bar. To find how long any number of bars lasts, use
+          the formula: <strong>bars × 4 × (60 ÷ BPM) = seconds</strong>.
         </p>
         <h3>Common Section Lengths</h3>
         <ul>

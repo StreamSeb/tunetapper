@@ -51,9 +51,13 @@ export function generateBpmPageMetadata(bpm: number): Metadata {
 }
 
 export function generateBarsPageMetadata(bars: number, bpm: number): Metadata {
+  const seconds = (bars * 4 * 60) / bpm
+  const mins = Math.floor(seconds / 60)
+  const secs = Math.round(seconds % 60)
+  const durationStr = mins > 0 ? `${mins}m ${secs}s` : `${secs} seconds`
   return generateMetadata({
-    title: `${bars} Bars at ${bpm} BPM - Duration Calculator`,
-    description: `How long is ${bars} bars at ${bpm} BPM? Calculate the exact duration in minutes and seconds. Perfect for DJs, producers, and musicians.`,
+    title: `${bars} Bars at ${bpm} BPM = ${durationStr}`,
+    description: `${bars} bars at ${bpm} BPM lasts exactly ${durationStr} (${seconds.toFixed(2)}s). See the full reference table for all bar lengths at ${bpm} BPM.`,
     path: `/bars/${bars}-at-${bpm}-bpm`,
   })
 }
