@@ -34,7 +34,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return bpmData.phase1.map((bpm) => ({
+  return bpmData.phase2.map((bpm) => ({
     bpm: bpm.toString(),
   }))
 }

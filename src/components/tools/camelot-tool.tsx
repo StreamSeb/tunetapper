@@ -59,7 +59,7 @@ function KeyBadge({
   )
 }
 
-export function CamelotTool() {
+export function CamelotTool({ faqs }: { faqs?: { question: string; answer: string }[] }) {
   const [selectedKey, setSelectedKey] = useState("8A")
 
   const currentKey = getCamelotKey(selectedKey)
@@ -75,11 +75,10 @@ export function CamelotTool() {
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold lg:text-4xl">
-          Camelot Wheel - Key Compatibility
+          Camelot Wheel Calculator
         </h1>
         <p className="mt-3 text-lg text-[var(--muted-foreground)]">
-          Find compatible keys for harmonic mixing. The Camelot system makes it
-          easy to mix tracks that sound great together.
+          Select any Camelot key and instantly find every compatible key for harmonic mixing. Free online tool for DJs.
         </p>
       </div>
 
@@ -253,7 +252,7 @@ export function CamelotTool() {
         <h3>How to Use Camelot Keys</h3>
         <ul>
           <li>
-            <strong>Same Key:</strong> Perfect harmonic match - melodies blend
+            <strong>Same Key:</strong> Perfect harmonic match — melodies blend
             seamlessly
           </li>
           <li>
@@ -269,6 +268,20 @@ export function CamelotTool() {
             musically
           </li>
         </ul>
+
+        {faqs && faqs.length > 0 && (
+          <>
+            <h2>Frequently Asked Questions</h2>
+            <dl>
+              {faqs.map((faq) => (
+                <div key={faq.question} className="mb-6">
+                  <dt className="font-semibold text-base not-prose mb-1">{faq.question}</dt>
+                  <dd className="text-[var(--muted-foreground)] not-prose">{faq.answer}</dd>
+                </div>
+              ))}
+            </dl>
+          </>
+        )}
       </section>
     </div>
   )
