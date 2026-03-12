@@ -26,6 +26,7 @@ import {
   getCompatibleKeys,
   type CamelotKey,
 } from "@/lib/camelot"
+import { CamelotWheel } from "@/components/tools/camelot-wheel"
 
 function KeyBadge({
   keyData,
@@ -121,6 +122,19 @@ export function CamelotTool({ faqs }: { faqs?: { question: string; answer: strin
               </div>
             )}
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Camelot Wheel */}
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle>Camelot Wheel</CardTitle>
+          <CardDescription>
+            Click any key to select it — compatible keys are highlighted
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex justify-center">
+          <CamelotWheel selectedKey={selectedKey} onKeySelect={setSelectedKey} />
         </CardContent>
       </Card>
 
