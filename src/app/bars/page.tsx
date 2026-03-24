@@ -19,12 +19,12 @@ import {
 } from "@/components/ui/table"
 import barsData from "@/data/bars-list.json"
 import { calculateBarsDuration, formatDuration } from "@/lib/calculations"
-import { generateFaqSchema } from "@/lib/seo"
+import { generateFaqSchema, generateBreadcrumbSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "How Long is X Bars? Bars to Seconds Reference for DJs",
+  title: "Bars to Seconds Calculator — How Long is 16, 32 or 64 Bars?",
   description:
-    "16 bars at 128 BPM = 30 seconds. 32 bars at 120 BPM = 64 seconds. Instant bar duration reference for DJs and producers at any BPM.",
+    "16 bars at 128 BPM = 30 seconds. 32 bars at 120 BPM = 64 seconds. Enter any bar count and BPM — get the duration instantly.",
 }
 
 const faqs = [
@@ -75,6 +75,10 @@ export default function BarsHubPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqSchema(faqs)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Bars Reference", path: "/bars" }])) }}
       />
 
       {/* Header */}

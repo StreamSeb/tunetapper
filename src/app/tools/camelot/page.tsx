@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { CamelotTool } from "@/components/tools/camelot-tool"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { generateToolSchema, generateFaqSchema } from "@/lib/seo"
+import { generateToolSchema, generateFaqSchema, generateBreadcrumbSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "Camelot Wheel Calculator — Find Compatible Keys Online",
@@ -71,6 +71,10 @@ export default function CamelotPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqSchema(faqs)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateBreadcrumbSchema([{ name: "Home", path: "/" }, { name: "Tools", path: "/tools" }, { name: "Camelot Wheel Calculator", path: "/tools/camelot" }])) }}
       />
       <div className="mx-auto max-w-4xl px-4 pt-6">
         <Breadcrumbs items={[{ name: "Camelot Wheel Calculator", path: "/tools/camelot" }]} />
