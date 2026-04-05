@@ -241,6 +241,37 @@ async function fetchGSC(authClient) {
   return { summary, queries, pages, opportunities, startDate, endDate };
 }
 
+// ─── Sitemap / Index Coverage ────────────────────────────────────────────────
+
+async function fetchSitemapCoverage(authClient) {
+  const searchconsole = google.searchconsole({ version: "v1", auth: authClient });
+
+  const res = await searchconsole.sitemaps.list({ siteUrl: GSC_SITE_URL });
+  const sitemaps = res.data.sitemap || [];
+
+  const entries = sitemaps.map((s) => {
+    const webContents = (s.contents || []).find((c) => c.type === "web") || {};
+    return {
+      path: s.path,
+      lastDownloaded: s.lastDownloaded ? s.lastDownloaded.slice(0, 10) : "never",
+      submitted: Number(webContents.submitted || 0),
+      indexed: Number(webContents.indexed || 0),
+      warnings: Number(s.warnings || 0),
+      errors: Number(s.errors || 0),
+    };
+  });
+
+  const totals = entries.reduce(
+    (acc, e) => ({
+      submitted: acc.submitted + e.submitted,
+      indexed: acc.indexed + e.indexed,
+    }),
+    { submitted: 0, indexed: 0 }
+  );
+
+  return { entries, totals };
+}
+
 // ─── Phase 2 readiness ───────────────────────────────────────────────────────
 
 function assessPhase2({ ga4, gsc }) {
@@ -278,7 +309,7 @@ function assessPhase2({ ga4, gsc }) {
 
 // ─── Report builder ───────────────────────────────────────────────────────────
 
-function buildReport({ ga4, gsc }) {
+function buildReport({ ga4, gsc, coverage }) {
   const { overview, topPages, channels } = ga4;
   const { summary, queries, pages, opportunities, startDate, endDate } = gsc;
   const phase2 = assessPhase2({ ga4, gsc });
@@ -290,6 +321,45 @@ function buildReport({ ga4, gsc }) {
   lines.push(`# TuneTapper Analytics Snapshot`);
   lines.push(`_Generated: ${new Date().toISOString().slice(0, 10)}_`);
   lines.push(``);
+
+  // ── Index Coverage ──
+  lines.push(`## Index Coverage`);
+  lines.push(`_Indexed count = pages Google confirmed via your sitemap. Pages discovered by crawl (not sitemap) appear in GSC UI but not here._`);
+  lines.push(``);
+  const indexRate = coverage.totals.submitted > 0
+    ? pct(coverage.totals.indexed / coverage.totals.submitted)
+    : "n/a";
+  lines.push(
+    mdTable(
+      ["Metric", "Value"],
+      [
+        ["Pages submitted to Google", num(coverage.totals.submitted)],
+        ["Pages indexed", num(coverage.totals.indexed)],
+        ["Indexing rate", indexRate],
+        ["Not yet indexed", num(coverage.totals.submitted - coverage.totals.indexed)],
+      ]
+    )
+  );
+  lines.push(``);
+  if (coverage.entries.length > 0) {
+    lines.push(`### Sitemap Breakdown`);
+    lines.push(``);
+    lines.push(
+      mdTable(
+        ["Sitemap", "Submitted", "Indexed", "Rate", "Last fetched", "Warnings", "Errors"],
+        coverage.entries.map((e) => [
+          e.path.replace(GSC_SITE_URL, ""),
+          num(e.submitted),
+          num(e.indexed),
+          e.submitted > 0 ? pct(e.indexed / e.submitted) : "n/a",
+          e.lastDownloaded,
+          e.warnings > 0 ? `⚠️ ${e.warnings}` : "0",
+          e.errors > 0 ? `❌ ${e.errors}` : "0",
+        ])
+      )
+    );
+    lines.push(``);
+  }
 
   // ── Phase 2 Readiness ──
   lines.push(`## Phase 2 Readiness`);
@@ -427,8 +497,11 @@ async function main() {
   console.log("🔍  Fetching Search Console data...");
   const gsc = await fetchGSC(authClient);
 
+  console.log("🗺️   Fetching sitemap coverage...");
+  const coverage = await fetchSitemapCoverage(authClient);
+
   console.log("📝  Building report...");
-  const report = buildReport({ ga4, gsc });
+  const report = buildReport({ ga4, gsc, coverage });
 
   const outDir = join(ROOT, "reports");
   mkdirSync(outDir, { recursive: true });
