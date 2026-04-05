@@ -122,9 +122,9 @@ export function TapTempoTool() {
     <div className="mx-auto max-w-2xl px-4 py-8 lg:py-12">
       {/* Header */}
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold lg:text-4xl">Tap Tempo</h1>
+        <h1 className="text-3xl font-bold lg:text-4xl">BPM Finder — Tap Tempo</h1>
         <p className="mt-3 text-lg text-[var(--muted-foreground)]">
-          Tap along to the beat to find the BPM of any song
+          Tap along to the beat — your BPM displays after just 4 taps
         </p>
       </div>
 

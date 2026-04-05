@@ -24,7 +24,16 @@ import { generateFaqSchema, generateBreadcrumbSchema } from "@/lib/seo"
 export const metadata: Metadata = {
   title: "Bars to Seconds Calculator — How Long is 16, 32 or 64 Bars?",
   description:
-    "16 bars at 128 BPM = 30 seconds. 32 bars at 120 BPM = 64 seconds. Enter any bar count and BPM — get the duration instantly.",
+    "How long is 16 bars? At 128 BPM = 30 seconds. At 120 BPM = 32 seconds. Enter any bar count and BPM for an exact duration. Free reference tool for DJs and producers.",
+  alternates: {
+    canonical: "https://tunetapper.com/bars",
+  },
+  openGraph: {
+    title: "Bars to Seconds Calculator — How Long is 16, 32 or 64 Bars?",
+    description:
+      "How long is 16 bars? At 128 BPM = 30 seconds. At 120 BPM = 32 seconds. Enter any bar count and BPM for an exact duration. Free reference tool for DJs and producers.",
+    url: "https://tunetapper.com/bars",
+  },
 }
 
 const faqs = [
