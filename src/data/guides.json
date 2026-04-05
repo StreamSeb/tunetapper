@@ -17,6 +17,36 @@
       "title": "BPM Guide: Tempo Ranges for Every Music Genre",
       "description": "Discover the typical BPM ranges for different music genres, from hip-hop to drum & bass. Essential reference for DJs and producers.",
       "category": "Reference"
+    },
+    {
+      "slug": "tap-tempo-guide",
+      "title": "How to Use Tap Tempo as a DJ or Producer",
+      "description": "Master the tap tempo technique to quickly find the BPM of any song. Learn when to use it, how to get accurate readings, and how to apply it in your workflow.",
+      "category": "DJing"
+    },
+    {
+      "slug": "time-signatures-explained",
+      "title": "Understanding Time Signatures for Music Producers",
+      "description": "Learn how time signatures work and why they matter for music production. From 4/4 to 3/4 and beyond, understand how to count bars and structure your tracks.",
+      "category": "Production"
+    },
+    {
+      "slug": "sync-daw-effects-to-bpm",
+      "title": "How to Sync Your DAW Effects to BPM",
+      "description": "Learn how to sync delay, reverb, LFOs, and other effects to your track's tempo in any DAW. Includes tips for Ableton, FL Studio, Logic Pro, and more.",
+      "category": "Production"
+    },
+    {
+      "slug": "beatmatching-guide",
+      "title": "Beatmatching for Beginners: A Step-by-Step DJ Guide",
+      "description": "Learn how to beatmatch tracks by ear and with software. Covers tempo matching, phrase alignment, and beat syncing techniques for beginner DJs.",
+      "category": "DJing"
+    },
+    {
+      "slug": "key-detection-software",
+      "title": "Key Detection Software: Find the Key of Any Track",
+      "description": "Discover the best tools for detecting the musical key of a song. Learn how Mixed In Key, rekordbox, and other tools work with the Camelot system.",
+      "category": "DJing"
     }
   ]
 }
