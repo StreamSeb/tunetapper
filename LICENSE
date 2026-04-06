@@ -1,0 +1,24 @@
+Copyright (c) 2026 StreamSeb. All rights reserved.
+
+This source code is made publicly available solely for the purpose of
+complying with the GNU Affero General Public License v3.0 (AGPL-3.0),
+under which this project uses Essentia.js
+(https://github.com/MTG/essentia.js).
+
+You may view this source code for personal, non-commercial reference only.
+
+You may NOT:
+  - Copy, reproduce, or redistribute any part of this codebase
+  - Use this code, in whole or in part, in your own projects
+  - Modify and redistribute this code
+  - Use this code for commercial purposes
+  - Deploy this code or any derivative as a competing service
+
+The following third-party libraries are included under their respective
+licenses, which are unaffected by the above:
+
+  - Essentia.js — AGPL-3.0 (https://github.com/MTG/essentia.js)
+  - Next.js — MIT (https://github.com/vercel/next.js)
+  - All other dependencies retain their original open-source licenses
+
+For licensing inquiries, contact the repository owner via GitHub.
