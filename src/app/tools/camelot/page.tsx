@@ -4,9 +4,9 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { generateToolSchema, generateFaqSchema, generateBreadcrumbSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "Camelot Wheel Calculator — Find Compatible Keys Online",
+  title: "Camelot Wheel Online — Click a Key, See Compatible Mixes",
   description:
-    "Free online Camelot wheel calculator. Select any key and instantly see every compatible key for harmonic mixing — adjacent keys, relative major/minor, and energy boosts.",
+    "Free interactive Camelot wheel. Click any key (1A–12B) to instantly see every compatible mix — adjacent keys, relative major/minor, and energy-boost moves. No signup, works in your browser.",
   keywords: [
     "Camelot wheel calculator",
     "harmonic mixing",
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
     canonical: "https://tunetapper.com/tools/camelot",
   },
   openGraph: {
-    title: "Camelot Wheel Calculator — Find Compatible Keys Online | TuneTapper",
+    title: "Camelot Wheel Online — Click a Key, See Compatible Mixes | TuneTapper",
     description:
-      "Free online Camelot wheel calculator. Select any key and instantly see every compatible key for harmonic mixing — adjacent keys, relative major/minor, and energy boosts.",
+      "Free interactive Camelot wheel. Click any key (1A–12B) to instantly see every compatible mix — adjacent keys, relative major/minor, and energy-boost moves. No signup, works in your browser.",
     url: "https://tunetapper.com/tools/camelot",
   },
 }
