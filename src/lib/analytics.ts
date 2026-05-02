@@ -34,6 +34,19 @@ export const analytics = {
     trackEvent("camelot_key_selected", { key })
   },
 
+  // Key Analyzer
+  keyAnalyzerStarted: (fileType: string) => {
+    trackEvent("key_analyzer_started", { file_type: fileType })
+  },
+
+  keyAnalyzerCompleted: (camelotKey: string, confidence: number) => {
+    trackEvent("key_analyzer_completed", { camelot_key: camelotKey, confidence })
+  },
+
+  keyAnalyzerFailed: (reason: string) => {
+    trackEvent("key_analyzer_failed", { reason })
+  },
+
   // BPM Transition
   bpmTransitionCalculated: (fromBpm: number, toBpm: number) => {
     trackEvent("bpm_transition_calculated", { from_bpm: fromBpm, to_bpm: toBpm })

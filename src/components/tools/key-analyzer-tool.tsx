@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Upload, Music, RotateCcw, AlertCircle, CheckCircle2 } from "lucide-react"
 import { analyzeKey, type KeyResult } from "@/lib/key-detection"
 import { getCamelotKey, getCompatibleKeys } from "@/lib/camelot"
+import { analytics } from "@/lib/analytics"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -97,15 +98,19 @@ export function KeyAnalyzerTool({
   const inputRef = useRef<HTMLInputElement>(null)
 
   const processFile = useCallback(async (file: File) => {
+    const ext = file.name.split(".").pop()?.toLowerCase() || "unknown"
+
     if (!ACCEPTED_TYPES.includes(file.type) && !file.name.match(/\.(mp3|wav|flac|aac|ogg|m4a|mp4)$/i)) {
       setError("Unsupported format. Try MP3, WAV, FLAC, AAC, or OGG.")
       setStatus("error")
+      analytics.keyAnalyzerFailed("unsupported_format")
       return
     }
 
     setResult(null)
     setError(null)
     setStatus("decoding")
+    analytics.keyAnalyzerStarted(file.type || ext)
 
     try {
       const keyResult = await analyzeKey(file, (msg) => {
@@ -114,9 +119,11 @@ export function KeyAnalyzerTool({
       })
       setResult(keyResult)
       setStatus("done")
+      analytics.keyAnalyzerCompleted(keyResult.camelot, keyResult.confidence)
     } catch (err) {
       setError(err instanceof Error ? err.message : "Analysis failed.")
       setStatus("error")
+      analytics.keyAnalyzerFailed("analysis_failed")
     }
   }, [])
 
