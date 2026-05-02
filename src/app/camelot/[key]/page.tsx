@@ -209,6 +209,11 @@ export default async function CamelotKeyPage({ params }: Props) {
             <Link href="/tools/camelot">Interactive Camelot Tool</Link>
           </Button>
           <Button variant="outline" asChild>
+            <Link href="/tools/key-analyzer">
+              Don&apos;t know your key? Find it free →
+            </Link>
+          </Button>
+          <Button variant="outline" asChild>
             <Link href="/tools/bpm-transition">BPM Transition Helper</Link>
           </Button>
           <Button variant="outline" asChild>

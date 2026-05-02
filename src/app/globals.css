@@ -119,6 +119,16 @@ body {
   background: var(--foreground);
 }
 
+/* Shimmer animation for key analyzer loading bar */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
 /* Animation for tap tempo */
 @keyframes pulse-ring {
   0% {

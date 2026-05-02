@@ -6,6 +6,7 @@ import {
   Timer,
   ArrowLeftRight,
   Keyboard,
+  ScanSearch,
 } from "lucide-react"
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo"
 import { Button } from "@/components/ui/button"
@@ -58,6 +59,14 @@ const tools = [
     href: "/tools/bpm-transition",
     icon: ArrowLeftRight,
     badge: null,
+  },
+  {
+    title: "Key Finder",
+    description:
+      "Detect the musical key and Camelot notation of any track. Upload an audio file and get the key instantly — runs in your browser, nothing uploaded.",
+    href: "/tools/key-analyzer",
+    icon: ScanSearch,
+    badge: "New",
   },
 ]
 

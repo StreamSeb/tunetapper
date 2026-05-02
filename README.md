@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TuneTapper
 
-## Getting Started
+Free music production and DJ tools — [tunetapper.com](https://tunetapper.com)
 
-First, run the development server:
+## Tools
+
+| Tool | URL |
+|---|---|
+| BPM Delay Calculator | `/tools/bpm-delay` |
+| Bars to Time Calculator | `/tools/bars-to-time` |
+| Tap Tempo | `/tools/tap-tempo` |
+| Camelot Wheel Calculator | `/tools/camelot` |
+| BPM Transition Helper | `/tools/bpm-transition` |
+| Key Finder | `/tools/key-analyzer` |
+
+Plus 259 programmatic SEO pages across `/bpm/`, `/bars/`, `/camelot/`, and `/guides/`.
+
+## Stack
+
+- **Next.js 16** — App Router, fully static output
+- **TypeScript** + **Tailwind CSS v4** + **shadcn/ui**
+- **Vercel Analytics** — no consent required
+- **Google AdSense + GA4** — consent-gated via cookie banner
+- Deployed on **Vercel**
+
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev        # http://localhost:3000 (Turbopack)
+pnpm build
+pnpm lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Clear the Next.js cache if you hit stale build issues:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+rm -rf .next
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
 
-## Learn More
+Create `.env.local`:
 
-To learn more about Next.js, take a look at the following resources:
+```env
+NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_ADSENSE_ID=ca-pub-XXXXXXXXXXXXXXXX
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Adding Content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| To add | Edit |
+|---|---|
+| New BPM pages | `src/data/bpm-list.json` |
+| New bars pages | `src/data/bars-list.json` |
+| New Camelot keys | `src/data/camelot-keys.json` |
+| New guide (metadata) | `src/data/guides.json` |
+| New guide (content) | `src/app/guides/[slug]/page.tsx` |
 
-## Deploy on Vercel
+The sitemap at `/sitemap.xml` updates automatically when you add entries to the JSON files.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [LICENSE](./LICENSE).

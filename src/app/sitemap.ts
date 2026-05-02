@@ -70,7 +70,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE_URL}/tools/audio-analyzer`,
+      url: `${BASE_URL}/tools/key-analyzer`,
       lastModified: now,
       changeFrequency: "monthly",
       priority: 0.9,

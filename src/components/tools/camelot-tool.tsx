@@ -244,6 +244,11 @@ export function CamelotTool({ faqs }: { faqs?: { question: string; answer: strin
               </Link>
             </Button>
             <Button variant="outline" asChild>
+              <Link href="/tools/key-analyzer">
+                Find Key of a Track
+              </Link>
+            </Button>
+            <Button variant="outline" asChild>
               <Link href="/tools/bpm-transition">BPM Transition Helper</Link>
             </Button>
             <Button variant="outline" asChild>
