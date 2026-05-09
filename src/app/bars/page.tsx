@@ -22,16 +22,16 @@ import { calculateBarsDuration, formatDuration } from "@/lib/calculations"
 import { generateFaqSchema, generateBreadcrumbSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "How Long Is 16 Bars? Bars to Seconds & Minutes Calculator",
+  title: "How Many Seconds Is 16 Bars? Free Bars-to-Time Calculator",
   description:
-    "Exact bar lengths at any BPM. 16 bars @ 128 BPM = 30s · 32 bars @ 120 BPM = 1m 4s · 64 bars @ 174 BPM ≈ 1m 28s. Free calculator and reference table for DJs, producers, and songwriters.",
+    "16 bars at 128 BPM = 30 seconds. 32 bars at 120 BPM = 1 min 4 sec. Get the exact duration of any bar count at any BPM — free calculator plus a full lookup table for DJs and producers.",
   alternates: {
     canonical: "https://tunetapper.com/bars",
   },
   openGraph: {
-    title: "How Long Is 16 Bars? Bars to Seconds & Minutes Calculator",
+    title: "How Many Seconds Is 16 Bars? Free Bars-to-Time Calculator",
     description:
-      "Exact bar lengths at any BPM. 16 bars @ 128 BPM = 30s · 32 bars @ 120 BPM = 1m 4s · 64 bars @ 174 BPM ≈ 1m 28s. Free calculator and reference table for DJs, producers, and songwriters.",
+      "16 bars at 128 BPM = 30 seconds. 32 bars at 120 BPM = 1 min 4 sec. Get the exact duration of any bar count at any BPM — free calculator plus a full lookup table for DJs and producers.",
     url: "https://tunetapper.com/bars",
   },
 }
