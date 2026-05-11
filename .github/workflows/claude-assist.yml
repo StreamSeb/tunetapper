@@ -47,10 +47,14 @@ jobs:
       - uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # --model: Sonnet 4.6 is ~5x cheaper than Opus and plenty capable
+          #   for SEO/code edits. If a task genuinely needs Opus, override
+          #   in the @claude comment with /model claude-opus-4-7.
           # --max-turns: hard cap so a runaway loop can't drain credits.
           # --allowedTools: extends the action's read-only defaults so Claude
-          #   can actually edit files and run the build. Bash is scoped to
-          #   pnpm verbs only; arbitrary shell is not allowed.
+          #   can edit files and run the build. Bash is scoped to pnpm verbs
+          #   only; arbitrary shell is not allowed.
           claude_args: >-
-            --max-turns 25
+            --model claude-sonnet-4-6
+            --max-turns 50
             --allowedTools "Edit,Write,MultiEdit,Bash(pnpm install:*),Bash(pnpm build:*),Bash(pnpm lint:*)"
