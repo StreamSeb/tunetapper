@@ -50,7 +50,7 @@ jobs:
       - name: Commit state if changed
         if: ${{ !inputs.dry_run }}
         run: |
-          if git diff --quiet -- .github/agent-state/; then
+          if [ -z "$(git status --porcelain .github/agent-state/)" ]; then
             echo "No state changes to commit"
           else
             git config user.name "analytics-bot"
