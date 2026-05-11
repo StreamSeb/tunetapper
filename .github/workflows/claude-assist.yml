@@ -1,0 +1,50 @@
+name: Claude Assistant
+
+# Triggered by @claude mentions in issue or PR comments.
+# Claude reads the issue/PR context, makes changes on a branch,
+# and prompts to open a PR for review.
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  pull_request_review:
+    types: [submitted]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  claude:
+    # Public-repo safety gate: only trigger when:
+    #   1. The comment actually contains @claude (cheap pre-filter), AND
+    #   2. The commenter is the repo owner or a trusted collaborator.
+    # Without this gate, anyone on the internet could comment @claude on
+    # an issue and burn through the ANTHROPIC_API_KEY credits.
+    if: |
+      (
+        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude'))
+      ) &&
+      (
+        github.event.sender.login == github.repository_owner ||
+        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'),
+                 github.event.comment.author_association || github.event.review.author_association)
+      )
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Cap iterations so a runaway loop can't drain credits.
+          claude_args: "--max-turns 20"
