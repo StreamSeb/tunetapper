@@ -20,8 +20,9 @@
 
 import { google } from "googleapis";
 import Anthropic from "@anthropic-ai/sdk";
-import { execSync } from "node:child_process";
+import { execFileSync, execSync } from "node:child_process";
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -200,6 +201,14 @@ function findExistingIssue(openIssues, fingerprint) {
   return openIssues.find((i) => i.body?.includes(`${FINGERPRINT_PREFIX} ${fingerprint}`));
 }
 
+function ensureLabel(name) {
+  try {
+    execFileSync("gh", ["label", "create", name, "--force"], { stdio: "pipe" });
+  } catch {
+    // already exists or other non-fatal error; gh prints to stderr
+  }
+}
+
 function openIssue({ title, body, labels, fingerprint }) {
   const fullBody = `${body}\n\n<!-- ${FINGERPRINT_PREFIX} ${fingerprint} -->`;
   if (DRY_RUN) {
@@ -210,11 +219,16 @@ function openIssue({ title, body, labels, fingerprint }) {
     console.log(fullBody);
     return;
   }
-  const labelArgs = labels.map((l) => `--label "${l}"`).join(" ");
-  execSync(
-    `gh issue create --title ${JSON.stringify(title)} --body ${JSON.stringify(fullBody)} ${labelArgs}`,
-    { stdio: "inherit" }
-  );
+
+  for (const l of labels) ensureLabel(l);
+
+  const bodyFile = join(tmpdir(), `agent-issue-${Date.now()}-${Math.random().toString(36).slice(2)}.md`);
+  writeFileSync(bodyFile, fullBody, "utf8");
+
+  const args = ["issue", "create", "--title", title, "--body-file", bodyFile];
+  for (const l of labels) args.push("--label", l);
+
+  execFileSync("gh", args, { stdio: "inherit" });
 }
 
 // ─── Claude analysis ───────────────────────────────────────────────────────
@@ -329,13 +343,17 @@ async function analyze(current, previous) {
       continue;
     }
 
-    openIssue({
-      title,
-      body,
-      labels: ["analytics-bot", category, severity],
-      fingerprint,
-    });
-    openedCount++;
+    try {
+      openIssue({
+        title,
+        body,
+        labels: ["analytics-bot", category, severity],
+        fingerprint,
+      });
+      openedCount++;
+    } catch (err) {
+      console.error(`Failed to open issue "${title}": ${err.message}`);
+    }
   }
 
   return { proposed: issuesToOpen.length, opened: openedCount, skipped: skippedCount };
