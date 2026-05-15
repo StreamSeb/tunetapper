@@ -42,7 +42,7 @@ importers:
         specifier: ^0.468
         version: 0.468.0(react@19.2.4)
       next:
-        specifier: ^16
+        specifier: ^16.2.6
         version: 16.1.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       next-themes:
         specifier: ^0.4
@@ -76,7 +76,7 @@ importers:
         specifier: ^9
         version: 9.39.2(jiti@2.6.1)
       eslint-config-next:
-        specifier: ^16
+        specifier: ^16.2.6
         version: 16.1.6(@typescript-eslint/parser@8.54.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       googleapis:
         specifier: ^171.4.0
