@@ -26,6 +26,12 @@
     "react-dom": "^19",
     "tailwind-merge": "^2"
   },
+  "pnpm": {
+    "overrides": {
+      "picomatch@2": "^2.3.2",
+      "picomatch@4": "^4.0.4"
+    }
+  },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.95.1",
     "@tailwindcss/postcss": "^4",
