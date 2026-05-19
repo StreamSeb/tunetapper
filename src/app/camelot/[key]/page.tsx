@@ -17,7 +17,7 @@ import {
   getCompatibleKeys,
   getMixingTip,
 } from "@/lib/camelot"
-import { generateCamelotPageMetadata } from "@/lib/seo"
+import { generateCamelotPageMetadata, generateFaqSchema, generateBreadcrumbSchema } from "@/lib/seo"
 import { cn } from "@/lib/utils"
 import camelotData from "@/data/camelot-keys.json"
 
@@ -249,6 +249,40 @@ export default async function CamelotKeyPage({ params }: Props) {
           </li>
         </ul>
       </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateFaqSchema([
+              {
+                question: `What key is ${keyData.camelot} on the Camelot Wheel?`,
+                answer: `${keyData.camelot} on the Camelot Wheel corresponds to ${keyData.musical} in traditional music notation. It is a ${keyData.mode} key.`,
+              },
+              {
+                question: `What keys are compatible with ${keyData.camelot} for harmonic mixing?`,
+                answer: `The compatible keys for ${keyData.camelot} are: ${compatible.minusOne.camelot} (${compatible.minusOne.musical}, move down one), ${compatible.plusOne.camelot} (${compatible.plusOne.musical}, move up one), and ${compatible.relative.camelot} (${compatible.relative.musical}, relative ${keyData.mode === "minor" ? "major" : "minor"})${compatible.energyBoost ? `. For an energy boost, ${compatible.energyBoost.camelot} (${compatible.energyBoost.musical}) also works well` : ""}.`,
+              },
+              {
+                question: `How do I mix tracks in ${keyData.camelot} (${keyData.musical})?`,
+                answer: `To mix harmonically in ${keyData.camelot}, transition to ${compatible.plusOne.camelot} for a slight energy increase, ${compatible.minusOne.camelot} for a subtle energy decrease, or ${compatible.relative.camelot} to switch between ${keyData.mode === "minor" ? "minor and major" : "major and minor"} for a mood change. Staying within adjacent Camelot keys ensures smooth, professional-sounding harmonic mixes.`,
+              },
+            ])
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            generateBreadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Camelot Keys", path: "/camelot" },
+              { name: `${keyData.camelot} (${keyData.musical})`, path: `/camelot/${key}` },
+            ])
+          ),
+        }}
+      />
     </div>
   )
 }
