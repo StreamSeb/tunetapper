@@ -1,6 +1,4 @@
 import type { MetadataRoute } from "next"
-import bpmData from "@/data/bpm-list.json"
-import barsData from "@/data/bars-list.json"
 import camelotData from "@/data/camelot-keys.json"
 import guidesData from "@/data/guides.json"
 
@@ -105,24 +103,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  // BPM pages
-  const bpmPages: MetadataRoute.Sitemap = bpmData.phase1.map((bpm) => ({
-    url: `${BASE_URL}/bpm/${bpm}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }))
-
-  // Bars pages
-  const barsPages: MetadataRoute.Sitemap = barsData.phase1.map(
-    ({ bars, bpm }) => ({
-      url: `${BASE_URL}/bars/${bars}-at-${bpm}-bpm`,
-      lastModified: now,
-      changeFrequency: "monthly" as const,
-      priority: 0.6,
-    })
-  )
-
   // Camelot pages
   const camelotPages: MetadataRoute.Sitemap = camelotData.keys.map((key) => ({
     url: `${BASE_URL}/camelot/${key.toLowerCase()}`,
@@ -143,8 +123,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticPages,
     ...toolPages,
     ...hubPages,
-    ...bpmPages,
-    ...barsPages,
     ...camelotPages,
     ...guidePages,
   ]

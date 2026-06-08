@@ -37,7 +37,7 @@ export function generateMetadata({
       description,
     },
     robots: noIndex
-      ? { index: false, follow: false }
+      ? { index: false, follow: true }
       : { index: true, follow: true },
   }
 }
@@ -47,6 +47,7 @@ export function generateBpmPageMetadata(bpm: number): Metadata {
     title: `${bpm} BPM Delay Times & Bars Calculator`,
     description: `Calculate delay times, bar durations, and discover genres for ${bpm} BPM. Get precise ms values for 1/4, 1/8, 1/16 notes with dotted and triplet variants.`,
     path: `/bpm/${bpm}`,
+    noIndex: true,
   })
 }
 
@@ -59,6 +60,7 @@ export function generateBarsPageMetadata(bars: number, bpm: number): Metadata {
     title: `${bars} Bars at ${bpm} BPM = ${durationStr}`,
     description: `${bars} bars at ${bpm} BPM lasts exactly ${durationStr} (${seconds.toFixed(2)}s). See the full reference table for all bar lengths at ${bpm} BPM.`,
     path: `/bars/${bars}-at-${bpm}-bpm`,
+    noIndex: true,
   })
 }
 

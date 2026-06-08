@@ -43,7 +43,7 @@ function parseSlug(slug: string): { bars: number; bpm: number } | null {
 }
 
 export async function generateStaticParams() {
-  return barsData.phase2.map(({ bars, bpm }) => ({
+  return barsData.phase1.map(({ bars, bpm }) => ({
     slug: `${bars}-at-${bpm}-bpm`,
   }))
 }
