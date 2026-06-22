@@ -212,7 +212,12 @@ const guideContent: Record<
 
         <h2>Practical DJ Workflow</h2>
         <ol>
-          <li>Analyze your tracks using DJ software (most can detect Camelot keys)</li>
+          <li>
+            Analyze your tracks to find their keys — DJ software can do this, or
+            use our free{" "}
+            <Link href="/tools/key-analyzer">online key finder</Link> to detect
+            the Camelot code of any track in your browser
+          </li>
           <li>Sort your crates/playlists by Camelot key</li>
           <li>Plan your sets to move smoothly around the wheel</li>
           <li>Use the +1/-1 technique for seamless transitions</li>
@@ -252,6 +257,7 @@ const guideContent: Record<
     ],
     relatedTools: [
       { href: "/tools/camelot", label: "Camelot Wheel Tool" },
+      { href: "/tools/key-analyzer", label: "Free Key Finder" },
       { href: "/camelot", label: "All Camelot Keys" },
       { href: "/tools/bpm-transition", label: "BPM Transition Helper" },
     ],
@@ -899,6 +905,18 @@ const guideContent: Record<
         </p>
 
         <h2>Key Detection Tools</h2>
+        <h3>TuneTapper Key Finder (free, no upload)</h3>
+        <p>
+          If you just need the key of a single track without installing
+          anything, our{" "}
+          <Link href="/tools/key-analyzer">free online Key Finder</Link> detects
+          the musical key and Camelot code straight from an audio file. It runs
+          entirely in your browser using the Web Audio API and the
+          Krumhansl-Schmuckler algorithm — your file is never uploaded to a
+          server, there is no account, and it is completely free. It is the
+          fastest option when you want to check one or two tracks rather than
+          batch-tag a whole library.
+        </p>
         <h3>Mixed In Key</h3>
         <p>
           The industry standard for DJs. Mixed In Key analyses your audio files
@@ -1004,10 +1022,11 @@ const guideContent: Record<
       {
         question: "Can I find the key of a song without software?",
         answer:
-          "Yes, by ear — hum along to the track and find the root note on an instrument, then determine if it's major or minor from the emotional quality and scale. This takes practice but builds musical ear training. For a faster approach, online key detection tools can analyse an audio file upload.",
+          "Yes. By ear, hum along to the track to find the root note on an instrument, then decide major or minor from the scale and mood — good ear training, but it takes practice. For an instant answer, a free in-browser key finder like TuneTapper's analyses the audio file directly on your device (no upload, no install) and returns the musical key plus its Camelot code.",
       },
     ],
     relatedTools: [
+      { href: "/tools/key-analyzer", label: "Free Key Finder" },
       { href: "/tools/camelot", label: "Camelot Wheel Calculator" },
       { href: "/camelot", label: "All Camelot Keys" },
       { href: "/guides/camelot-wheel-guide", label: "Camelot Wheel Guide" },

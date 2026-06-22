@@ -420,6 +420,18 @@ export function KeyAnalyzerTool({
           Atonal, heavily chromatic, or extremely percussive tracks may produce
           lower confidence scores.
         </p>
+        <h3>Find a Song&apos;s Key Without Uploading or Installing Anything</h3>
+        <p>
+          Unlike most online key finders, this tool never uploads your audio.
+          The file is decoded and analysed entirely on your device through the
+          browser&apos;s Web Audio API, so nothing is sent to a server, stored,
+          or shared. That means you can <strong>find the key of a song without
+          software</strong>, without creating an account, and without waiting on
+          an upload — just drop a file in and read the result. It works on
+          desktop and mobile, with no download required, making it a fast,
+          private alternative to apps like Mixed In Key when you only need to
+          check a track or two.
+        </p>
 
         {faqs && faqs.length > 0 && (
           <>

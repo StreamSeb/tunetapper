@@ -10,6 +10,16 @@ import { ThemeToggle } from "./theme-toggle"
 
 const navigation = [
   {
+    name: "All Tools",
+    href: "/tools",
+    children: [
+      { name: "All Tools", href: "/tools" },
+      { name: "Key Finder", href: "/tools/key-analyzer" },
+      { name: "Camelot Wheel", href: "/tools/camelot" },
+      { name: "BPM Delay Calculator", href: "/tools/bpm-delay" },
+    ],
+  },
+  {
     name: "BPM Tools",
     href: "/bpm",
     children: [
@@ -23,6 +33,7 @@ const navigation = [
     href: "/tools/camelot",
     children: [
       { name: "Camelot Wheel", href: "/tools/camelot" },
+      { name: "Key Finder", href: "/tools/key-analyzer" },
       { name: "BPM Transition", href: "/tools/bpm-transition" },
       { name: "Key Reference", href: "/camelot" },
     ],

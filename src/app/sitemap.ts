@@ -38,6 +38,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Tool pages
   const toolPages: MetadataRoute.Sitemap = [
     {
+      url: `${BASE_URL}/tools`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/tools/bpm-delay`,
       lastModified: now,
       changeFrequency: "monthly",
