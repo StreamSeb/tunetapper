@@ -302,7 +302,10 @@ export default function BarsHubPage() {
           number of beats. Most electronic and pop music uses 4/4 time signature,
           meaning 4 beats per bar. To find how long any number of bars lasts, use
           the formula: <strong>bars × 4 × (60 ÷ BPM) = seconds</strong>. To get
-          the answer in minutes, divide that result by 60.
+          the answer in minutes, divide that result by 60. Don&apos;t know the
+          track&apos;s tempo? Find it in seconds by tapping along with the{" "}
+          <Link href="/tools/tap-tempo">tap BPM counter</Link>, then plug the
+          result into the formula or the calculator above.
         </p>
         <h3>Bars to Minutes at a Glance</h3>
         <p>
