@@ -9,10 +9,10 @@
  *  5. Correlate chroma against major/minor key profiles (Pearson r)
  *  6. Return best matching key in standard + Camelot notation
  *
- * Runs entirely in the browser — no server requests, no WASM dependencies.
+ * Runs entirely in the browser - no server requests, no WASM dependencies.
  */
 
-// Key profiles — Krumhansl & Schmuckler (1990)
+// Key profiles - Krumhansl & Schmuckler (1990)
 // Index 0 = C, 1 = C#/D♭, ..., 11 = B
 const MAJOR_PROFILE = [6.35, 2.23, 3.48, 2.33, 4.38, 4.09, 2.52, 5.19, 2.39, 3.66, 2.29, 2.88]
 const MINOR_PROFILE = [6.33, 2.68, 3.52, 5.38, 2.60, 3.53, 2.54, 4.75, 3.98, 2.69, 3.34, 3.17]
@@ -103,7 +103,7 @@ function pearsonR(x: number[], y: number[]): number {
 }
 
 // ---------------------------------------------------------------------------
-// Main analysis function — call from a client component only
+// Main analysis function - call from a client component only
 // ---------------------------------------------------------------------------
 export async function analyzeKey(
   file: File,
@@ -161,13 +161,13 @@ export async function analyzeKey(
   //
   // Two chromagrams are built simultaneously:
   //
-  //  chromaFull   — 300–2093 Hz, octave-weighted (higher octaves weighted more
+  //  chromaFull   - 300-2093 Hz, octave-weighted (higher octaves weighted more
   //                 to reduce kick/sub-bass dominance). Used to find the tonic
   //                 via Krumhansl-Schmuckler profile matching.
   //
-  //  chromaTreble — 500–2093 Hz, unweighted. Used to resolve major vs minor
+  //  chromaTreble - 500-2093 Hz, unweighted. Used to resolve major vs minor
   //                 by comparing the minor 3rd vs major 3rd above the detected
-  //                 tonic — the melody range where that distinction is audible
+  //                 tonic - the melody range where that distinction is audible
   //                 and uncontaminated by bass.
   //
   const FFT_SIZE = 4096 // ≈ 372 ms per frame at 11025 Hz
@@ -207,7 +207,7 @@ export async function analyzeKey(
       if (mag < 1e-5) continue
       const midi = 12 * Math.log2(freq / 440) + 69
       const pc = ((Math.round(midi) % 12) + 12) % 12
-      // Octave weight: capped at 1.0 — downweights notes below A4 to reduce
+      // Octave weight: capped at 1.0 - downweights notes below A4 to reduce
       // bass contamination, but does NOT amplify the very high notes above A4
       // (amplifying high harmonics was causing phantom pitch-class artifacts).
       const octW = Math.min(1.0, (midi / 69) * (midi / 69))
@@ -231,10 +231,10 @@ export async function analyzeKey(
 
   // ── 5. Hybrid key detection ───────────────────────────────────────────────
   //
-  // Step A — tonic: for each of 12 roots, take the better of its major/minor
+  // Step A - tonic: for each of 12 roots, take the better of its major/minor
   //           KS correlation on the full chromagram. Best root wins.
   //
-  // Step B — mode: correlate the treble chromagram against both the major and
+  // Step B - mode: correlate the treble chromagram against both the major and
   //           minor KS profiles for the detected root. Full 12-note Pearson r
   //           is more robust than comparing just the 3rd degree, particularly
   //           when the track's melody uses a raised 3rd over a minor bass.

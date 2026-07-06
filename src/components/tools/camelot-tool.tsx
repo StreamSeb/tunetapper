@@ -130,7 +130,7 @@ export function CamelotTool({ faqs }: { faqs?: { question: string; answer: strin
         <CardHeader>
           <CardTitle>Camelot Wheel</CardTitle>
           <CardDescription>
-            Click any key to select it — compatible keys are highlighted
+            Click any key to select it - compatible keys are highlighted
           </CardDescription>
         </CardHeader>
         <CardContent className="flex justify-center">
@@ -271,7 +271,7 @@ export function CamelotTool({ faqs }: { faqs?: { question: string; answer: strin
         <h3>How to Use Camelot Keys</h3>
         <ul>
           <li>
-            <strong>Same Key:</strong> Perfect harmonic match — melodies blend
+            <strong>Same Key:</strong> Perfect harmonic match - melodies blend
             seamlessly
           </li>
           <li>

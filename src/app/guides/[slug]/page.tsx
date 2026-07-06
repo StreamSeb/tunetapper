@@ -213,7 +213,7 @@ const guideContent: Record<
         <h2>Practical DJ Workflow</h2>
         <ol>
           <li>
-            Analyze your tracks to find their keys — DJ software can do this, or
+            Analyze your tracks to find their keys - DJ software can do this, or
             use our free{" "}
             <Link href="/tools/key-analyzer">online key finder</Link> to detect
             the Camelot code of any track in your browser
@@ -383,7 +383,7 @@ const guideContent: Record<
           Tap tempo is a technique for finding the BPM of a song by tapping
           along to the beat. Each tap represents one beat, and the average
           interval between taps is used to calculate beats per minute. It&apos;s
-          one of the most practical skills a DJ or producer can have — especially
+          one of the most practical skills a DJ or producer can have - especially
           when you need a quick reading without loading a track into software.
         </p>
 
@@ -397,13 +397,13 @@ const guideContent: Record<
             dominant pulse of the track, not a hi-hat or off-beat element.
           </li>
           <li>
-            <strong>Tap at least 8 times:</strong> The first 2–3 taps establish
+            <strong>Tap at least 8 times:</strong> The first 2-3 taps establish
             rhythm; later taps smooth out timing variations. 4 taps is the
             minimum for a rough reading.
           </li>
           <li>
             <strong>Use your whole body:</strong> Nod your head or tap your foot
-            before tapping — letting your body internalize the rhythm first
+            before tapping - letting your body internalize the rhythm first
             produces more consistent results.
           </li>
           <li>
@@ -425,7 +425,7 @@ const guideContent: Record<
         </p>
         <h3>Verifying BPM metadata accuracy</h3>
         <p>
-          Automatically detected BPM values are sometimes wrong — especially
+          Automatically detected BPM values are sometimes wrong - especially
           for tracks with half-time or double-time feels. A quick tap check
           confirms whether the metadata is accurate.
         </p>
@@ -440,7 +440,7 @@ const guideContent: Record<
           In the studio, tap tempo is useful for matching a sample&apos;s
           original BPM before time-stretching, or for quickly setting a project
           tempo to match a reference track. Most DAWs have a built-in tap tempo
-          button — usually mapped to the T key or a toolbar button.
+          button - usually mapped to the T key or a toolbar button.
         </p>
 
         <h2>Common Mistakes to Avoid</h2>
@@ -460,7 +460,7 @@ const guideContent: Record<
           <li>
             <strong>Ignoring half-time tracks:</strong> Some genres (trap, lo-fi)
             run at half the perceived tempo. If your reading seems too slow,
-            double it — if too fast, halve it.
+            double it - if too fast, halve it.
           </li>
         </ul>
 
@@ -476,7 +476,7 @@ const guideContent: Record<
       {
         question: "How accurate is tap tempo?",
         answer:
-          "With 8 or more taps, tap tempo is accurate to within 1–2 BPM for most tracks. Accuracy improves the more consistent your tapping is. Using a keyboard instead of a mouse click also reduces timing errors.",
+          "With 8 or more taps, tap tempo is accurate to within 1-2 BPM for most tracks. Accuracy improves the more consistent your tapping is. Using a keyboard instead of a mouse click also reduces timing errors.",
       },
       {
         question: "How many times should I tap for an accurate BPM?",
@@ -502,7 +502,7 @@ const guideContent: Record<
         <p>
           A time signature tells you how many beats are in each bar and what
           note value counts as one beat. It appears as a fraction at the start
-          of a piece of music — for example, 4/4, 3/4, or 6/8.
+          of a piece of music - for example, 4/4, 3/4, or 6/8.
         </p>
         <ul>
           <li>
@@ -518,7 +518,7 @@ const guideContent: Record<
           quarter-note beats per bar. 6/8 means six eighth-note beats per bar.
         </p>
 
-        <h2>4/4 — The Most Common Time Signature</h2>
+        <h2>4/4 - The Most Common Time Signature</h2>
         <p>
           4/4 (also called &quot;common time&quot;) is used in almost all
           electronic music, pop, rock, hip-hop, and dance music. It&apos;s the
@@ -530,7 +530,7 @@ const guideContent: Record<
           floor&quot; pattern that defines house music.
         </p>
 
-        <h2>3/4 — The Waltz</h2>
+        <h2>3/4 - The Waltz</h2>
         <p>
           3/4 has three beats per bar, giving it a rolling, triple feel. It&apos;s
           used in waltzes, some folk music, and ballads. You count it as
@@ -538,7 +538,7 @@ const guideContent: Record<
           producers use 3/4 or 6/8 to create unusual rhythmic tension.
         </p>
 
-        <h2>6/8 — Compound Time</h2>
+        <h2>6/8 - Compound Time</h2>
         <p>
           6/8 has six eighth-note beats per bar, but feels like two groups of
           three. It creates a lilting, triplet-based feel. Many R&amp;B ballads
@@ -564,7 +564,7 @@ const guideContent: Record<
         <p>
           Electronic music is almost always built in 8- or 16-bar phrases. A
           typical intro might be 8 bars, a verse 16 bars, a drop 32 bars. These
-          multiples of 4 are why 4/4 dominates — everything divides cleanly.
+          multiples of 4 are why 4/4 dominates - everything divides cleanly.
         </p>
         <h3>Odd time for tension</h3>
         <p>
@@ -576,7 +576,7 @@ const guideContent: Record<
         <p>
           Many genres play with perceived tempo without changing the actual BPM.
           A trap beat at 140 BPM often feels like 70 BPM because the snare falls
-          on beat 3 of every two bars instead of every bar — this is half-time.
+          on beat 3 of every two bars instead of every bar - this is half-time.
           Drum &amp; bass at 174 BPM often uses double-time hi-hats to sound
           even faster.
         </p>
@@ -595,7 +595,7 @@ const guideContent: Record<
       {
         question: "What time signature is most electronic music in?",
         answer:
-          "Almost all electronic music — house, techno, drum & bass, hip-hop, pop — uses 4/4 time. This means 4 beats per bar and is why bar calculators assume 4 beats per bar by default.",
+          "Almost all electronic music - house, techno, drum & bass, hip-hop, pop - uses 4/4 time. This means 4 beats per bar and is why bar calculators assume 4 beats per bar by default.",
       },
       {
         question: "How many seconds is one bar at 128 BPM?",
@@ -635,15 +635,15 @@ const guideContent: Record<
         </p>
         <ul>
           <li>
-            <strong>1/4 note delay at 128 BPM:</strong> 468.75ms — classic
+            <strong>1/4 note delay at 128 BPM:</strong> 468.75ms - classic
             rhythmic echo
           </li>
           <li>
-            <strong>Dotted 1/8 delay:</strong> 351.6ms — creates a
+            <strong>Dotted 1/8 delay:</strong> 351.6ms - creates a
             &quot;ping-pong&quot; shuffle feel
           </li>
           <li>
-            <strong>1/8 note delay:</strong> 234.4ms — tight doubling effect
+            <strong>1/8 note delay:</strong> 234.4ms - tight doubling effect
           </li>
         </ul>
         <p>
@@ -665,12 +665,12 @@ const guideContent: Record<
           Common synced LFO rates:
         </p>
         <ul>
-          <li><strong>1/1 (one bar):</strong> Slow, broad sweeps — good for filter
+          <li><strong>1/1 (one bar):</strong> Slow, broad sweeps - good for filter
             automation</li>
-          <li><strong>1/2:</strong> Two-bar cycle — tremolo on sustained chords</li>
-          <li><strong>1/4:</strong> Quarter-note wobble — classic dubstep growl
+          <li><strong>1/2:</strong> Two-bar cycle - tremolo on sustained chords</li>
+          <li><strong>1/4:</strong> Quarter-note wobble - classic dubstep growl
             at slow rates</li>
-          <li><strong>1/8 or 1/16:</strong> Fast, rhythmic modulation — trance
+          <li><strong>1/8 or 1/16:</strong> Fast, rhythmic modulation - trance
             gates and chord chops</li>
         </ul>
 
@@ -679,8 +679,8 @@ const guideContent: Record<
           Sidechain compression (the &quot;pumping&quot; effect in house music)
           is triggered by the kick drum, which plays every quarter note in 4/4.
           The attack and release of the compressor should be set so the volume
-          recovers before the next kick — typically attack 0–10ms, release
-          100–200ms at 128 BPM.
+          recovers before the next kick - typically attack 0-10ms, release
+          100-200ms at 128 BPM.
         </p>
 
         <h2>DAW-Specific Tips</h2>
@@ -747,7 +747,7 @@ const guideContent: Record<
         <p>
           Beatmatching is the process of adjusting two tracks so their beats
           play in sync, allowing you to mix between them without a rhythmic
-          clash. It&apos;s the most fundamental DJ skill — once mastered, it
+          clash. It&apos;s the most fundamental DJ skill - once mastered, it
           lets you create seamless transitions between any two tracks.
         </p>
 
@@ -760,7 +760,7 @@ const guideContent: Record<
         </p>
         <h3>2. Phase alignment</h3>
         <p>
-          Even at the same BPM, beats can be offset — one track&apos;s kick
+          Even at the same BPM, beats can be offset - one track&apos;s kick
           drum might be landing on the off-beat relative to the other. Phase
           alignment means nudging the track so beat 1 of both tracks lands at
           the same time.
@@ -775,12 +775,12 @@ const guideContent: Record<
           <li>
             <strong>Find the BPM difference.</strong> If the incoming track
             sounds faster, reduce its tempo. If slower, increase it. Make small
-            adjustments — most tracks are within ±5 BPM of each other in a
+            adjustments - most tracks are within ±5 BPM of each other in a
             well-planned set.
           </li>
           <li>
             <strong>Listen for flamming.</strong> When the tempos are close but
-            not exact, you&apos;ll hear the kicks &quot;flamming&quot; — one
+            not exact, you&apos;ll hear the kicks &quot;flamming&quot; - one
             slightly ahead of the other. Adjust until they sound like one hit.
           </li>
           <li>
@@ -790,7 +790,7 @@ const guideContent: Record<
           </li>
           <li>
             <strong>Let it ride for 8 bars,</strong> then check again. If it
-            drifts, the BPM isn&apos;t quite locked — make a micro-adjustment.
+            drifts, the BPM isn&apos;t quite locked - make a micro-adjustment.
           </li>
         </ol>
 
@@ -809,7 +809,7 @@ const guideContent: Record<
             You won&apos;t develop the ear training needed when things go wrong
           </li>
           <li>
-            Sync doesn&apos;t handle phrase alignment — you still need to count
+            Sync doesn&apos;t handle phrase alignment - you still need to count
             bars
           </li>
         </ul>
@@ -826,7 +826,7 @@ const guideContent: Record<
         </p>
         <p>
           Count the bars on both tracks (1-2-3-4-5-6-7-8) and start your mix at
-          the beginning of a phrase — ideally bar 1 of the incoming track
+          the beginning of a phrase - ideally bar 1 of the incoming track
           landing with bar 1 of a new section on the outgoing track.
         </p>
 
@@ -843,14 +843,14 @@ const guideContent: Record<
           <li>Fade out the outgoing track</li>
         </ol>
         <p>
-          This prevents the kick drums from clashing in the low end — one of the
+          This prevents the kick drums from clashing in the low end - one of the
           most common beginner mistakes.
         </p>
 
         <h2>Checking BPM Quickly</h2>
         <p>
-          If you&apos;re unsure of a track&apos;s BPM — especially for vinyl or
-          tracks with incorrect metadata — use a tap tempo tool to find it in
+          If you&apos;re unsure of a track&apos;s BPM - especially for vinyl or
+          tracks with incorrect metadata - use a tap tempo tool to find it in
           seconds before loading it into your mix.
         </p>
       </>
@@ -859,7 +859,7 @@ const guideContent: Record<
       {
         question: "How long does it take to learn beatmatching?",
         answer:
-          "Most people can learn basic beatmatching in a few weeks of consistent practice. Getting it reliably fast (within seconds) takes months. Start by practicing with two copies of the same track — it removes the BPM variable so you can focus purely on phase alignment.",
+          "Most people can learn basic beatmatching in a few weeks of consistent practice. Getting it reliably fast (within seconds) takes months. Start by practicing with two copies of the same track - it removes the BPM variable so you can focus purely on phase alignment.",
       },
       {
         question: "Should I use sync or beatmatch manually?",
@@ -869,13 +869,13 @@ const guideContent: Record<
       {
         question: "What is the difference between beatmatching and phrase matching?",
         answer:
-          "Beatmatching syncs the tempo and phase so individual beats align. Phrase matching ensures the musical structure aligns — dropping a track at bar 1 of a new section rather than mid-phrase. Both are needed for smooth, musical transitions.",
+          "Beatmatching syncs the tempo and phase so individual beats align. Phrase matching ensures the musical structure aligns - dropping a track at bar 1 of a new section rather than mid-phrase. Both are needed for smooth, musical transitions.",
       },
     ],
     relatedTools: [
-      { href: "/tools/tap-tempo", label: "Tap Tempo — Find Track BPM" },
+      { href: "/tools/tap-tempo", label: "Tap Tempo - Find Track BPM" },
       { href: "/tools/bpm-transition", label: "BPM Transition Helper" },
-      { href: "/tools/camelot", label: "Camelot Wheel — Harmonic Mixing" },
+      { href: "/tools/camelot", label: "Camelot Wheel - Harmonic Mixing" },
     ],
   },
   "key-detection-software": {
@@ -883,7 +883,7 @@ const guideContent: Record<
       <>
         <h2>Why Key Detection Matters for DJs</h2>
         <p>
-          Mixing tracks in clashing keys creates dissonance — even when the
+          Mixing tracks in clashing keys creates dissonance - even when the
           tempo is perfectly matched, something will sound &quot;off.&quot; Key
           detection software analyses the harmonic content of a track and
           returns either a standard musical key (e.g., A minor) or a Camelot
@@ -894,7 +894,7 @@ const guideContent: Record<
         <h2>How Key Detection Works</h2>
         <p>
           Key detection algorithms analyse the pitch content of an audio file
-          and compare it against key profiles — mathematical models of how
+          and compare it against key profiles - mathematical models of how
           notes are distributed in each major and minor key. The algorithm
           returns the best-matching key, typically with a confidence score.
         </p>
@@ -912,7 +912,7 @@ const guideContent: Record<
           <Link href="/tools/key-analyzer">free online Key Finder</Link> detects
           the musical key and Camelot code straight from an audio file. It runs
           entirely in your browser using the Web Audio API and the
-          Krumhansl-Schmuckler algorithm — your file is never uploaded to a
+          Krumhansl-Schmuckler algorithm - your file is never uploaded to a
           server, there is no account, and it is completely free. It is the
           fastest option when you want to check one or two tracks rather than
           batch-tag a whole library.
@@ -948,7 +948,7 @@ const guideContent: Record<
         <h3>KeyFinder (free)</h3>
         <p>
           An open-source key detection tool that analyses audio files in bulk.
-          Accurate and completely free — a good choice for producers who want
+          Accurate and completely free - a good choice for producers who want
           to tag large libraries without paying for Mixed In Key.
         </p>
 
@@ -968,7 +968,7 @@ const guideContent: Record<
         </ul>
         <p>
           The Camelot system is preferred by most DJs because compatible keys
-          are immediately obvious — adjacent numbers mix well. Use the Camelot
+          are immediately obvious - adjacent numbers mix well. Use the Camelot
           Wheel tool to look up compatible keys from any detected key.
         </p>
 
@@ -979,7 +979,7 @@ const guideContent: Record<
         <ul>
           <li>
             <strong>Modulating tracks:</strong> Tracks that change key during
-            the song — the result will reflect the dominant key, which may not
+            the song - the result will reflect the dominant key, which may not
             be what&apos;s playing at the mix point.
           </li>
           <li>
@@ -1017,12 +1017,12 @@ const guideContent: Record<
       {
         question: "What is the difference between Camelot notation and musical key notation?",
         answer:
-          "Musical notation uses standard key names (e.g., A minor, C major). Camelot notation assigns each key a number and letter (e.g., 8A, 5B) that makes compatible keys immediately obvious — adjacent numbers on the Camelot Wheel will mix harmonically.",
+          "Musical notation uses standard key names (e.g., A minor, C major). Camelot notation assigns each key a number and letter (e.g., 8A, 5B) that makes compatible keys immediately obvious - adjacent numbers on the Camelot Wheel will mix harmonically.",
       },
       {
         question: "Can I find the key of a song without software?",
         answer:
-          "Yes. By ear, hum along to the track to find the root note on an instrument, then decide major or minor from the scale and mood — good ear training, but it takes practice. For an instant answer, a free in-browser key finder like TuneTapper's analyses the audio file directly on your device (no upload, no install) and returns the musical key plus its Camelot code.",
+          "Yes. By ear, hum along to the track to find the root note on an instrument, then decide major or minor from the scale and mood - good ear training, but it takes practice. For an instant answer, a free in-browser key finder like TuneTapper's analyses the audio file directly on your device (no upload, no install) and returns the musical key plus its Camelot code.",
       },
     ],
     relatedTools: [

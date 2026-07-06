@@ -166,7 +166,7 @@ export function KeyAnalyzerTool({
         </h1>
         <p className="mt-3 text-lg text-[var(--muted-foreground)]">
           Upload any track and instantly detect its musical key and Camelot
-          notation — 100% in your browser, no upload to any server.
+          notation - 100% in your browser, no upload to any server.
         </p>
       </div>
 
@@ -298,7 +298,7 @@ export function KeyAnalyzerTool({
               <CardHeader>
                 <CardTitle>Compatible Keys for {result.camelot}</CardTitle>
                 <CardDescription>
-                  These keys mix harmonically with {result.musicalName} — click any
+                  These keys mix harmonically with {result.musicalName} - click any
                   to see its full reference
                 </CardDescription>
               </CardHeader>
@@ -347,7 +347,7 @@ export function KeyAnalyzerTool({
           <ol className="space-y-3 text-sm text-[var(--muted-foreground)]">
             <li className="flex gap-3">
               <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] text-xs font-bold">1</span>
-              <span>Your audio is decoded entirely in your browser — nothing is sent to any server.</span>
+              <span>Your audio is decoded entirely in your browser - nothing is sent to any server.</span>
             </li>
             <li className="flex gap-3">
               <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-[var(--primary-foreground)] text-xs font-bold">2</span>
@@ -388,11 +388,11 @@ export function KeyAnalyzerTool({
 
       {/* SEO prose + FAQ */}
       <section className="mt-4 prose prose-neutral dark:prose-invert max-w-none">
-        <h2>Find the Key of Any Song — Free, Private, Instant</h2>
+        <h2>Find the Key of Any Song - Free, Private, Instant</h2>
         <p>
           TuneTapper&apos;s key finder analyzes your audio file directly in your
           browser using the Web Audio API and the{" "}
-          <strong>Krumhansl-Schmuckler key-finding algorithm</strong> — the same
+          <strong>Krumhansl-Schmuckler key-finding algorithm</strong> - the same
           approach used by professional audio analysis tools. No account required,
           no file uploads, completely free.
         </p>
@@ -400,12 +400,12 @@ export function KeyAnalyzerTool({
         <p>
           Musical key detection (also called <em>key estimation</em> or{" "}
           <em>key finding</em>) identifies the tonal center of a piece of music.
-          Knowing the key of a track is essential for DJs doing harmonic mixing —
+          Knowing the key of a track is essential for DJs doing harmonic mixing -
           tracks in compatible keys blend together without clashing harmonies.
         </p>
         <h3>What Is the Camelot Wheel?</h3>
         <p>
-          The Camelot Wheel assigns a number (1–12) and letter (A for minor, B
+          The Camelot Wheel assigns a number (1-12) and letter (A for minor, B
           for major) to every musical key. Tracks that share the same Camelot
           code, or codes that are one step apart, are harmonically compatible and
           will mix without dissonance. Use the{" "}
@@ -414,8 +414,8 @@ export function KeyAnalyzerTool({
         </p>
         <h3>How Accurate Is This Tool?</h3>
         <p>
-          The Krumhansl-Schmuckler algorithm achieves 70–90% accuracy on
-          commercial music. It performs best on tracks with clear tonal centers —
+          The Krumhansl-Schmuckler algorithm achieves 70-90% accuracy on
+          commercial music. It performs best on tracks with clear tonal centers -
           which covers the vast majority of EDM, house, techno, pop, and hip-hop.
           Atonal, heavily chromatic, or extremely percussive tracks may produce
           lower confidence scores.
@@ -427,7 +427,7 @@ export function KeyAnalyzerTool({
           browser&apos;s Web Audio API, so nothing is sent to a server, stored,
           or shared. That means you can <strong>find the key of a song without
           software</strong>, without creating an account, and without waiting on
-          an upload — just drop a file in and read the result. It works on
+          an upload - just drop a file in and read the result. It works on
           desktop and mobile, with no download required, making it a fast,
           private alternative to apps like Mixed In Key when you only need to
           check a track or two.

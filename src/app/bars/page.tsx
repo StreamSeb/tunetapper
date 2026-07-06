@@ -24,14 +24,14 @@ import { generateFaqSchema, generateBreadcrumbSchema } from "@/lib/seo"
 export const metadata: Metadata = {
   title: "How Long Is 16 Bars? Bars to Seconds & Minutes Calculator",
   description:
-    "16 bars is 30 seconds at 128 BPM. 32 bars is ~1 minute. Convert any bar count to seconds or minutes at any BPM — free calculator, formula, and full lookup table for DJs and producers.",
+    "16 bars is 30 seconds at 128 BPM. 32 bars is ~1 minute. Convert any bar count to seconds or minutes at any BPM - free calculator, formula, and full lookup table for DJs and producers.",
   alternates: {
     canonical: "https://tunetapper.com/bars",
   },
   openGraph: {
     title: "How Long Is 16 Bars? Bars to Seconds & Minutes Calculator",
     description:
-      "16 bars is 30 seconds at 128 BPM. 32 bars is ~1 minute. Convert any bar count to seconds or minutes at any BPM — free calculator, formula, and full lookup table.",
+      "16 bars is 30 seconds at 128 BPM. 32 bars is ~1 minute. Convert any bar count to seconds or minutes at any BPM - free calculator, formula, and full lookup table.",
     url: "https://tunetapper.com/bars",
   },
 }
@@ -85,7 +85,7 @@ const faqs = [
 ]
 
 // Headline answers that match the highest-impression "how long is X bars"
-// queries — surfaced above the fold for featured-snippet eligibility.
+// queries - surfaced above the fold for featured-snippet eligibility.
 const headlineAnswers = [16, 32, 64].map((bars) => {
   const seconds = calculateBarsDuration(bars, 128)
   return { bars, seconds, formatted: formatDuration(seconds) }
@@ -161,7 +161,7 @@ export default function BarsHubPage() {
         </p>
       </div>
 
-      {/* At-a-glance answer box — featured-snippet target */}
+      {/* At-a-glance answer box - featured-snippet target */}
       <Card className="mb-8 border-[var(--primary)]/30">
         <CardHeader>
           <CardTitle>Quick Answer (at 128 BPM)</CardTitle>
@@ -216,7 +216,7 @@ export default function BarsHubPage() {
       {quickReference.map(({ bars, bpms }) => (
         <Card key={bars} className="mb-6">
           <CardHeader>
-            <CardTitle>{bars} Bars — How Long at Common BPMs?</CardTitle>
+            <CardTitle>{bars} Bars - How Long at Common BPMs?</CardTitle>
           </CardHeader>
           <CardContent>
             <Table>
@@ -310,7 +310,7 @@ export default function BarsHubPage() {
         <h3>Bars to Minutes at a Glance</h3>
         <p>
           A quick shortcut: at 128 BPM one bar is exactly 1.875 seconds, so 32
-          bars is one minute. As tempo rises, each bar gets shorter — at 174 BPM
+          bars is one minute. As tempo rises, each bar gets shorter - at 174 BPM
           (drum &amp; bass) a bar is about 1.38 seconds, so it takes ~43 bars to
           fill a minute.
         </p>

@@ -22,7 +22,7 @@ import { generateMetadata as genMeta, generateBreadcrumbSchema } from "@/lib/seo
 export const metadata: Metadata = genMeta({
   title: "Free Music Production & DJ Tools",
   description:
-    "Every free TuneTapper tool in one place — BPM delay calculator, bars-to-time converter, tap tempo, Camelot wheel, BPM transition helper, and an in-browser song key finder. No signup, no upload.",
+    "Every free TuneTapper tool in one place - BPM delay calculator, bars-to-time converter, tap tempo, Camelot wheel, BPM transition helper, and an in-browser song key finder. No signup, no upload.",
   path: "/tools",
 })
 
@@ -46,7 +46,7 @@ const tools = [
   {
     title: "Tap Tempo",
     description:
-      "Tap along to any song to find its BPM. Works with mouse clicks or the keyboard — ideal for quickly reading a track's tempo by ear.",
+      "Tap along to any song to find its BPM. Works with mouse clicks or the keyboard - ideal for quickly reading a track's tempo by ear.",
     href: "/tools/tap-tempo",
     icon: Keyboard,
     badge: "Mobile Friendly",
@@ -54,7 +54,7 @@ const tools = [
   {
     title: "Camelot Wheel Calculator",
     description:
-      "Find harmonically compatible keys for DJ mixing. Click any Camelot key (1A–12B) to see every key it blends with, plus a full 24-key chart.",
+      "Find harmonically compatible keys for DJ mixing. Click any Camelot key (1A-12B) to see every key it blends with, plus a full 24-key chart.",
     href: "/tools/camelot",
     icon: Disc3,
     badge: "DJ Essential",
@@ -70,7 +70,7 @@ const tools = [
   {
     title: "Key Finder",
     description:
-      "Detect the musical key and Camelot code of any song. Drop in an audio file and it's analysed privately in your browser — no upload, no software, no account.",
+      "Detect the musical key and Camelot code of any song. Drop in an audio file and it's analysed privately in your browser - no upload, no software, no account.",
     href: "/tools/key-analyzer",
     icon: ScanSearch,
     badge: "New",
@@ -118,7 +118,7 @@ export default function ToolsHubPage() {
         </h1>
         <p className="mt-3 text-lg text-[var(--muted-foreground)]">
           A complete set of free, browser-based utilities for DJs and producers
-          — calculate delay times, convert bars to time, tap out a tempo, mix in
+          - calculate delay times, convert bars to time, tap out a tempo, mix in
           key with the Camelot wheel, plan BPM transitions, and detect the key of
           any track. No signup, nothing to install.
         </p>

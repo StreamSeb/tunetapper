@@ -63,7 +63,7 @@ const tools = [
   {
     title: "Key Finder",
     description:
-      "Detect the musical key and Camelot notation of any track. Upload an audio file and get the key instantly — runs in your browser, nothing uploaded.",
+      "Detect the musical key and Camelot notation of any track. Upload an audio file and get the key instantly - runs in your browser, nothing uploaded.",
     href: "/tools/key-analyzer",
     icon: ScanSearch,
     badge: "New",

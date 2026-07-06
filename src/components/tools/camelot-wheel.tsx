@@ -26,12 +26,12 @@ function segFill(
   const h = posHue(pos)
   if (state === "dimmed") return `hsl(${h}, 15%, 28%)`
   if (letter === "A") {
-    // Minor — deeper/darker
+    // Minor - deeper/darker
     if (state === "selected") return `hsl(${h}, 90%, 52%)`
     if (state === "compatible") return `hsl(${h}, 80%, 46%)`
     return `hsl(${h}, 72%, 40%)`
   } else {
-    // Major — lighter
+    // Major - lighter
     if (state === "selected") return `hsl(${h}, 82%, 66%)`
     if (state === "compatible") return `hsl(${h}, 72%, 61%)`
     return `hsl(${h}, 62%, 58%)`
@@ -82,7 +82,7 @@ export function CamelotWheel({ selectedKey, onKeySelect }: Props) {
     <svg
       viewBox="0 0 400 400"
       className="w-full max-w-[380px] mx-auto select-none"
-      aria-label="Interactive Camelot Wheel — click any key segment to see compatible keys"
+      aria-label="Interactive Camelot Wheel - click any key segment to see compatible keys"
     >
       {CAMELOT_KEYS.map((key) => {
         const { number: n, letter } = key
@@ -124,7 +124,7 @@ export function CamelotWheel({ selectedKey, onKeySelect }: Props) {
             className="cursor-pointer outline-none"
             tabIndex={0}
             role="button"
-            aria-label={`${key.camelot} – ${key.musical} (${key.mode})`}
+            aria-label={`${key.camelot} - ${key.musical} (${key.mode})`}
           >
             <path
               d={arcPath(r1, r2, startAngle, endAngle)}

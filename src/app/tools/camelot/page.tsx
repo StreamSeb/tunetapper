@@ -25,9 +25,9 @@ import {
 } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "Camelot Wheel Chart & Calculator — Harmonic Mixing Key Guide",
+  title: "Camelot Wheel Chart & Calculator - Harmonic Mixing Key Guide",
   description:
-    "Interactive Camelot wheel plus a full 24-key compatibility chart. Click any key (1A–12B) to see every compatible mix, or scan the harmonic mixing table. Free, no signup.",
+    "Interactive Camelot wheel plus a full 24-key compatibility chart. Click any key (1A-12B) to see every compatible mix, or scan the harmonic mixing table. Free, no signup.",
   keywords: [
     "camelot wheel",
     "camelot wheel chart",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     canonical: "https://tunetapper.com/tools/camelot",
   },
   openGraph: {
-    title: "Camelot Wheel Chart & Calculator — Harmonic Mixing Key Guide | TuneTapper",
+    title: "Camelot Wheel Chart & Calculator - Harmonic Mixing Key Guide | TuneTapper",
     description:
       "Interactive Camelot wheel plus a full 24-key compatibility chart. Click any key to see every compatible mix, or scan the harmonic mixing table. Free, no signup.",
     url: "https://tunetapper.com/tools/camelot",
@@ -73,7 +73,7 @@ const faqs = [
   {
     question: "What is the difference between A and B keys in Camelot?",
     answer:
-      "In the Camelot system, A keys are minor keys and B keys are major keys. The same number with A or B (e.g. 8A and 8B) are relative minor and major — they share the same notes and mix well together.",
+      "In the Camelot system, A keys are minor keys and B keys are major keys. The same number with A or B (e.g. 8A and 8B) are relative minor and major - they share the same notes and mix well together.",
   },
   {
     question: "What is the +2 energy boost in harmonic mixing?",
@@ -114,7 +114,7 @@ const howToSchema = {
     {
       "@type": "HowToStep",
       name: "Locate it on the wheel",
-      text: "Find the matching Camelot code (1A–12B) on the wheel or in the compatibility chart.",
+      text: "Find the matching Camelot code (1A-12B) on the wheel or in the compatibility chart.",
     },
     {
       "@type": "HowToStep",
@@ -171,7 +171,7 @@ export default function CamelotPage() {
       </div>
       <CamelotTool faqs={faqs} />
 
-      {/* Static compatibility chart — crawlable authoritative content */}
+      {/* Static compatibility chart - crawlable authoritative content */}
       <div className="mx-auto max-w-4xl px-4 pb-12">
         <Card>
           <CardHeader>
