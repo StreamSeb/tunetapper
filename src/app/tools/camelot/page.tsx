@@ -228,7 +228,7 @@ export default function CamelotPage() {
               and +2 energy-boost keys. The key itself is always a perfect match.
             </p>
             <p className="mt-2 text-sm text-[var(--muted-foreground)]">
-              Matching keys is half of a clean blend — the other half is tempo.
+              Matching keys is half of a clean blend - the other half is tempo.
               Find any track&apos;s BPM by ear with the{" "}
               <Link href="/tools/tap-tempo" className="underline hover:text-[var(--foreground)]">
                 tap BPM counter
