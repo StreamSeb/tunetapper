@@ -4,6 +4,7 @@ import { Analytics as VercelAnalytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/layout/theme-provider"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import { SiteChrome } from "@/components/layout/site-chrome"
 import { CookieConsent } from "@/components/cookie-consent/cookie-consent"
 import { Analytics } from "@/components/ads/analytics"
 import { TooltipProvider } from "@/components/ui/tooltip"
@@ -73,10 +74,14 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <TooltipProvider>
-            <Header />
+            <SiteChrome>
+              <Header />
+            </SiteChrome>
             <main className="flex-1">{children}</main>
-            <Footer />
-            <CookieConsent />
+            <SiteChrome>
+              <Footer />
+              <CookieConsent />
+            </SiteChrome>
             <Analytics />
             <VercelAnalytics />
           </TooltipProvider>

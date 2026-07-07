@@ -20,6 +20,7 @@ const footerLinks = {
     { name: "Delay Times Guide", href: "/guides/delay-times-explained" },
     { name: "Camelot Guide", href: "/guides/camelot-wheel-guide" },
     { name: "BPM by Genre", href: "/guides/bpm-genres" },
+    { name: "Embed Our Widgets", href: "/tools/embed" },
   ],
   legal: [
     { name: "About", href: "/about" },
