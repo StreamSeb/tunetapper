@@ -144,9 +144,14 @@ export function RhythmGame() {
     phaseRef.current = phase
   }, [phase])
 
+  // Hydrate the stored best score after paint (localStorage is client-only,
+  // and a deferred read avoids a server/client hydration mismatch)
   useEffect(() => {
-    const stored = localStorage.getItem(bestScoreKey(difficulty.id))
-    setBestScore(stored ? Number(stored) : null)
+    const t = setTimeout(() => {
+      const stored = localStorage.getItem(bestScoreKey(difficulty.id))
+      setBestScore(stored ? Number(stored) : null)
+    }, 0)
+    return () => clearTimeout(t)
   }, [difficulty])
 
   const clearTimers = useCallback(() => {
