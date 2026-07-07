@@ -4,11 +4,13 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { generateToolSchema, generateFaqSchema, generateBreadcrumbSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "Free Online Key Finder - Detect Song Key, No Upload Needed",
+  title: "Free Song Key & BPM Analyzer - No Upload Needed",
   description:
-    "Find the musical key and Camelot code of any song free - no upload, no software, no account. Drop in an MP3, WAV, or FLAC and it's analysed privately in your browser.",
+    "Find the musical key, Camelot code, and BPM of any song free - no upload, no software, no account. Drop in an MP3, WAV, or FLAC and it's analysed privately in your browser.",
   keywords: [
     "online key finder",
+    "song bpm and key analyzer",
+    "bpm and key finder",
     "find key of song online",
     "key finder no upload",
     "key finder without uploading",
@@ -28,9 +30,9 @@ export const metadata: Metadata = {
     canonical: "https://tunetapper.com/tools/key-analyzer",
   },
   openGraph: {
-    title: "Free Online Key Finder - Detect Song Key, No Upload Needed | TuneTapper",
+    title: "Free Song Key & BPM Analyzer - No Upload Needed | TuneTapper",
     description:
-      "Find the key and Camelot code of any song free - no upload, no software, no account. Analysed privately in your browser.",
+      "Find the key, Camelot code, and BPM of any song free - no upload, no software, no account. Analysed privately in your browser.",
     url: "https://tunetapper.com/tools/key-analyzer",
   },
 }

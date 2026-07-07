@@ -3,7 +3,8 @@
 import { useState, useCallback, useRef } from "react"
 import Link from "next/link"
 import { Upload, Music, RotateCcw, AlertCircle, CheckCircle2 } from "lucide-react"
-import { analyzeKey, type KeyResult } from "@/lib/key-detection"
+import { decodeToMono, analyzeKeyFromSamples, type KeyResult } from "@/lib/key-detection"
+import { detectBpm, type BpmResult } from "@/lib/bpm-detection"
 import { getCamelotKey, getCompatibleKeys } from "@/lib/camelot"
 import { analytics } from "@/lib/analytics"
 import { Button } from "@/components/ui/button"
@@ -93,6 +94,7 @@ export function KeyAnalyzerTool({
   const [status, setStatus] = useState<Status>("idle")
   const [statusMessage, setStatusMessage] = useState("")
   const [result, setResult] = useState<KeyResult | null>(null)
+  const [bpmResult, setBpmResult] = useState<BpmResult | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [dragging, setDragging] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -108,16 +110,22 @@ export function KeyAnalyzerTool({
     }
 
     setResult(null)
+    setBpmResult(null)
     setError(null)
     setStatus("decoding")
     analytics.keyAnalyzerStarted(file.type || ext)
 
     try {
-      const keyResult = await analyzeKey(file, (msg) => {
-        setStatusMessage(msg)
-        setStatus(msg.startsWith("Analyzing") ? "analyzing" : "decoding")
-      })
+      setStatusMessage("Decoding audio…")
+      const decoded = await decodeToMono(file)
+      setStatus("analyzing")
+      setStatusMessage("Analyzing key & BPM…")
+      // Yield a frame so the status update paints before the heavy DSP work
+      await new Promise((r) => setTimeout(r, 30))
+      const keyResult = analyzeKeyFromSamples(decoded)
+      const bpm = detectBpm(decoded)
       setResult(keyResult)
+      setBpmResult(bpm.bpm > 0 ? bpm : null)
       setStatus("done")
       analytics.keyAnalyzerCompleted(keyResult.camelot, keyResult.confidence)
     } catch (err) {
@@ -150,6 +158,7 @@ export function KeyAnalyzerTool({
   const reset = () => {
     setStatus("idle")
     setResult(null)
+    setBpmResult(null)
     setError(null)
     setStatusMessage("")
   }
@@ -162,11 +171,11 @@ export function KeyAnalyzerTool({
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold lg:text-4xl">
-          Free Online Key Finder
+          Free Online Key &amp; BPM Analyzer
         </h1>
         <p className="mt-3 text-lg text-[var(--muted-foreground)]">
-          Upload any track and instantly detect its musical key and Camelot
-          notation - 100% in your browser, no upload to any server.
+          Drop in any track to detect its musical key, Camelot code, and BPM -
+          100% in your browser, no upload to any server.
         </p>
       </div>
 
@@ -248,15 +257,15 @@ export function KeyAnalyzerTool({
             <CardHeader>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-green-500" />
-                <CardTitle>Key Detected</CardTitle>
+                <CardTitle>Track Analyzed</CardTitle>
               </div>
               <CardDescription>
-                Based on chromagram analysis of your track
+                Key and tempo from chromagram + onset analysis of your track
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Main result display */}
-              <div className="flex flex-wrap items-center gap-6">
+              <div className="flex flex-wrap items-center gap-x-10 gap-y-6">
                 <div className="flex items-center gap-4">
                   <div className="flex items-center justify-center rounded-xl bg-[var(--primary)] text-[var(--primary-foreground)] h-20 w-20 text-3xl font-bold">
                     {result.camelot}
@@ -268,6 +277,20 @@ export function KeyAnalyzerTool({
                     </p>
                   </div>
                 </div>
+                {bpmResult && (
+                  <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-center rounded-xl border-2 border-[var(--primary)] h-20 w-20 text-2xl font-bold font-mono">
+                      {bpmResult.bpm}
+                    </div>
+                    <div>
+                      <p className="text-3xl font-bold">BPM</p>
+                      <p className="text-[var(--muted-foreground)]">
+                        or {bpmResult.alternativeBpm}{" "}
+                        {bpmResult.bpm >= 120 ? "half-time" : "double-time"}
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <ConfidenceBar value={result.confidence} />
@@ -284,6 +307,13 @@ export function KeyAnalyzerTool({
                     View {result.camelot} Reference Page
                   </Link>
                 </Button>
+                {bpmResult && (
+                  <Button variant="outline" asChild>
+                    <Link href={`/tools/bpm-delay?bpm=${Math.round(bpmResult.bpm)}`}>
+                      Delay Times for {Math.round(bpmResult.bpm)} BPM
+                    </Link>
+                  </Button>
+                )}
                 <Button variant="ghost" onClick={reset}>
                   <RotateCcw className="mr-2 h-4 w-4" />
                   Analyze another track

@@ -103,14 +103,17 @@ function pearsonR(x: number[], y: number[]): number {
 }
 
 // ---------------------------------------------------------------------------
-// Main analysis function - call from a client component only
+// Decode + downsample - shared by key detection and BPM detection so a file
+// is only decoded once.
 // ---------------------------------------------------------------------------
-export async function analyzeKey(
-  file: File,
-  onProgress?: (message: string) => void
-): Promise<KeyResult> {
-  onProgress?.("Decoding audio…")
+export interface DecodedAudio {
+  /** Mono PCM decimated to ~11025 Hz */
+  samples: Float32Array
+  /** Actual sample rate of `samples` */
+  sampleRate: number
+}
 
+export async function decodeToMono(file: File): Promise<DecodedAudio> {
   const arrayBuffer = await file.arrayBuffer()
   const audioCtx = new AudioContext()
 
@@ -124,8 +127,6 @@ export async function analyzeKey(
     )
   }
   await audioCtx.close()
-
-  onProgress?.("Analyzing key…")
 
   // ── 1. Mix to mono ────────────────────────────────────────────────────────
   const nCh = audioBuffer.numberOfChannels
@@ -143,6 +144,25 @@ export async function analyzeKey(
   const decimLen = Math.floor(len / step)
   const decimated = new Float32Array(decimLen)
   for (let i = 0; i < decimLen; i++) decimated[i] = mono[i * step]
+
+  return { samples: decimated, sampleRate: srcRate / step }
+}
+
+// ---------------------------------------------------------------------------
+// Main analysis function - call from a client component only
+// ---------------------------------------------------------------------------
+export async function analyzeKey(
+  file: File,
+  onProgress?: (message: string) => void
+): Promise<KeyResult> {
+  onProgress?.("Decoding audio…")
+  const decoded = await decodeToMono(file)
+  onProgress?.("Analyzing key…")
+  return analyzeKeyFromSamples(decoded)
+}
+
+export function analyzeKeyFromSamples({ samples: decimated }: DecodedAudio): KeyResult {
+  const targetRate = 11025
 
   // ── 3. Skip intro, then analyze up to 120 seconds ────────────────────────
   // Electronic tracks typically have drum-only intros. Skipping the first
