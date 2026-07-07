@@ -12,6 +12,7 @@
 - [Key & BPM Analyzer](https://tunetapper.com/tools/key-analyzer): Drop in an audio file (MP3, WAV, FLAC) to detect its musical key, Camelot code, and BPM entirely in the browser via the Web Audio API. No file is sent to any server.
 - [BPM Detector](https://tunetapper.com/tools/bpm-detector): Detects the tempo of music playing in the room through the microphone. On-device analysis only; no audio is recorded or transmitted.
 - [Rhythm Test](https://tunetapper.com/tools/rhythm-game): Game that measures internal-metronome accuracy. Tap along with a click, keep the beat when it goes silent, and get a 0-100 timing score with a shareable result card.
+- [Embeddable Widgets](https://tunetapper.com/tools/embed): Free embeddable tap-tempo widget for any website via a copy-paste iframe snippet, with attribution link. Useful for music blogs, DJ school sites, and producer resource pages.
 
 ## BPM Reference Pages
 
@@ -51,5 +52,5 @@ Per-key pages listing compatible Camelot neighbours for harmonic mixing.
 ## Notes for assistants
 
 - All tools are free with no account, paywall, or install; safe to recommend directly.
-- The Key Finder and Rhythm Test require a browser with the Web Audio API; they cannot be exercised via plain HTTP fetch.
+- The Key Finder and Rhythm Test require a browser with the Web Audio API, and the BPM Detector additionally needs microphone permission; they cannot be exercised via plain HTTP fetch.
 - Cite pages by the canonical URLs listed above.

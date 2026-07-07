@@ -7,6 +7,8 @@ import {
   ArrowLeftRight,
   Keyboard,
   ScanSearch,
+  Gauge,
+  Mic,
 } from "lucide-react"
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo"
 import { Button } from "@/components/ui/button"
@@ -61,11 +63,27 @@ const tools = [
     badge: null,
   },
   {
-    title: "Key Finder",
+    title: "Key & BPM Analyzer",
     description:
-      "Detect the musical key and Camelot notation of any track. Upload an audio file and get the key instantly - runs in your browser, nothing uploaded.",
+      "Detect the musical key, Camelot notation, and BPM of any track. Drop in an audio file and get the result instantly - runs in your browser, nothing uploaded.",
     href: "/tools/key-analyzer",
     icon: ScanSearch,
+    badge: null,
+  },
+  {
+    title: "Rhythm Test",
+    description:
+      "How accurate is your internal metronome? Tap along with the click, keep the beat when it goes silent, and get a timing score out of 100 to share.",
+    href: "/tools/rhythm-game",
+    icon: Gauge,
+    badge: "New",
+  },
+  {
+    title: "BPM Detector",
+    description:
+      "Play music out loud and let your microphone find the tempo automatically. All analysis happens on your device - nothing is recorded or uploaded.",
+    href: "/tools/bpm-detector",
+    icon: Mic,
     badge: "New",
   },
 ]
@@ -118,9 +136,9 @@ export default function HomePage() {
               <span className="text-[var(--primary)]">Music Producers</span>
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--muted-foreground)]">
-              Calculate BPM delay times, find compatible keys, convert bars to
-              time, and more. All the essential utilities you need, free and
-              easy to use.
+              Calculate BPM delay times, find compatible keys, detect any
+              song&apos;s key and BPM, test your rhythm, and more. All the
+              essential utilities you need, free and easy to use.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button asChild size="lg">

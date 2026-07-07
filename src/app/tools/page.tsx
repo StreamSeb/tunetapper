@@ -24,7 +24,7 @@ import { generateMetadata as genMeta, generateBreadcrumbSchema } from "@/lib/seo
 export const metadata: Metadata = genMeta({
   title: "Free Music Production & DJ Tools",
   description:
-    "Every free TuneTapper tool in one place - BPM delay calculator, bars-to-time converter, tap tempo, Camelot wheel, BPM transition helper, and an in-browser song key finder. No signup, no upload.",
+    "Every free TuneTapper tool in one place - BPM delay calculator, bars-to-time converter, tap tempo, Camelot wheel, BPM transition helper, key & BPM analyzer, microphone BPM detector, and a rhythm accuracy test. No signup, no upload.",
   path: "/tools",
 })
 
@@ -70,9 +70,9 @@ const tools = [
     badge: null,
   },
   {
-    title: "Key Finder",
+    title: "Key & BPM Analyzer",
     description:
-      "Detect the musical key and Camelot code of any song. Drop in an audio file and it's analysed privately in your browser - no upload, no software, no account.",
+      "Detect the musical key, Camelot code, and BPM of any song. Drop in an audio file and it's analysed privately in your browser - no upload, no software, no account.",
     href: "/tools/key-analyzer",
     icon: ScanSearch,
     badge: null,
@@ -137,8 +137,9 @@ export default function ToolsHubPage() {
         <p className="mt-3 text-lg text-[var(--muted-foreground)]">
           A complete set of free, browser-based utilities for DJs and producers
           - calculate delay times, convert bars to time, tap out a tempo, mix in
-          key with the Camelot wheel, plan BPM transitions, and detect the key of
-          any track. No signup, nothing to install.
+          key with the Camelot wheel, plan BPM transitions, detect the key and
+          BPM of any track, and test your rhythm against a metronome. No signup,
+          nothing to install.
         </p>
       </div>
 
@@ -198,6 +199,11 @@ export default function ToolsHubPage() {
                 className="text-sm hover:underline"
               >
                 The Camelot wheel explained →
+              </Link>
+            </li>
+            <li>
+              <Link href="/tools/embed" className="text-sm hover:underline">
+                Embed our widgets on your site →
               </Link>
             </li>
           </ul>
