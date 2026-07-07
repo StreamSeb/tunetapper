@@ -8,6 +8,7 @@ const footerLinks = {
     { name: "Tap Tempo", href: "/tools/tap-tempo" },
     { name: "Camelot Wheel", href: "/tools/camelot" },
     { name: "BPM Transition", href: "/tools/bpm-transition" },
+    { name: "Rhythm Test", href: "/tools/rhythm-game" },
   ],
   references: [
     { name: "BPM Reference", href: "/bpm" },

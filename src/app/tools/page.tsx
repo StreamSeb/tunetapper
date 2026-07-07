@@ -7,6 +7,7 @@ import {
   Disc3,
   ArrowLeftRight,
   ScanSearch,
+  Gauge,
 } from "lucide-react"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import {
@@ -73,6 +74,14 @@ const tools = [
       "Detect the musical key and Camelot code of any song. Drop in an audio file and it's analysed privately in your browser - no upload, no software, no account.",
     href: "/tools/key-analyzer",
     icon: ScanSearch,
+    badge: null,
+  },
+  {
+    title: "Rhythm Test",
+    description:
+      "How accurate is your internal metronome? Tap along, keep the beat when the click goes silent, and get a timing score out of 100 to share.",
+    href: "/tools/rhythm-game",
+    icon: Gauge,
     badge: "New",
   },
 ]

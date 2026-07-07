@@ -212,6 +212,11 @@ export default function TapTempoPage() {
               <Link href="/guides/beatmatching-guide">Beatmatching guide</Link> -
               put the BPM to work matching two tracks by ear
             </li>
+            <li>
+              <Link href="/tools/rhythm-game">Rhythm test</Link> - think your
+              timing is tight? Keep the beat after the metronome goes silent
+              and get a score to share
+            </li>
           </ul>
 
           <h2>Frequently Asked Questions</h2>

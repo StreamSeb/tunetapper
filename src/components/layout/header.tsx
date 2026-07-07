@@ -17,6 +17,7 @@ const navigation = [
       { name: "Key Finder", href: "/tools/key-analyzer" },
       { name: "Camelot Wheel", href: "/tools/camelot" },
       { name: "BPM Delay Calculator", href: "/tools/bpm-delay" },
+      { name: "Rhythm Test", href: "/tools/rhythm-game" },
     ],
   },
   {
@@ -25,6 +26,7 @@ const navigation = [
     children: [
       { name: "BPM Delay Calculator", href: "/tools/bpm-delay" },
       { name: "Tap Tempo", href: "/tools/tap-tempo" },
+      { name: "Rhythm Test", href: "/tools/rhythm-game" },
       { name: "BPM Reference", href: "/bpm" },
     ],
   },

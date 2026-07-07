@@ -52,6 +52,15 @@ export const analytics = {
     trackEvent("bpm_transition_calculated", { from_bpm: fromBpm, to_bpm: toBpm })
   },
 
+  // Rhythm Game
+  rhythmGameCompleted: (score: number, difficulty: string) => {
+    trackEvent("rhythm_game_completed", { score, difficulty })
+  },
+
+  rhythmGameShared: (method: string, score: number) => {
+    trackEvent("rhythm_game_shared", { method, score })
+  },
+
   // Copy actions
   valueCopied: (type: string, value: string) => {
     trackEvent("value_copied", { type, value })
