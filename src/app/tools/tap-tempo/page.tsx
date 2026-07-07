@@ -37,6 +37,7 @@ export const metadata: Metadata = {
     description:
       "Count the BPM of any song by tapping along to the beat - free, no signup. Works on phone and desktop. Accurate after 4-8 taps.",
     url: "https://tunetapper.com/tools/tap-tempo",
+    images: [{ url: "/og/tap-tempo.png", width: 1200, height: 630, alt: "Tap BPM Counter - TuneTapper" }],
   },
 }
 

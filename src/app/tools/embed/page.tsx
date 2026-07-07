@@ -15,6 +15,7 @@ export const metadata: Metadata = genMeta({
   description:
     "Add a free tap tempo / BPM counter widget to your website or blog with one iframe snippet. No API key, no tracking, works in any CMS - attribution link required.",
   path: "/tools/embed",
+  image: "/og/embed.png",
 })
 
 const SNIPPET = `<iframe

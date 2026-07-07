@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Calculate exact duration for any number of bars at any BPM. Essential for music arrangement and DJ mixing.",
     url: "https://tunetapper.com/tools/bars-to-time",
+    images: [{ url: "/og/bars-to-time.png", width: 1200, height: 630, alt: "Bars to Time Calculator - TuneTapper" }],
   },
 }
 

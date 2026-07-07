@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Plan smooth BPM transitions between tracks. Get strategies for half-time, double-time, and gradual tempo changes.",
     url: "https://tunetapper.com/tools/bpm-transition",
+    images: [{ url: "/og/bpm-transition.png", width: 1200, height: 630, alt: "BPM Transition Helper - TuneTapper" }],
   },
 }
 

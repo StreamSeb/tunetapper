@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     description:
       "Play music out loud and your microphone finds the tempo automatically. No recording, no upload - all analysis on your device.",
     url: "https://tunetapper.com/tools/bpm-detector",
+    images: [{ url: "/og/bpm-detector.png", width: 1200, height: 630, alt: "BPM Detector - TuneTapper" }],
   },
 }
 

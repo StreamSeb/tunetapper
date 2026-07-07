@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     description:
       "Calculate precise delay times in milliseconds for any BPM. Perfect for syncing delay effects to your track's tempo.",
     url: "https://tunetapper.com/tools/bpm-delay",
+    images: [{ url: "/og/bpm-delay.png", width: 1200, height: 630, alt: "BPM Delay Calculator - TuneTapper" }],
   },
 }
 

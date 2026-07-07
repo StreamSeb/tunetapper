@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
@@ -162,6 +163,24 @@ const guideContent: Record<
           compatible keys positioned adjacent to each other. This makes it easy
           to see at a glance which keys will mix well together.
         </p>
+
+        <figure className="my-8 flex flex-col items-center not-prose">
+          <Image
+            src="/images/camelot-wheel.png"
+            alt="The Camelot Wheel with key 8A selected, highlighting its compatible keys: 8B, 7A, 9A, and 10A"
+            width={380}
+            height={380}
+            className="rounded-xl"
+          />
+          <figcaption className="mt-3 text-sm text-[var(--muted-foreground)] text-center">
+            The Camelot Wheel with 8A (A minor) selected - its compatible
+            neighbours light up. Try it yourself in our{" "}
+            <Link href="/tools/camelot" className="underline">
+              interactive Camelot Wheel
+            </Link>
+            .
+          </figcaption>
+        </figure>
 
         <h2>How to Read the Camelot Wheel</h2>
         <p>Each key is represented by a number (1-12) and a letter (A or B):</p>

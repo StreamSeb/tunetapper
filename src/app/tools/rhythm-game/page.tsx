@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     description:
       "Tap along with a metronome, keep the beat when it goes silent, and get a timing accuracy score out of 100. Can you hit Drum Machine tier?",
     url: "https://tunetapper.com/tools/rhythm-game",
+    images: [{ url: "/og/rhythm-game.png", width: 1200, height: 630, alt: "Rhythm Test - TuneTapper" }],
   },
 }
 

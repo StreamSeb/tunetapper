@@ -26,6 +26,7 @@ export const metadata: Metadata = genMeta({
   description:
     "Every free TuneTapper tool in one place - BPM delay calculator, bars-to-time converter, tap tempo, Camelot wheel, BPM transition helper, key & BPM analyzer, microphone BPM detector, and a rhythm accuracy test. No signup, no upload.",
   path: "/tools",
+  image: "/og/tools.png",
 })
 
 const tools = [

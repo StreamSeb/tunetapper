@@ -38,6 +38,14 @@ export const metadata: Metadata = {
     title: "TuneTapper - Free Music Production Tools",
     description:
       "Free music production tools for DJs and producers. Calculate BPM delay times, find compatible keys, and more.",
+    images: [
+      {
+        url: "/og/default.png",
+        width: 1200,
+        height: 630,
+        alt: "TuneTapper - free tools for DJs and music producers",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

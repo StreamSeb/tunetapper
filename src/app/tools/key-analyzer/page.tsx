@@ -34,6 +34,7 @@ export const metadata: Metadata = {
     description:
       "Find the key, Camelot code, and BPM of any song free - no upload, no software, no account. Analysed privately in your browser.",
     url: "https://tunetapper.com/tools/key-analyzer",
+    images: [{ url: "/og/key-analyzer.png", width: 1200, height: 630, alt: "Key & BPM Analyzer - TuneTapper" }],
   },
 }
 
