@@ -9,6 +9,7 @@ const footerLinks = {
     { name: "Camelot Wheel", href: "/tools/camelot" },
     { name: "BPM Transition", href: "/tools/bpm-transition" },
     { name: "Rhythm Test", href: "/tools/rhythm-game" },
+    { name: "BPM Detector", href: "/tools/bpm-detector" },
   ],
   references: [
     { name: "BPM Reference", href: "/bpm" },

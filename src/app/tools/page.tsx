@@ -8,6 +8,7 @@ import {
   ArrowLeftRight,
   ScanSearch,
   Gauge,
+  Mic,
 } from "lucide-react"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import {
@@ -82,6 +83,14 @@ const tools = [
       "How accurate is your internal metronome? Tap along, keep the beat when the click goes silent, and get a timing score out of 100 to share.",
     href: "/tools/rhythm-game",
     icon: Gauge,
+    badge: "New",
+  },
+  {
+    title: "BPM Detector",
+    description:
+      "Play music out loud and let the microphone find the tempo automatically. All analysis on-device - nothing is recorded or uploaded.",
+    href: "/tools/bpm-detector",
+    icon: Mic,
     badge: "New",
   },
 ]

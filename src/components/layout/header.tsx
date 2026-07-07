@@ -26,6 +26,7 @@ const navigation = [
     children: [
       { name: "BPM Delay Calculator", href: "/tools/bpm-delay" },
       { name: "Tap Tempo", href: "/tools/tap-tempo" },
+      { name: "BPM Detector (Mic)", href: "/tools/bpm-detector" },
       { name: "Rhythm Test", href: "/tools/rhythm-game" },
       { name: "BPM Reference", href: "/bpm" },
     ],

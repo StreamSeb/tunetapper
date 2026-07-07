@@ -111,6 +111,20 @@ export function detectBpm({ samples, sampleRate }: DecodedAudio): BpmResult {
     envelope[frame] = flux
   }
 
+  return estimateTempoFromEnvelope(envelope, envRate)
+}
+
+/**
+ * Estimate tempo from an onset-strength envelope. Shared by file analysis
+ * (spectral-flux envelope) and the live microphone detector (energy-flux
+ * envelope) - steps 3-5 of the pipeline described above.
+ */
+export function estimateTempoFromEnvelope(
+  envelope: Float32Array,
+  envRate: number
+): BpmResult {
+  const numFrames = envelope.length
+
   // Detrend: subtract a moving average so slow loudness changes don't
   // dominate the autocorrelation
   const winHalf = Math.round(envRate / 2) // ~1 s window

@@ -140,10 +140,13 @@ export default function TapTempoPage() {
           <p>
             Because it measures <em>you</em> rather than an audio file, tap tempo
             works on anything you can hear: streaming, vinyl, a live drummer, or
-            a track playing across the room. If you have the audio file and want
-            its musical key too, our{" "}
-            <Link href="/tools/key-analyzer">key finder</Link> analyses files
-            directly in your browser.
+            a track playing across the room. Prefer not to tap? The{" "}
+            <Link href="/tools/bpm-detector">microphone BPM detector</Link>{" "}
+            listens to the room and finds the tempo automatically. And if you
+            have the audio file, our{" "}
+            <Link href="/tools/key-analyzer">key &amp; BPM analyzer</Link>{" "}
+            reads the tempo and musical key directly from the file in your
+            browser.
           </p>
 
           <h2>Typical BPM by Genre</h2>
