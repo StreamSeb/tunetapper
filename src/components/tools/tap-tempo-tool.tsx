@@ -2,8 +2,9 @@
 
 import { useState, useCallback, useEffect, useRef } from "react"
 import Link from "next/link"
-import { Copy, Check, RotateCcw, Keyboard, Mouse } from "lucide-react"
+import { Copy, Check, RotateCcw, Keyboard, Mouse, Play, Square } from "lucide-react"
 import { analytics } from "@/lib/analytics"
+import { Metronome } from "@/lib/metronome"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -20,8 +21,10 @@ export function TapTempoTool() {
   const [bpm, setBpm] = useState<number | null>(null)
   const [copied, setCopied] = useState(false)
   const [lastTap, setLastTap] = useState<number | null>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
   const tapButtonRef = useRef<HTMLButtonElement>(null)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const metronomeRef = useRef<Metronome | null>(null)
 
   const calculateBpm = useCallback((timestamps: number[]) => {
     if (timestamps.length < 2) return null
@@ -68,16 +71,45 @@ export function TapTempoTool() {
     }, 200)
   }, [calculateBpm])
 
+  const stopMetronome = useCallback(() => {
+    metronomeRef.current?.stop()
+    setIsPlaying(false)
+  }, [])
+
+  const togglePlayback = useCallback(() => {
+    if (isPlaying) {
+      stopMetronome()
+      return
+    }
+    if (!bpm) return
+    if (!metronomeRef.current) {
+      metronomeRef.current = new Metronome({ bpm })
+    }
+    metronomeRef.current.setBpm(bpm)
+    metronomeRef.current.start()
+    setIsPlaying(true)
+  }, [bpm, isPlaying, stopMetronome])
+
+  // Half/double the reading - fixes the classic half-time/double-time misread
+  const scaleBpm = useCallback((factor: number) => {
+    setBpm((prev) => {
+      if (!prev) return prev
+      const next = Math.round(prev * factor)
+      return next >= 20 && next <= 300 ? next : prev
+    })
+  }, [])
+
   const handleReset = useCallback(() => {
     // Track tap tempo usage before reset
     if (bpm && taps.length >= 2) {
       analytics.tapTempoUsed(bpm, taps.length)
     }
     analytics.tapTempoReset()
+    stopMetronome()
     setTaps([])
     setBpm(null)
     setLastTap(null)
-  }, [bpm, taps.length])
+  }, [bpm, taps.length, stopMetronome])
 
   const handleCopy = useCallback(async () => {
     if (bpm) {
@@ -109,12 +141,18 @@ export function TapTempoTool() {
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [handleTap, handleReset])
 
-  // Cleanup timeout on unmount
+  // Keep a running metronome in tempo when the BPM changes (new taps, x2, /2)
+  useEffect(() => {
+    if (bpm) metronomeRef.current?.setBpm(bpm)
+  }, [bpm])
+
+  // Cleanup timeout and audio on unmount
   useEffect(() => {
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current)
       }
+      metronomeRef.current?.dispose()
     }
   }, [])
 
@@ -142,6 +180,29 @@ export function TapTempoTool() {
                 BPM
               </span>
             </div>
+            {bpm && (
+              <div className="mt-3 flex items-center justify-center gap-2">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => scaleBpm(0.5)}
+                  title="Halve - you may have tapped double-time"
+                >
+                  /2
+                </Button>
+                <span className="text-xs text-[var(--muted-foreground)]">
+                  half/double-time?
+                </span>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => scaleBpm(2)}
+                  title="Double - you may have tapped half-time"
+                >
+                  x2
+                </Button>
+              </div>
+            )}
           </div>
 
           {/* Tap Button */}
@@ -177,6 +238,14 @@ export function TapTempoTool() {
 
           {/* Actions */}
           <div className="mt-6 flex justify-center gap-3">
+            <Button variant="outline" onClick={togglePlayback} disabled={!bpm}>
+              {isPlaying ? (
+                <Square className="mr-2 h-4 w-4" />
+              ) : (
+                <Play className="mr-2 h-4 w-4" />
+              )}
+              {isPlaying ? "Stop" : "Play"}
+            </Button>
             <Button variant="outline" onClick={handleReset}>
               <RotateCcw className="mr-2 h-4 w-4" />
               Reset
