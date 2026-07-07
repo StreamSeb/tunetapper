@@ -18,7 +18,9 @@ export function generateMetadata({
   const url = `${SITE_URL}${path}`
 
   return {
-    title: fullTitle,
+    // The root layout's title template ("%s | TuneTapper") appends the brand;
+    // passing fullTitle here would double it. OG/Twitter don't use the template.
+    title,
     description,
     alternates: {
       canonical: url,
