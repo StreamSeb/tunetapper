@@ -1,0 +1,257 @@
+{
+  "_comment": "Hand-curated gear catalog for the studio builder. Prices are approximate USD street prices - review quarterly (see docs/studio-builder-plan.md). 'search' terms feed the merchant URL builder in src/lib/affiliate.ts.",
+  "items": [
+    {
+      "id": "ath-m20x",
+      "role": "headphones",
+      "name": "Audio-Technica ATH-M20x",
+      "priceUsd": 49,
+      "why": "The cheapest headphones that are honest enough to make production decisions on.",
+      "tags": ["budget"],
+      "search": "Audio-Technica ATH-M20x"
+    },
+    {
+      "id": "akg-k240",
+      "role": "headphones",
+      "name": "AKG K240 Studio",
+      "priceUsd": 69,
+      "why": "Semi-open classic with a wide, natural sound for mixing - not for loud rooms or DJ booths.",
+      "tags": ["budget", "mixing"],
+      "search": "AKG K240 Studio"
+    },
+    {
+      "id": "sony-mdr7506",
+      "role": "headphones",
+      "name": "Sony MDR-7506",
+      "priceUsd": 99,
+      "why": "The studio workhorse for four decades - flat, revealing, and folds up for the backpack.",
+      "tags": ["tracking", "mixing"],
+      "search": "Sony MDR-7506"
+    },
+    {
+      "id": "senn-hd25",
+      "role": "headphones",
+      "name": "Sennheiser HD 25",
+      "priceUsd": 149,
+      "why": "The DJ-booth standard: loud, isolating, one-ear monitoring, and survives being sat on.",
+      "tags": ["dj"],
+      "search": "Sennheiser HD 25"
+    },
+    {
+      "id": "ath-m50x",
+      "role": "headphones",
+      "name": "Audio-Technica ATH-M50x",
+      "priceUsd": 149,
+      "why": "Do-everything closed-back: punchy enough for DJing, accurate enough for production.",
+      "tags": ["dj", "tracking", "mixing"],
+      "search": "Audio-Technica ATH-M50x"
+    },
+    {
+      "id": "beyer-dt770",
+      "role": "headphones",
+      "name": "Beyerdynamic DT 770 Pro (80 Ohm)",
+      "priceUsd": 159,
+      "why": "Supremely comfortable closed-back with deep bass extension - great for long sessions and tracking.",
+      "tags": ["tracking", "mixing"],
+      "search": "Beyerdynamic DT 770 Pro 80 Ohm"
+    },
+    {
+      "id": "senn-hd600",
+      "role": "headphones",
+      "name": "Sennheiser HD 600",
+      "priceUsd": 349,
+      "why": "Open-back mixing reference - the midrange truth-teller mixes get checked on.",
+      "tags": ["mixing", "premium"],
+      "search": "Sennheiser HD 600"
+    },
+    {
+      "id": "eris-35",
+      "role": "monitors",
+      "name": "PreSonus Eris 3.5 (pair)",
+      "priceUsd": 99,
+      "why": "Tiny desk monitors that beat any computer speakers - the honest entry point.",
+      "tags": ["budget", "compact"],
+      "search": "PreSonus Eris 3.5 pair"
+    },
+    {
+      "id": "iloud-micro",
+      "role": "monitors",
+      "name": "IK Multimedia iLoud Micro Monitor (pair)",
+      "priceUsd": 299,
+      "why": "Astonishing accuracy from speakers the size of a coffee mug - the small-room specialist.",
+      "tags": ["compact", "premium"],
+      "search": "IK Multimedia iLoud Micro Monitor"
+    },
+    {
+      "id": "jbl-305p",
+      "role": "monitors",
+      "name": "JBL 305P MkII (pair)",
+      "priceUsd": 298,
+      "why": "Wide sweet spot and serious low end for the money - the default first 'real' monitors.",
+      "tags": ["value"],
+      "search": "JBL 305P MkII pair"
+    },
+    {
+      "id": "kali-lp6",
+      "role": "monitors",
+      "name": "Kali Audio LP-6 (pair)",
+      "priceUsd": 398,
+      "why": "Punches at twice its price with boundary EQ for untreated rooms.",
+      "tags": ["value", "premium"],
+      "search": "Kali Audio LP-6 pair"
+    },
+    {
+      "id": "yamaha-hs5",
+      "role": "monitors",
+      "name": "Yamaha HS5 (pair)",
+      "priceUsd": 398,
+      "why": "Descendant of the NS-10: ruthless midrange honesty that translates everywhere.",
+      "tags": ["premium"],
+      "search": "Yamaha HS5 pair"
+    },
+    {
+      "id": "adam-t7v",
+      "role": "monitors",
+      "name": "ADAM Audio T7V (pair)",
+      "priceUsd": 500,
+      "why": "Ribbon-tweeter detail and real low-end reach for a serious step-up room.",
+      "tags": ["premium"],
+      "search": "ADAM Audio T7V pair"
+    },
+    {
+      "id": "behringer-umc22",
+      "role": "interface",
+      "name": "Behringer U-Phoria UMC22",
+      "priceUsd": 59,
+      "why": "The functional minimum: one decent preamp, clean output, absurdly cheap.",
+      "tags": ["budget"],
+      "search": "Behringer U-Phoria UMC22"
+    },
+    {
+      "id": "scarlett-solo",
+      "role": "interface",
+      "name": "Focusrite Scarlett Solo (4th Gen)",
+      "priceUsd": 139,
+      "why": "The best-selling interface ever for a reason: great preamp, idiot-proof, works everywhere.",
+      "tags": ["value"],
+      "search": "Focusrite Scarlett Solo 4th Gen"
+    },
+    {
+      "id": "motu-m2",
+      "role": "interface",
+      "name": "MOTU M2",
+      "priceUsd": 199,
+      "why": "Best converters and metering in its class - the pick if the interface is the studio's heart.",
+      "tags": ["value", "premium"],
+      "search": "MOTU M2 audio interface"
+    },
+    {
+      "id": "audient-id14",
+      "role": "interface",
+      "name": "Audient iD14 MkII",
+      "priceUsd": 299,
+      "why": "Console-grade preamps and a proper monitor controller in a desktop box.",
+      "tags": ["premium"],
+      "search": "Audient iD14 MkII"
+    },
+    {
+      "id": "party-mix-ii",
+      "role": "controller",
+      "name": "Numark Party Mix II",
+      "priceUsd": 99,
+      "why": "A real two-channel controller with pads and a built-in soundcard for pocket money.",
+      "tags": ["budget"],
+      "search": "Numark Party Mix II"
+    },
+    {
+      "id": "inpulse-300",
+      "role": "controller",
+      "name": "Hercules DJControl Inpulse 300 MK2",
+      "priceUsd": 199,
+      "why": "Bigger jog wheels and beatmatch training guides - the learning-focused step up.",
+      "tags": ["budget"],
+      "search": "Hercules DJControl Inpulse 300 MK2"
+    },
+    {
+      "id": "ddj-flx4",
+      "role": "controller",
+      "name": "Pioneer DJ DDJ-FLX4",
+      "priceUsd": 299,
+      "why": "The default first controller: rekordbox and Serato support, club-style layout, endless tutorials.",
+      "tags": ["value", "club-standard"],
+      "search": "Pioneer DJ DDJ-FLX4"
+    },
+    {
+      "id": "ddj-flx6",
+      "role": "controller",
+      "name": "Pioneer DJ DDJ-FLX6-GT",
+      "priceUsd": 599,
+      "why": "Four channels, full-size jogs, and merge FX - the last controller before club gear.",
+      "tags": ["premium", "club-standard"],
+      "search": "Pioneer DJ DDJ-FLX6-GT"
+    },
+    {
+      "id": "ddj-flx10",
+      "role": "controller",
+      "name": "Pioneer DJ DDJ-FLX10",
+      "priceUsd": 1599,
+      "why": "Flagship 4-channel with stems separation - for DJs booking real gigs.",
+      "tags": ["premium", "pro", "club-standard"],
+      "search": "Pioneer DJ DDJ-FLX10"
+    },
+    {
+      "id": "minilab-3",
+      "role": "midi-keyboard",
+      "name": "Arturia MiniLab 3",
+      "priceUsd": 109,
+      "why": "Best-feeling mini keys and a serious bundled software suite (Analog Lab).",
+      "tags": ["budget", "compact"],
+      "search": "Arturia MiniLab 3"
+    },
+    {
+      "id": "mpk-mini-mk3",
+      "role": "midi-keyboard",
+      "name": "Akai MPK Mini MK3",
+      "priceUsd": 119,
+      "why": "The beatmaker classic: MPC pads plus two octaves of keys in a backpack footprint.",
+      "tags": ["budget", "compact"],
+      "search": "Akai MPK Mini MK3"
+    },
+    {
+      "id": "launchkey-37",
+      "role": "midi-keyboard",
+      "name": "Novation Launchkey 37 MK4",
+      "priceUsd": 219,
+      "why": "Full-size keys with deep Ableton integration and a proper arpeggiator.",
+      "tags": ["value"],
+      "search": "Novation Launchkey 37 MK4"
+    },
+    {
+      "id": "sm58",
+      "role": "mic",
+      "name": "Shure SM58",
+      "priceUsd": 99,
+      "why": "Indestructible dynamic that forgives untreated rooms - the safe first vocal mic.",
+      "tags": ["budget", "untreated-room"],
+      "search": "Shure SM58"
+    },
+    {
+      "id": "at2020",
+      "role": "mic",
+      "name": "Audio-Technica AT2020",
+      "priceUsd": 99,
+      "why": "The classic budget condenser: detailed vocals if the room is reasonably quiet.",
+      "tags": ["budget"],
+      "search": "Audio-Technica AT2020"
+    },
+    {
+      "id": "rode-nt1",
+      "role": "mic",
+      "name": "RODE NT1 (5th Gen)",
+      "priceUsd": 249,
+      "why": "Near-silent self-noise and 32-bit float USB output - a condenser to grow into.",
+      "tags": ["value", "premium"],
+      "search": "RODE NT1 5th Generation"
+    }
+  ]
+}

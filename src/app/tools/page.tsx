@@ -9,6 +9,7 @@ import {
   ScanSearch,
   Gauge,
   Mic,
+  Wrench,
 } from "lucide-react"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import {
@@ -92,6 +93,14 @@ const tools = [
       "Play music out loud and let the microphone find the tempo automatically. All analysis on-device - nothing is recorded or uploaded.",
     href: "/tools/bpm-detector",
     icon: Mic,
+    badge: "New",
+  },
+  {
+    title: "Studio Setup Builder",
+    description:
+      "Enter your budget and the music you make, and get a complete studio or DJ setup - hand-picked gear, allocated so every dollar counts.",
+    href: "/tools/studio-builder",
+    icon: Wrench,
     badge: "New",
   },
 ]
