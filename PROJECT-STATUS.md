@@ -129,7 +129,9 @@ These are potential future additions, not committed:
 - [ ] API for developers
 - [ ] Embeddable widget versions of tools
 - [ ] Community features (comments, user submissions)
-- [ ] Affiliate integrations (DAW software, DJ equipment)
+- [x] Affiliate integrations (DJ / studio equipment) - shipped as the Studio
+      Setup Builder; affiliate accounts still pending. Plan, current status and
+      remaining steps live in `docs/studio-builder-plan.md`.
 
 ---
 
@@ -240,3 +242,12 @@ Remove-Item -Recurse -Force .next
 **Date:** February 2026  
 **Phase:** 1 Complete, Phase 2 Pending  
 **Total Pages:** ~68
+
+> **This file is out of date.** It was last revised in February 2026 and does not
+> describe several tools shipped since: the rhythm test, the microphone BPM
+> detector, the key + BPM analyzer, the embeddable tap-tempo widget, or the
+> studio setup builder. The build now generates ~87 static pages, not 68.
+>
+> Treat the per-feature documents as authoritative until this is rewritten:
+> `docs/studio-builder-plan.md` (affiliate tool, current status and next steps),
+> `GROWTH-PLAN.md` (traffic strategy), `docs/local-dev.md`, `docs/image-credits.md`.
