@@ -13,6 +13,8 @@ pnpm lint       # Run ESLint
 
 There are no tests. Clear the Next.js cache with `rm -rf .next` if you encounter stale build issues.
 
+Reaching the dev server on anything other than `localhost` (a tailnet or LAN hostname) requires setting `DEV_ORIGINS` in `.env.local`, or the page loads but never hydrates. See `docs/local-dev.md`.
+
 ## Architecture Overview
 
 TuneTapper is a Next.js 16 App Router site offering free music production tools and programmatic SEO pages targeting DJs and producers. It is monetized via Google AdSense (consent-gated) and uses Vercel Analytics.
