@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { BpmDetectorTool } from "@/components/tools/bpm-detector-tool"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { generateToolSchema, generateFaqSchema } from "@/lib/seo"
+import { generateToolSchema, generateFaqSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "BPM Detector - Find a Song's Tempo With Your Microphone",
@@ -21,13 +21,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tunetapper.com/tools/bpm-detector",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "BPM Detector - Find a Song's Tempo With Your Microphone | TuneTapper",
     description:
       "Play music out loud and your microphone finds the tempo automatically. No recording, no upload - all analysis on your device.",
-    url: "https://tunetapper.com/tools/bpm-detector",
-    images: [{ url: "/og/bpm-detector.png", width: 1200, height: 630, alt: "BPM Detector - TuneTapper" }],
-  },
+    path: "/tools/bpm-detector",
+    image: "/og/bpm-detector.png",
+    imageAlt: "BPM Detector - TuneTapper",
+  }),
 }
 
 const faqs = [

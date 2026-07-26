@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/table"
 import barsData from "@/data/bars-list.json"
 import { calculateBarsDuration, formatDuration } from "@/lib/calculations"
-import { generateFaqSchema, generateBreadcrumbSchema } from "@/lib/seo"
+import { generateFaqSchema, generateBreadcrumbSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "How Long Is 16 Bars? Bars to Seconds & Minutes Calculator",
@@ -28,12 +28,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tunetapper.com/bars",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "How Long Is 16 Bars? Bars to Seconds & Minutes Calculator",
     description:
       "16 bars is 30 seconds at 128 BPM. 32 bars is ~1 minute. Convert any bar count to seconds or minutes at any BPM - free calculator, formula, and full lookup table.",
-    url: "https://tunetapper.com/bars",
-  },
+    path: "/bars",
+  }),
 }
 
 const faqs = [

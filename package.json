@@ -33,7 +33,11 @@
       "minimatch@3": "^3.1.4",
       "minimatch@9": "^9.0.7",
       "flatted": ">=3.4.2"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "sharp",
+      "unrs-resolver"
+    ]
   },
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.95.1",

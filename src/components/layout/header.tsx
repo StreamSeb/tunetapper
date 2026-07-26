@@ -18,6 +18,7 @@ const navigation = [
       { name: "Camelot Wheel", href: "/tools/camelot" },
       { name: "BPM Delay Calculator", href: "/tools/bpm-delay" },
       { name: "Rhythm Test", href: "/tools/rhythm-game" },
+      { name: "Studio Setup Builder", href: "/tools/studio-builder" },
     ],
   },
   {
@@ -38,6 +39,7 @@ const navigation = [
       { name: "Camelot Wheel", href: "/tools/camelot" },
       { name: "Key Finder", href: "/tools/key-analyzer" },
       { name: "BPM Transition", href: "/tools/bpm-transition" },
+      { name: "Studio Setup Builder", href: "/tools/studio-builder" },
       { name: "Key Reference", href: "/camelot" },
     ],
   },

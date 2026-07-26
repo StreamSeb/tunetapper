@@ -75,6 +75,15 @@ export const analytics = {
   toolUsed: (toolName: string) => {
     trackEvent("tool_used", { tool_name: toolName })
   },
+
+  // Studio Builder
+  studioBuildGenerated: (budget: number, useCase: string) => {
+    trackEvent("studio_build_generated", { budget, use_case: useCase })
+  },
+
+  affiliateLinkClicked: (merchant: string, itemId: string) => {
+    trackEvent("affiliate_link_clicked", { merchant, item_id: itemId })
+  },
 }
 
 // TypeScript declaration for gtag

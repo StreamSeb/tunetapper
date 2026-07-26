@@ -10,6 +10,7 @@ const footerLinks = {
     { name: "BPM Transition", href: "/tools/bpm-transition" },
     { name: "Rhythm Test", href: "/tools/rhythm-game" },
     { name: "BPM Detector", href: "/tools/bpm-detector" },
+    { name: "Studio Setup Builder", href: "/tools/studio-builder" },
   ],
   references: [
     { name: "BPM Reference", href: "/bpm" },

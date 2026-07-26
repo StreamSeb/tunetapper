@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { BpmTransitionTool } from "@/components/tools/bpm-transition-tool"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { generateToolSchema } from "@/lib/seo"
+import { generateToolSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "BPM Transition Helper - Plan Smooth Tempo Changes",
@@ -18,13 +18,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tunetapper.com/tools/bpm-transition",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "BPM Transition Helper | TuneTapper",
     description:
       "Plan smooth BPM transitions between tracks. Get strategies for half-time, double-time, and gradual tempo changes.",
-    url: "https://tunetapper.com/tools/bpm-transition",
-    images: [{ url: "/og/bpm-transition.png", width: 1200, height: 630, alt: "BPM Transition Helper - TuneTapper" }],
-  },
+    path: "/tools/bpm-transition",
+    image: "/og/bpm-transition.png",
+    imageAlt: "BPM Transition Helper - TuneTapper",
+  }),
 }
 
 export default function BpmTransitionPage() {
