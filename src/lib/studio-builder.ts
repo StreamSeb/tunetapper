@@ -42,6 +42,13 @@ export interface GearItem {
   priceSource?: "verified" | "estimate"
   why: string
   tags: string[]
+  /**
+   * Square product shot. Currently sourced from the merchant product page, which
+   * is fine for local review but NOT licensed for production - replace these with
+   * the Awin product datafeed images (which ship with usage rights) before launch.
+   * Optional by design: cards fall back to the category icon when absent.
+   */
+  imageUrl?: string
   merchants: MerchantListings
 }
 

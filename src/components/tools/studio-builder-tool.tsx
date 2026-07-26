@@ -1,8 +1,24 @@
 "use client"
 
 import { useEffect, useMemo, useRef, useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
-import { ExternalLink, Info, PiggyBank } from "lucide-react"
+import {
+  Cable,
+  Disc3,
+  ExternalLink,
+  Headphones,
+  Info,
+  Layers,
+  Mic,
+  MicVocal,
+  Piano,
+  PiggyBank,
+  SlidersHorizontal,
+  Speaker,
+  Waves,
+  type LucideIcon,
+} from "lucide-react"
 import { analytics } from "@/lib/analytics"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
@@ -33,6 +49,61 @@ const catalog = gearData.items as GearItem[]
 
 const MIN_BUDGET = 200
 const MAX_BUDGET = 5000
+
+/** One glyph per gear category, so a build is scannable without reading labels. */
+const ROLE_ICONS: Record<Role, LucideIcon> = {
+  headphones: Headphones,
+  monitors: Speaker,
+  interface: SlidersHorizontal,
+  controller: Disc3,
+  "midi-keyboard": Piano,
+  mic: Mic,
+  "mic-stand": MicVocal,
+  cables: Cable,
+  "monitor-isolation": Layers,
+  "acoustic-treatment": Waves,
+}
+
+/**
+ * Off until the Awin publisher account is live. The `imageUrl`s in gear.json
+ * point at Thomann's CDN - merchant-owned photos we have no licence to serve,
+ * and only 41 of 85 items have one. Awin's datafeed supplies licensed shots for
+ * the whole catalog; flip this to true once those URLs are in.
+ */
+const SHOW_PRODUCT_IMAGES = false
+
+/**
+ * Full-height panel down the left edge of a pick card: product shot where we
+ * have one, category glyph where we don't. Same footprint either way, so a
+ * build's cards line up whether or not the image landed.
+ */
+function GearThumb({ item, icon: Icon }: { item: GearItem; icon: LucideIcon }) {
+  const panel =
+    "relative w-20 shrink-0 self-stretch border-r border-[var(--border)] sm:w-40"
+
+  if (!SHOW_PRODUCT_IMAGES || !item.imageUrl) {
+    return (
+      <div className={cn(panel, "flex items-center justify-center bg-[var(--muted)]/40")}>
+        <Icon
+          className="h-10 w-10 text-[var(--muted-foreground)]"
+          aria-hidden="true"
+        />
+      </div>
+    )
+  }
+  return (
+    // White panel: product shots are cut out on white, so it reads the same in both themes.
+    <div className={cn(panel, "bg-white")}>
+      <Image
+        src={item.imageUrl}
+        alt={item.name}
+        fill
+        sizes="(min-width: 640px) 160px, 80px"
+        className="object-contain p-3"
+      />
+    </div>
+  )
+}
 
 /** EUR with no decimals unless the amount is genuinely sub-euro precision. */
 function eur(amount: number): string {
@@ -164,8 +235,26 @@ export function StudioBuilderTool() {
     <div className="mx-auto max-w-4xl px-4 py-8 lg:py-12">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold lg:text-4xl">Studio Setup Builder</h1>
-        <p className="mt-3 text-lg text-[var(--muted-foreground)]">
+        {/* Title sits on the photo, so it is white in both themes - the scrim
+            below guarantees contrast rather than relying on the image. */}
+        <div className="relative mb-6 h-44 overflow-hidden rounded-xl sm:h-56 lg:h-64">
+          <Image
+            src="/images/studio-hero.webp"
+            alt="A studio desk with nearfield monitors either side of a screen running a DAW, a mixing console, and a MIDI keyboard"
+            fill
+            priority
+            sizes="(min-width: 896px) 896px, 100vw"
+            className="object-cover"
+          />
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/10"
+          />
+          <h1 className="absolute inset-x-5 bottom-4 text-3xl font-bold text-white drop-shadow-sm lg:text-4xl">
+            Studio Setup Builder
+          </h1>
+        </div>
+        <p className="text-lg text-[var(--muted-foreground)]">
           Enter your budget and how you&apos;ll use it, and get a complete,
           sensible studio setup - hand-picked gear, allocated so the money goes
           where your kind of music needs it.
@@ -294,21 +383,25 @@ export function StudioBuilderTool() {
               Already own something? (excluded from the build)
             </Label>
             <div className="flex flex-wrap gap-2">
-              {OWNABLE_ROLES.map((role) => (
-                <button
-                  key={role}
-                  type="button"
-                  onClick={() => toggleOwned(role)}
-                  className={cn(
-                    "rounded-full border px-3 py-1.5 text-sm transition-colors",
-                    ownedRoles.includes(role)
-                      ? "border-[var(--primary)] bg-[var(--primary)]/10 font-medium line-through"
-                      : "border-[var(--border)] hover:border-[var(--primary)]/50"
-                  )}
-                >
-                  {ROLE_LABELS[role]}
-                </button>
-              ))}
+              {OWNABLE_ROLES.map((role) => {
+                const RoleIcon = ROLE_ICONS[role]
+                return (
+                  <button
+                    key={role}
+                    type="button"
+                    onClick={() => toggleOwned(role)}
+                    className={cn(
+                      "flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors",
+                      ownedRoles.includes(role)
+                        ? "border-[var(--primary)] bg-[var(--primary)]/10 font-medium line-through"
+                        : "border-[var(--border)] hover:border-[var(--primary)]/50"
+                    )}
+                  >
+                    <RoleIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    {ROLE_LABELS[role]}
+                  </button>
+                )
+              })}
             </div>
           </div>
         </CardContent>
@@ -353,17 +446,26 @@ export function StudioBuilderTool() {
 
       <div className="space-y-4">
         {result.picks.map(
-          ({ role, item, qty, totalEur, cheaperAlternative, pricierAlternative }) => (
-            <Card key={role}>
+          ({ role, item, qty, totalEur, cheaperAlternative, pricierAlternative }) => {
+            const RoleIcon = ROLE_ICONS[role]
+            return (
+            <Card key={role} className="flex overflow-hidden">
+              <GearThumb item={item} icon={RoleIcon} />
+              <div className="min-w-0 flex-1">
               <CardHeader className="pb-2">
-                <div className="flex items-start justify-between gap-2">
-                  <div>
-                    <CardDescription className="flex flex-wrap items-center gap-2">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    {/* Not CardDescription: it renders a <p>, and Badge is a <div> */}
+                    <div className="flex flex-wrap items-center gap-2 text-sm text-[var(--muted-foreground)]">
+                      <RoleIcon
+                        className="h-4 w-4 shrink-0 text-[var(--primary)]"
+                        aria-hidden="true"
+                      />
                       {ROLE_LABELS[role]}
                       <Badge variant="outline" className="text-[10px] uppercase">
                         {TIER_LABELS[item.tier]}
                       </Badge>
-                    </CardDescription>
+                    </div>
                     <CardTitle className="text-lg">{item.name}</CardTitle>
                   </div>
                   <div className="shrink-0 text-right">
@@ -409,21 +511,29 @@ export function StudioBuilderTool() {
                   </p>
                 )}
               </CardContent>
+              </div>
             </Card>
-          )
+            )
+          }
         )}
 
-        {result.skipped.map(({ role, reason }) => (
-          <Card key={role} className="border-dashed">
-            <CardHeader className="pb-2">
-              <CardDescription>{ROLE_LABELS[role]}</CardDescription>
-              <CardTitle className="text-base font-medium text-[var(--muted-foreground)]">
-                <PiggyBank className="mr-2 inline h-4 w-4" />
-                {reason}
-              </CardTitle>
-            </CardHeader>
-          </Card>
-        ))}
+        {result.skipped.map(({ role, reason }) => {
+          const RoleIcon = ROLE_ICONS[role]
+          return (
+            <Card key={role} className="border-dashed">
+              <CardHeader className="pb-2">
+                <CardDescription className="flex items-center gap-2">
+                  <RoleIcon className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  {ROLE_LABELS[role]}
+                </CardDescription>
+                <CardTitle className="text-base font-medium text-[var(--muted-foreground)]">
+                  <PiggyBank className="mr-2 inline h-4 w-4" />
+                  {reason}
+                </CardTitle>
+              </CardHeader>
+            </Card>
+          )
+        })}
       </div>
 
       {/* Related Tools */}
