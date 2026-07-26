@@ -6,7 +6,7 @@ import { generateToolSchema, generateFaqSchema } from "@/lib/seo"
 export const metadata: Metadata = {
   title: "Studio Setup Builder - Complete Gear Lists for Any Budget",
   description:
-    "Enter your budget and the music you make, and get a complete home studio or DJ setup - hand-picked headphones, monitors, interface, controller, and mic, allocated so every dollar counts.",
+    "Enter your budget and the music you make, and get a complete home studio or DJ setup - hand-picked headphones, monitors, interface, controller, mic, stands and cables, with prices from Thomann and Gear4music.",
   keywords: [
     "home studio setup",
     "budget studio setup",
@@ -31,12 +31,17 @@ const faqs = [
   {
     question: "What do I need for a home music studio?",
     answer:
-      "The core of a home studio is headphones, studio monitors, and an audio interface. Producers add a MIDI keyboard, vocalists add a microphone, and DJs need a controller. A complete sensible starter setup is possible from around $300; $800-1,500 covers solid mid-tier gear in every role.",
+      "The core of a home studio is headphones, studio monitors, and an audio interface, plus the cables and a mic stand that make them usable. Producers add a MIDI keyboard, vocalists add a microphone, and DJs need a controller. A complete sensible starter setup is possible from around 300 euros; 800-1,500 euros covers solid mid-tier gear in every role.",
   },
   {
     question: "How much does a beginner DJ setup cost?",
     answer:
-      "A real beginner DJ setup - controller, headphones, and small monitors - starts around $250-450. The Pioneer DJ DDJ-FLX4 (~$299) with Sennheiser HD 25 headphones is the most common club-style starting point.",
+      "A real beginner DJ setup - controller, headphones, and small monitors - starts around 300-450 euros. The Pioneer DJ DDJ-FLX4 (around 299 euros) with Sennheiser HD 25 headphones (119 euros at Thomann) is the most common club-style starting point.",
+  },
+  {
+    question: "Do studio monitor prices include both speakers?",
+    answer:
+      "Usually not. Most studio monitors are sold individually, so a stereo pair costs twice the listed price - Thomann labels these 'price per piece'. Compact desktop systems like the PreSonus Eris 3.5 and IK iLoud Micro Monitor are the exception and ship as a pair. The builder always costs a usable stereo pair and shows the per-unit price alongside it.",
   },
   {
     question: "Should I buy studio monitors or headphones first?",

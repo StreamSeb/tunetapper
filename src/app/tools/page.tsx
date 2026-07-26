@@ -98,7 +98,7 @@ const tools = [
   {
     title: "Studio Setup Builder",
     description:
-      "Enter your budget and the music you make, and get a complete studio or DJ setup - hand-picked gear, allocated so every dollar counts.",
+      "Enter your budget and the music you make, and get a complete studio or DJ setup - hand-picked gear with live-checked Thomann and Gear4music prices.",
     href: "/tools/studio-builder",
     icon: Wrench,
     badge: "New",

@@ -1,257 +1,1242 @@
 {
-  "_comment": "Hand-curated gear catalog for the studio builder. Prices are approximate USD street prices - review quarterly (see docs/studio-builder-plan.md). 'search' terms feed the merchant URL builder in src/lib/affiliate.ts.",
+  "_comment": "Hand-curated gear catalog for the studio builder. Canonical currency is EUR because Thomann and Gear4music are the launch merchants. unitPriceEur is the price of ONE unit; qty is how many units the role needs (studio monitors are usually sold singly, so qty 2). merchants.<name>.priceEur is that merchant's own price when known - the UI surfaces the difference. Prices marked with a 'verified' date were read off the merchant's own product page on that date; see scripts/gear-price-check.mjs to re-check them and docs/studio-builder-plan.md for the maintenance policy.",
+  "currency": "EUR",
+  "priceCheckedAt": "2026-07-26",
   "items": [
     {
       "id": "ath-m20x",
       "role": "headphones",
       "name": "Audio-Technica ATH-M20x",
-      "priceUsd": 49,
-      "why": "The cheapest headphones that are honest enough to make production decisions on.",
-      "tags": ["budget"],
-      "search": "Audio-Technica ATH-M20x"
+      "tier": "entry",
+      "unitPriceEur": 55,
+      "why": "The cheapest closed-back that is honest enough to make production decisions on.",
+      "tags": ["closed-back"],
+      "merchants": {
+        "thomann": { "slug": "audio_technica_ath_m20x.htm", "priceEur": 55, "verified": "2026-07-26" },
+        "gear4music": { "search": "Audio-Technica ATH-M20x" },
+        "amazon": { "search": "Audio-Technica ATH-M20x" }
+      }
     },
     {
       "id": "akg-k240",
       "role": "headphones",
-      "name": "AKG K240 Studio",
-      "priceUsd": 69,
-      "why": "Semi-open classic with a wide, natural sound for mixing - not for loud rooms or DJ booths.",
-      "tags": ["budget", "mixing"],
-      "search": "AKG K240 Studio"
+      "name": "AKG K-240 Studio",
+      "tier": "entry",
+      "useCases": ["producer", "hybrid"],
+      "unitPriceEur": 68,
+      "why": "Semi-open classic with a wide, natural sound for mixing - it leaks, so it is no use in a booth.",
+      "tags": ["semi-open", "mixing"],
+      "merchants": {
+        "thomann": { "slug": "akg_k_240_studio_kopfhoerer.htm", "priceEur": 68, "verified": "2026-07-26" },
+        "gear4music": { "search": "AKG K240 Studio" },
+        "amazon": { "search": "AKG K240 Studio" }
+      }
+    },
+    {
+      "id": "senn-hd25-light",
+      "role": "headphones",
+      "name": "Sennheiser HD 25 Light",
+      "tier": "entry",
+      "useCases": ["dj", "hybrid"],
+      "unitPriceEur": 79,
+      "why": "The booth standard's lighter sibling - same drivers, less clamp, much less money.",
+      "tags": ["closed-back", "isolating", "dj-booth"],
+      "merchants": {
+        "thomann": { "slug": "sennheiser_hd_25_light_new_version.htm", "priceEur": 79, "verified": "2026-07-26" },
+        "gear4music": { "path": "PA-DJ-and-Lighting/Sennheiser-HD-25-Light-Headphones/38ZZ", "search": "Sennheiser HD 25 Light" },
+        "amazon": { "search": "Sennheiser HD 25 Light" }
+      }
     },
     {
       "id": "sony-mdr7506",
       "role": "headphones",
       "name": "Sony MDR-7506",
-      "priceUsd": 99,
-      "why": "The studio workhorse for four decades - flat, revealing, and folds up for the backpack.",
-      "tags": ["tracking", "mixing"],
-      "search": "Sony MDR-7506"
+      "tier": "entry",
+      "unitPriceEur": 99,
+      "why": "The studio workhorse for four decades - flat, revealing, and folds into a backpack.",
+      "tags": ["closed-back", "tracking"],
+      "merchants": {
+        "thomann": { "slug": "sony_mdr7506_kopfhoerer.htm", "priceEur": 99, "verified": "2026-07-26" },
+        "gear4music": { "search": "Sony MDR-7506" },
+        "amazon": { "search": "Sony MDR-7506" }
+      }
     },
     {
       "id": "senn-hd25",
       "role": "headphones",
       "name": "Sennheiser HD 25",
-      "priceUsd": 149,
+      "tier": "mid",
+      "useCases": ["dj", "hybrid"],
+      "unitPriceEur": 119,
       "why": "The DJ-booth standard: loud, isolating, one-ear monitoring, and survives being sat on.",
-      "tags": ["dj"],
-      "search": "Sennheiser HD 25"
+      "tags": ["closed-back", "isolating", "dj-booth", "roadworthy"],
+      "merchants": {
+        "thomann": { "slug": "sennheiser_hd_25.htm", "priceEur": 119, "verified": "2026-07-26" },
+        "gear4music": { "path": "PA-DJ-and-Lighting/Sennheiser-HD-25-Headphones/1GCI", "search": "Sennheiser HD 25" },
+        "amazon": { "search": "Sennheiser HD 25" }
+      }
     },
     {
       "id": "ath-m50x",
       "role": "headphones",
-      "name": "Audio-Technica ATH-M50x",
-      "priceUsd": 149,
+      "name": "Audio-Technica ATH-M50X",
+      "tier": "mid",
+      "unitPriceEur": 149,
       "why": "Do-everything closed-back: punchy enough for DJing, accurate enough for production.",
-      "tags": ["dj", "tracking", "mixing"],
-      "search": "Audio-Technica ATH-M50x"
+      "tags": ["closed-back", "isolating", "tracking", "mixing"],
+      "merchants": {
+        "thomann": { "slug": "audio_technica_ath_m50_x.htm", "priceEur": 149, "verified": "2026-07-26" },
+        "gear4music": { "search": "Audio-Technica ATH-M50x" },
+        "amazon": { "search": "Audio-Technica ATH-M50x" }
+      }
     },
     {
-      "id": "beyer-dt770",
+      "id": "beyer-dt770-80",
       "role": "headphones",
-      "name": "Beyerdynamic DT 770 Pro (80 Ohm)",
-      "priceUsd": 159,
-      "why": "Supremely comfortable closed-back with deep bass extension - great for long sessions and tracking.",
-      "tags": ["tracking", "mixing"],
-      "search": "Beyerdynamic DT 770 Pro 80 Ohm"
+      "name": "beyerdynamic DT 770 Pro 80 Ohm",
+      "tier": "mid",
+      "useCases": ["producer", "hybrid"],
+      "unitPriceEur": 149,
+      "why": "Supremely comfortable closed-back with deep bass extension - built for long sessions.",
+      "tags": ["closed-back", "tracking", "mixing"],
+      "merchants": {
+        "thomann": { "slug": "beyerdynamic_dt770_pro80_ohm.htm", "priceEur": 149, "verified": "2026-07-26" },
+        "gear4music": { "search": "beyerdynamic DT 770 Pro 80 Ohm" },
+        "amazon": { "search": "beyerdynamic DT 770 Pro 80 Ohm" }
+      }
+    },
+    {
+      "id": "technics-dj1200",
+      "role": "headphones",
+      "name": "Technics EAH-DJ1200",
+      "tier": "mid",
+      "useCases": ["dj", "hybrid"],
+      "unitPriceEur": 155,
+      "why": "Swivel-cup DJ can with a genuinely rugged build and strong isolation.",
+      "tags": ["closed-back", "isolating", "dj-booth", "roadworthy"],
+      "merchants": {
+        "thomann": { "slug": "technics_eah_dj_1200.htm", "priceEur": 155, "verified": "2026-07-26" },
+        "gear4music": { "search": "Technics EAH-DJ1200" },
+        "amazon": { "search": "Technics EAH-DJ1200" }
+      }
+    },
+    {
+      "id": "senn-hd25-plus",
+      "role": "headphones",
+      "name": "Sennheiser HD 25 Plus",
+      "tier": "mid",
+      "useCases": ["dj", "hybrid"],
+      "unitPriceEur": 169,
+      "why": "HD 25 with a spare velour pad set, straight cable and case - the touring version.",
+      "tags": ["closed-back", "isolating", "dj-booth", "roadworthy"],
+      "merchants": {
+        "thomann": { "slug": "sennheiser_hd_25_plus.htm", "priceEur": 169, "verified": "2026-07-26" },
+        "gear4music": { "path": "PA-DJ-and-Lighting/Sennheiser-HD-25-Plus-Headphones/1GCK", "search": "Sennheiser HD 25 Plus" },
+        "amazon": { "search": "Sennheiser HD 25 Plus" }
+      }
+    },
+    {
+      "id": "beyer-dj300prox",
+      "role": "headphones",
+      "name": "beyerdynamic DJ 300 PRO X",
+      "tier": "high",
+      "useCases": ["dj", "hybrid"],
+      "unitPriceEur": 199,
+      "why": "Modern DJ flagship from beyerdynamic - STELLAR.45 drivers with proper booth isolation.",
+      "tags": ["closed-back", "isolating", "dj-booth", "roadworthy"],
+      "merchants": {
+        "thomann": { "slug": "beyerdynamic_dj_300_pro_x.htm", "priceEur": 199, "verified": "2026-07-26" },
+        "gear4music": { "search": "beyerdynamic DJ 300 PRO X" },
+        "amazon": { "search": "beyerdynamic DJ 300 PRO X" }
+      }
+    },
+    {
+      "id": "beyer-dt900prox",
+      "role": "headphones",
+      "name": "beyerdynamic DT 900 PRO X",
+      "tier": "high",
+      "useCases": ["producer"],
+      "unitPriceEur": 229,
+      "why": "Open-back mixing reference with a modern, even top end. Leaks badly - studio only.",
+      "tags": ["open-back", "mixing"],
+      "merchants": {
+        "thomann": { "slug": "beyerdynamic_dt_900_pro_x.htm", "priceEur": 229, "verified": "2026-07-26" },
+        "gear4music": { "search": "beyerdynamic DT 900 PRO X" },
+        "amazon": { "search": "beyerdynamic DT 900 PRO X" }
+      }
+    },
+    {
+      "id": "beyer-dt700prox",
+      "role": "headphones",
+      "name": "beyerdynamic DT 700 PRO X",
+      "tier": "high",
+      "useCases": ["producer", "hybrid"],
+      "unitPriceEur": 235,
+      "why": "Closed sibling of the 900 PRO X - the pick when you need isolation and accuracy.",
+      "tags": ["closed-back", "isolating", "tracking", "mixing"],
+      "merchants": {
+        "thomann": { "slug": "beyerdynamic_dt_700_pro_x.htm", "priceEur": 235, "verified": "2026-07-26" },
+        "gear4music": { "search": "beyerdynamic DT 700 PRO X" },
+        "amazon": { "search": "beyerdynamic DT 700 PRO X" }
+      }
     },
     {
       "id": "senn-hd600",
       "role": "headphones",
       "name": "Sennheiser HD 600",
-      "priceUsd": 349,
-      "why": "Open-back mixing reference - the midrange truth-teller mixes get checked on.",
-      "tags": ["mixing", "premium"],
-      "search": "Sennheiser HD 600"
+      "tier": "high",
+      "useCases": ["producer"],
+      "unitPriceEur": 319,
+      "why": "The midrange truth-teller mixes get checked on. Open-back, so it is useless anywhere loud.",
+      "tags": ["open-back", "mixing"],
+      "merchants": {
+        "thomann": { "slug": "sennheiser_hd_600_new_version_2019.htm", "priceEur": 319, "verified": "2026-07-26" },
+        "gear4music": { "search": "Sennheiser HD 600" },
+        "amazon": { "search": "Sennheiser HD 600" }
+      }
     },
     {
-      "id": "eris-35",
+      "id": "senn-hd490pro",
+      "role": "headphones",
+      "name": "Sennheiser HD 490 PRO",
+      "tier": "flagship",
+      "useCases": ["producer"],
+      "unitPriceEur": 339,
+      "why": "Two tuned pad sets plus dSpike software - a mixing and a monitoring headphone in one box.",
+      "tags": ["open-back", "mixing"],
+      "merchants": {
+        "thomann": { "slug": "sennheiser_hd_490_pro.htm", "priceEur": 339, "verified": "2026-07-26" },
+        "gear4music": { "search": "Sennheiser HD 490 PRO" },
+        "amazon": { "search": "Sennheiser HD 490 PRO" }
+      }
+    },
+    {
+      "id": "neumann-ndh20",
+      "role": "headphones",
+      "name": "Neumann NDH 20",
+      "tier": "flagship",
+      "useCases": ["producer", "hybrid"],
+      "unitPriceEur": 489,
+      "why": "Closed-back with Neumann's monitoring voicing - accurate enough to mix on with a mic live.",
+      "tags": ["closed-back", "isolating", "mixing"],
+      "merchants": {
+        "thomann": { "slug": "neumann_ndh_20_black_edition.htm", "priceEur": 489, "verified": "2026-07-26" },
+        "gear4music": { "search": "Neumann NDH 20" },
+        "amazon": { "search": "Neumann NDH 20" }
+      }
+    },
+    {
+      "id": "neumann-ndh30",
+      "role": "headphones",
+      "name": "Neumann NDH 30",
+      "tier": "flagship",
+      "useCases": ["producer"],
+      "unitPriceEur": 599,
+      "why": "Neumann's open-back mixing reference - the closest a headphone gets to their KH monitors.",
+      "tags": ["open-back", "mixing"],
+      "merchants": {
+        "thomann": { "slug": "neumann_ndh_30.htm", "priceEur": 599, "verified": "2026-07-26" },
+        "gear4music": { "search": "Neumann NDH 30" },
+        "amazon": { "search": "Neumann NDH 30" }
+      }
+    },
+
+    {
+      "id": "eris35",
       "role": "monitors",
-      "name": "PreSonus Eris 3.5 (pair)",
-      "priceUsd": 99,
+      "name": "PreSonus Eris 3.5 (2nd Gen)",
+      "tier": "entry",
+      "unitPriceEur": 98,
+      "qty": 1,
+      "unitLabel": "pair",
       "why": "Tiny desk monitors that beat any computer speakers - the honest entry point.",
-      "tags": ["budget", "compact"],
-      "search": "PreSonus Eris 3.5 pair"
-    },
-    {
-      "id": "iloud-micro",
-      "role": "monitors",
-      "name": "IK Multimedia iLoud Micro Monitor (pair)",
-      "priceUsd": 299,
-      "why": "Astonishing accuracy from speakers the size of a coffee mug - the small-room specialist.",
-      "tags": ["compact", "premium"],
-      "search": "IK Multimedia iLoud Micro Monitor"
+      "tags": ["compact", "desktop"],
+      "merchants": {
+        "thomann": { "slug": "presonus_eris_3.5_2nd_gen.htm", "priceEur": 98, "verified": "2026-07-26" },
+        "gear4music": { "search": "PreSonus Eris 3.5 2nd Gen" },
+        "amazon": { "search": "PreSonus Eris 3.5" }
+      }
     },
     {
       "id": "jbl-305p",
       "role": "monitors",
-      "name": "JBL 305P MkII (pair)",
-      "priceUsd": 298,
-      "why": "Wide sweet spot and serious low end for the money - the default first 'real' monitors.",
-      "tags": ["value"],
-      "search": "JBL 305P MkII pair"
+      "name": "JBL 305P MkII",
+      "tier": "mid",
+      "unitPriceEur": 138,
+      "qty": 2,
+      "why": "Wide sweet spot and serious low end for the money - the default first real monitors.",
+      "tags": ["nearfield"],
+      "merchants": {
+        "thomann": { "slug": "jbl_lsr_305p_mkii.htm", "priceEur": 138, "verified": "2026-07-26" },
+        "gear4music": { "search": "JBL 305P MkII" },
+        "amazon": { "search": "JBL 305P MkII" }
+      }
     },
     {
-      "id": "kali-lp6",
+      "id": "krk-rp5g5",
       "role": "monitors",
-      "name": "Kali Audio LP-6 (pair)",
-      "priceUsd": 398,
-      "why": "Punches at twice its price with boundary EQ for untreated rooms.",
-      "tags": ["value", "premium"],
-      "search": "Kali Audio LP-6 pair"
+      "name": "KRK Rokit RP5 G5",
+      "tier": "mid",
+      "unitPriceEur": 159,
+      "qty": 2,
+      "why": "The bedroom-producer default, now with room-correction presets and a proper DSP EQ.",
+      "tags": ["nearfield", "room-correction"],
+      "merchants": {
+        "thomann": { "slug": "krk_rokit_rp5_g5.htm", "priceEur": 159, "verified": "2026-07-26" },
+        "gear4music": { "search": "KRK Rokit RP5 G5" },
+        "amazon": { "search": "KRK Rokit RP5 G5" }
+      }
     },
     {
       "id": "yamaha-hs5",
       "role": "monitors",
-      "name": "Yamaha HS5 (pair)",
-      "priceUsd": 398,
+      "name": "Yamaha HS5",
+      "tier": "mid",
+      "unitPriceEur": 159,
+      "qty": 2,
       "why": "Descendant of the NS-10: ruthless midrange honesty that translates everywhere.",
-      "tags": ["premium"],
-      "search": "Yamaha HS5 pair"
+      "tags": ["nearfield", "mixing"],
+      "merchants": {
+        "thomann": { "slug": "yamaha_hs_5.htm", "priceEur": 159, "verified": "2026-07-26" },
+        "gear4music": { "search": "Yamaha HS5" },
+        "amazon": { "search": "Yamaha HS5" }
+      }
+    },
+    {
+      "id": "kali-lp6",
+      "role": "monitors",
+      "name": "Kali Audio LP-6 (2nd Wave)",
+      "tier": "mid",
+      "unitPriceEur": 195,
+      "qty": 2,
+      "why": "Punches far above its price, and the boundary EQ dip switches are made for desks against a wall.",
+      "tags": ["nearfield", "boundary-eq", "untreated-room"],
+      "merchants": {
+        "thomann": { "slug": "kali_audio_lp_6_2nd_wave.htm", "priceEur": 195, "verified": "2026-07-26" },
+        "gear4music": { "search": "Kali Audio LP-6 2nd Wave" },
+        "amazon": { "search": "Kali Audio LP-6 2nd Wave" }
+      }
     },
     {
       "id": "adam-t7v",
       "role": "monitors",
-      "name": "ADAM Audio T7V (pair)",
-      "priceUsd": 500,
+      "name": "ADAM Audio T7V",
+      "tier": "mid",
+      "unitPriceEur": 219,
+      "qty": 2,
       "why": "Ribbon-tweeter detail and real low-end reach for a serious step-up room.",
-      "tags": ["premium"],
-      "search": "ADAM Audio T7V pair"
+      "tags": ["nearfield", "ribbon-tweeter"],
+      "merchants": {
+        "thomann": { "slug": "adam_t7v.htm", "priceEur": 219, "verified": "2026-07-26" },
+        "gear4music": { "search": "ADAM Audio T7V" },
+        "amazon": { "search": "ADAM Audio T7V" }
+      }
     },
     {
-      "id": "behringer-umc22",
+      "id": "iloud-micro",
+      "role": "monitors",
+      "name": "IK Multimedia iLoud Micro Monitor",
+      "tier": "mid",
+      "unitPriceEur": 239,
+      "qty": 1,
+      "unitLabel": "pair",
+      "why": "Astonishing accuracy from speakers the size of a coffee mug - the small-room specialist.",
+      "tags": ["compact", "desktop", "small-room"],
+      "merchants": {
+        "thomann": { "slug": "ik_multimedia_iloud_micro_monitor.htm", "priceEur": 239, "verified": "2026-07-26" },
+        "gear4music": { "search": "IK Multimedia iLoud Micro Monitor" },
+        "amazon": { "search": "IK Multimedia iLoud Micro Monitor" }
+      }
+    },
+    {
+      "id": "focal-alpha50evo",
+      "role": "monitors",
+      "name": "Focal Alpha 50 Evo",
+      "tier": "high",
+      "unitPriceEur": 249,
+      "qty": 2,
+      "why": "French-built 5-inch with a wide, unfatiguing top end and switchable room EQ.",
+      "tags": ["nearfield", "room-correction"],
+      "merchants": {
+        "thomann": { "slug": "focal_alpha_50_evo.htm", "priceEur": 249, "verified": "2026-07-26" },
+        "gear4music": { "search": "Focal Alpha 50 Evo" },
+        "amazon": { "search": "Focal Alpha 50 Evo" }
+      }
+    },
+    {
+      "id": "adam-d3v",
+      "role": "monitors",
+      "name": "ADAM Audio D3V",
+      "tier": "high",
+      "unitPriceEur": 289,
+      "qty": 1,
+      "unitLabel": "pair",
+      "why": "ADAM's ribbon tweeter shrunk onto a desk, with DSP voicing for a wall right behind it.",
+      "tags": ["compact", "desktop", "small-room", "ribbon-tweeter"],
+      "merchants": {
+        "thomann": { "slug": "adam_audio_d3v_black.htm", "priceEur": 289, "verified": "2026-07-26" },
+        "gear4music": { "search": "ADAM Audio D3V" },
+        "amazon": { "search": "ADAM Audio D3V" }
+      }
+    },
+    {
+      "id": "kali-in5",
+      "role": "monitors",
+      "name": "Kali Audio IN-5",
+      "tier": "high",
+      "unitPriceEur": 322,
+      "qty": 2,
+      "why": "Three-way coaxial imaging at a two-way price - a genuine step change in depth.",
+      "tags": ["nearfield", "three-way", "boundary-eq"],
+      "merchants": {
+        "thomann": { "slug": "kali_audio_in_5.htm", "priceEur": 322, "verified": "2026-07-26" },
+        "gear4music": { "search": "Kali Audio IN-5" },
+        "amazon": { "search": "Kali Audio IN-5" }
+      }
+    },
+    {
+      "id": "kali-in8",
+      "role": "monitors",
+      "name": "Kali Audio IN-8 (2nd Wave)",
+      "tier": "high",
+      "unitPriceEur": 369,
+      "qty": 2,
+      "why": "The 8-inch three-way: full-range enough that you stop guessing at the bottom octave.",
+      "tags": ["nearfield", "three-way", "boundary-eq"],
+      "merchants": {
+        "thomann": { "slug": "kali_audio_in_8_2nd_wave.htm", "priceEur": 369, "verified": "2026-07-26" },
+        "gear4music": { "search": "Kali Audio IN-8 2nd Wave" },
+        "amazon": { "search": "Kali Audio IN-8" }
+      }
+    },
+    {
+      "id": "adam-a4v",
+      "role": "monitors",
+      "name": "ADAM Audio A4V",
+      "tier": "high",
+      "unitPriceEur": 389,
+      "qty": 2,
+      "why": "Compact A-Series with full DSP room correction - the small-desk answer that still scales.",
+      "tags": ["compact", "small-room", "ribbon-tweeter", "room-correction"],
+      "merchants": {
+        "thomann": { "slug": "adam_a4v.htm", "priceEur": 389, "verified": "2026-07-26" },
+        "gear4music": { "search": "ADAM Audio A4V" },
+        "amazon": { "search": "ADAM Audio A4V" }
+      }
+    },
+    {
+      "id": "genelec-8020",
+      "role": "monitors",
+      "name": "Genelec 8020D",
+      "tier": "flagship",
+      "unitPriceEur": 469,
+      "qty": 2,
+      "why": "Genelec voicing in a 4-inch cabinet - the reference choice when the room is genuinely small.",
+      "tags": ["compact", "small-room", "mixing"],
+      "merchants": {
+        "thomann": { "slug": "genelec_8020_dpm.htm", "priceEur": 469, "verified": "2026-07-26" },
+        "gear4music": { "search": "Genelec 8020D" },
+        "amazon": { "search": "Genelec 8020D" }
+      }
+    },
+    {
+      "id": "iloud-mtm2",
+      "role": "monitors",
+      "name": "IK Multimedia iLoud MTM MkII",
+      "tier": "flagship",
+      "unitPriceEur": 699,
+      "qty": 1,
+      "unitLabel": "pair",
+      "why": "Ships with a measurement mic and calibrates itself to your room - the untreated-room cheat code.",
+      "tags": ["compact", "small-room", "room-correction"],
+      "merchants": {
+        "thomann": { "slug": "ik_multimedia_iloud_mtm_mkii.htm", "priceEur": 699, "verified": "2026-07-26" },
+        "gear4music": { "search": "IK Multimedia iLoud MTM MkII" },
+        "amazon": { "search": "IK Multimedia iLoud MTM MkII" }
+      }
+    },
+    {
+      "id": "adam-a7v",
+      "role": "monitors",
+      "name": "ADAM Audio A7V",
+      "tier": "flagship",
+      "unitPriceEur": 629,
+      "qty": 2,
+      "why": "The modern mid-field standard: 7-inch woofer, rotatable waveguide, full DSP correction.",
+      "tags": ["nearfield", "ribbon-tweeter", "room-correction"],
+      "merchants": {
+        "thomann": { "slug": "adam_a7v.htm", "priceEur": 629, "verified": "2026-07-26" },
+        "gear4music": { "search": "ADAM Audio A7V" },
+        "amazon": { "search": "ADAM Audio A7V" }
+      }
+    },
+    {
+      "id": "neumann-kh120ii",
+      "role": "monitors",
+      "name": "Neumann KH 120 II",
+      "tier": "flagship",
+      "unitPriceEur": 769,
+      "qty": 2,
+      "why": "Neumann's nearfield benchmark, with network-based automatic room alignment built in.",
+      "tags": ["nearfield", "mixing", "room-correction"],
+      "merchants": {
+        "thomann": { "slug": "neumann_kh_120_ii.htm", "priceEur": 769, "verified": "2026-07-26" },
+        "gear4music": { "search": "Neumann KH 120 II" },
+        "amazon": { "search": "Neumann KH 120 II" }
+      }
+    },
+    {
+      "id": "neumann-kh150",
+      "role": "monitors",
+      "name": "Neumann KH 150",
+      "tier": "flagship",
+      "unitPriceEur": 1444,
+      "qty": 2,
+      "why": "Reaches genuinely low for a nearfield and holds composure loud - a final-decisions monitor.",
+      "tags": ["nearfield", "mixing", "room-correction"],
+      "merchants": {
+        "thomann": { "slug": "neumann_kh_150.htm", "priceEur": 1444, "verified": "2026-07-26" },
+        "gear4music": { "search": "Neumann KH 150" },
+        "amazon": { "search": "Neumann KH 150" }
+      }
+    },
+
+    {
+      "id": "umc22",
       "role": "interface",
       "name": "Behringer U-Phoria UMC22",
-      "priceUsd": 59,
+      "tier": "entry",
+      "unitPriceEur": 38,
       "why": "The functional minimum: one decent preamp, clean output, absurdly cheap.",
-      "tags": ["budget"],
-      "search": "Behringer U-Phoria UMC22"
+      "tags": ["1-preamp"],
+      "merchants": {
+        "thomann": { "slug": "behringer_u_phoria_umc22.htm", "priceEur": 38, "verified": "2026-07-26" },
+        "gear4music": { "search": "Behringer U-Phoria UMC22" },
+        "amazon": { "search": "Behringer U-Phoria UMC22" }
+      }
+    },
+    {
+      "id": "umc204hd",
+      "role": "interface",
+      "name": "Behringer U-Phoria UMC204HD",
+      "tier": "entry",
+      "unitPriceEur": 71,
+      "why": "Two Midas preamps and proper balanced outs for less than most single-input boxes.",
+      "tags": ["2-preamp", "balanced-out"],
+      "merchants": {
+        "thomann": { "slug": "behringer_u_phoria_umc204hd.htm", "priceEur": 71, "verified": "2026-07-26" },
+        "gear4music": { "search": "Behringer U-Phoria UMC204HD" },
+        "amazon": { "search": "Behringer U-Phoria UMC204HD" }
+      }
     },
     {
       "id": "scarlett-solo",
       "role": "interface",
       "name": "Focusrite Scarlett Solo (4th Gen)",
-      "priceUsd": 139,
+      "tier": "entry",
+      "unitPriceEur": 119,
       "why": "The best-selling interface ever for a reason: great preamp, idiot-proof, works everywhere.",
-      "tags": ["value"],
-      "search": "Focusrite Scarlett Solo 4th Gen"
+      "tags": ["1-preamp", "balanced-out"],
+      "merchants": {
+        "thomann": { "slug": "focusrite_scarlett_solo_4th_gen.htm", "priceEur": 119, "verified": "2026-07-26" },
+        "gear4music": { "search": "Focusrite Scarlett Solo 4th Gen" },
+        "amazon": { "search": "Focusrite Scarlett Solo 4th Gen" }
+      }
     },
     {
-      "id": "motu-m2",
+      "id": "scarlett-2i2",
       "role": "interface",
-      "name": "MOTU M2",
-      "priceUsd": 199,
-      "why": "Best converters and metering in its class - the pick if the interface is the studio's heart.",
-      "tags": ["value", "premium"],
-      "search": "MOTU M2 audio interface"
+      "name": "Focusrite Scarlett 2i2 (4th Gen)",
+      "tier": "mid",
+      "unitPriceEur": 169,
+      "why": "Two preamps with auto-gain and clip-safe - the version most people should actually buy.",
+      "tags": ["2-preamp", "balanced-out"],
+      "merchants": {
+        "thomann": { "slug": "focusrite_scarlett_2i2_4th_generation.htm", "priceEur": 169, "verified": "2026-07-26" },
+        "gear4music": { "search": "Focusrite Scarlett 2i2 4th Gen" },
+        "amazon": { "search": "Focusrite Scarlett 2i2 4th Gen" }
+      }
     },
     {
       "id": "audient-id14",
       "role": "interface",
       "name": "Audient iD14 MkII",
-      "priceUsd": 299,
+      "tier": "mid",
+      "unitPriceEur": 211,
       "why": "Console-grade preamps and a proper monitor controller in a desktop box.",
-      "tags": ["premium"],
-      "search": "Audient iD14 MkII"
+      "tags": ["2-preamp", "monitor-control", "adat"],
+      "merchants": {
+        "thomann": { "slug": "audient_id14_mkii.htm", "priceEur": 211, "verified": "2026-07-26" },
+        "gear4music": { "search": "Audient iD14 MkII" },
+        "amazon": { "search": "Audient iD14 MkII" }
+      }
     },
     {
-      "id": "party-mix-ii",
+      "id": "motu-m2",
+      "role": "interface",
+      "name": "MOTU M2",
+      "tier": "mid",
+      "unitPriceEur": 239,
+      "why": "Best converters and metering in its class - the pick if the interface is the studio's heart.",
+      "tags": ["2-preamp", "balanced-out", "metering"],
+      "merchants": {
+        "thomann": { "slug": "motu_m2.htm", "priceEur": 239, "verified": "2026-07-26" },
+        "gear4music": { "search": "MOTU M2" },
+        "amazon": { "search": "MOTU M2" }
+      }
+    },
+    {
+      "id": "ua-volt276",
+      "role": "interface",
+      "name": "Universal Audio Volt 276",
+      "tier": "mid",
+      "unitPriceEur": 255,
+      "why": "Built-in analogue compressor and a vintage preamp mode - vocals sit down before the DAW.",
+      "tags": ["2-preamp", "compressor"],
+      "merchants": {
+        "thomann": { "slug": "universal_audio_volt_276.htm", "priceEur": 255, "verified": "2026-07-26" },
+        "gear4music": { "search": "Universal Audio Volt 276" },
+        "amazon": { "search": "Universal Audio Volt 276" }
+      }
+    },
+    {
+      "id": "ssl2plus",
+      "role": "interface",
+      "name": "SSL 2+ MkII",
+      "tier": "high",
+      "unitPriceEur": 295,
+      "why": "SSL's 4K enhance switch on the preamps, plus two headphone outs for tracking with someone.",
+      "tags": ["2-preamp", "dual-headphone"],
+      "merchants": {
+        "thomann": { "slug": "ssl_2_mkii_601306.htm", "priceEur": 295, "verified": "2026-07-26" },
+        "gear4music": { "search": "SSL 2+ MkII" },
+        "amazon": { "search": "SSL 2+ MkII" }
+      }
+    },
+    {
+      "id": "audient-id24",
+      "role": "interface",
+      "name": "Audient iD24",
+      "tier": "high",
+      "unitPriceEur": 322,
+      "why": "iD14's converters with a fuller monitor section and ADAT expansion for later.",
+      "tags": ["2-preamp", "monitor-control", "adat"],
+      "merchants": {
+        "thomann": { "slug": "audient_id24.htm", "priceEur": 322, "verified": "2026-07-26" },
+        "gear4music": { "search": "Audient iD24" },
+        "amazon": { "search": "Audient iD24" }
+      }
+    },
+    {
+      "id": "rme-babyface",
+      "role": "interface",
+      "name": "RME Babyface Pro FS",
+      "tier": "flagship",
+      "unitPriceEur": 725,
+      "why": "RME's driver stability and clocking - the interface people stop replacing.",
+      "tags": ["2-preamp", "monitor-control", "low-latency"],
+      "merchants": {
+        "thomann": { "slug": "rme_babyface_pro_fs.htm", "priceEur": 725, "verified": "2026-07-26" },
+        "gear4music": { "search": "RME Babyface Pro FS" },
+        "amazon": { "search": "RME Babyface Pro FS" }
+      }
+    },
+    {
+      "id": "ua-apollo-twinx",
+      "role": "interface",
+      "name": "Universal Audio Apollo Twin X Duo (Gen 2)",
+      "tier": "flagship",
+      "unitPriceEur": 999,
+      "why": "Onboard DSP runs UAD plugins while you track - the classic-preamp-emulation route.",
+      "tags": ["2-preamp", "dsp", "monitor-control"],
+      "merchants": {
+        "thomann": { "slug": "universal_audio_apollo_twin_x_duo_gen2_ess.htm", "priceEur": 999, "verified": "2026-07-26" },
+        "gear4music": { "search": "Universal Audio Apollo Twin X Duo" },
+        "amazon": { "search": "Universal Audio Apollo Twin X Duo" }
+      }
+    },
+
+    {
+      "id": "numark-partymix2",
       "role": "controller",
-      "name": "Numark Party Mix II",
-      "priceUsd": 99,
+      "name": "Numark Party Mix MKII",
+      "tier": "entry",
+      "unitPriceEur": 99,
       "why": "A real two-channel controller with pads and a built-in soundcard for pocket money.",
-      "tags": ["budget"],
-      "search": "Numark Party Mix II"
+      "tags": ["2-channel", "built-in-soundcard"],
+      "merchants": {
+        "thomann": { "slug": "numark_party_mix_mkii.htm", "priceEur": 99, "verified": "2026-07-26" },
+        "gear4music": { "search": "Numark Party Mix MKII" },
+        "amazon": { "search": "Numark Party Mix II" }
+      }
     },
     {
-      "id": "inpulse-300",
+      "id": "hercules-inpulse300",
       "role": "controller",
       "name": "Hercules DJControl Inpulse 300 MK2",
-      "priceUsd": 199,
+      "tier": "entry",
+      "unitPriceEur": 174,
       "why": "Bigger jog wheels and beatmatch training guides - the learning-focused step up.",
-      "tags": ["budget"],
-      "search": "Hercules DJControl Inpulse 300 MK2"
+      "tags": ["2-channel", "built-in-soundcard", "beginner-guides"],
+      "merchants": {
+        "thomann": { "slug": "hercules_dj_control_inpulse_300_mk2.htm", "priceEur": 174, "verified": "2026-07-26" },
+        "gear4music": { "search": "Hercules DJControl Inpulse 300 MK2" },
+        "amazon": { "search": "Hercules DJControl Inpulse 300 MK2" }
+      }
     },
     {
       "id": "ddj-flx4",
       "role": "controller",
       "name": "Pioneer DJ DDJ-FLX4",
-      "priceUsd": 299,
+      "tier": "mid",
+      "unitPriceEur": 299,
+      "priceSource": "estimate",
       "why": "The default first controller: rekordbox and Serato support, club-style layout, endless tutorials.",
-      "tags": ["value", "club-standard"],
-      "search": "Pioneer DJ DDJ-FLX4"
+      "tags": ["2-channel", "built-in-soundcard", "club-layout"],
+      "merchants": {
+        "gear4music": { "search": "Pioneer DJ DDJ-FLX4" },
+        "amazon": { "search": "Pioneer DJ DDJ-FLX4" }
+      }
     },
     {
-      "id": "ddj-flx6",
+      "id": "reloop-flux",
+      "role": "controller",
+      "name": "Reloop Flux",
+      "tier": "mid",
+      "unitPriceEur": 369,
+      "why": "A DVS interface rather than a controller - the bridge if you want to keep using turntables.",
+      "tags": ["dvs", "4-channel"],
+      "merchants": {
+        "thomann": { "slug": "reloop_flux.htm", "priceEur": 369, "verified": "2026-07-26" },
+        "gear4music": { "search": "Reloop Flux" },
+        "amazon": { "search": "Reloop Flux" }
+      }
+    },
+    {
+      "id": "numark-mixstream-pro-plus",
+      "role": "controller",
+      "name": "Numark Mixstream Pro+",
+      "tier": "high",
+      "unitPriceEur": 645,
+      "why": "Standalone: streaming and USB playback with no laptop, screen and speakers built in.",
+      "tags": ["standalone", "2-channel", "streaming"],
+      "merchants": {
+        "thomann": { "slug": "numark_mixstream_pro_559714.htm", "priceEur": 645, "verified": "2026-07-26" },
+        "gear4music": { "search": "Numark Mixstream Pro+" },
+        "amazon": { "search": "Numark Mixstream Pro Plus" }
+      }
+    },
+    {
+      "id": "ddj-flx6gt",
       "role": "controller",
       "name": "Pioneer DJ DDJ-FLX6-GT",
-      "priceUsd": 599,
-      "why": "Four channels, full-size jogs, and merge FX - the last controller before club gear.",
-      "tags": ["premium", "club-standard"],
-      "search": "Pioneer DJ DDJ-FLX6-GT"
+      "tier": "high",
+      "unitPriceEur": 549,
+      "priceSource": "estimate",
+      "why": "Four channels, full-size jogs and merge FX - the last controller before club gear.",
+      "tags": ["4-channel", "built-in-soundcard", "club-layout"],
+      "merchants": {
+        "gear4music": { "search": "Pioneer DJ DDJ-FLX6-GT" },
+        "amazon": { "search": "Pioneer DJ DDJ-FLX6-GT" }
+      }
+    },
+    {
+      "id": "denon-prime-go",
+      "role": "controller",
+      "name": "Denon DJ Prime GO+",
+      "tier": "flagship",
+      "unitPriceEur": 1059,
+      "why": "Battery-powered standalone with a big touchscreen - plays a whole gig out of a backpack.",
+      "tags": ["standalone", "2-channel", "battery", "streaming"],
+      "merchants": {
+        "thomann": { "slug": "denon_dj_prime_go_600218.htm", "priceEur": 1059, "verified": "2026-07-26" },
+        "gear4music": { "search": "Denon DJ Prime GO+" },
+        "amazon": { "search": "Denon DJ Prime GO Plus" }
+      }
+    },
+    {
+      "id": "denon-sc-live4",
+      "role": "controller",
+      "name": "Denon DJ SC Live 4",
+      "tier": "flagship",
+      "unitPriceEur": 1099,
+      "why": "Four-channel standalone with built-in speakers - a complete rig with no laptop at all.",
+      "tags": ["standalone", "4-channel", "streaming"],
+      "merchants": {
+        "thomann": { "slug": "denon_dj_sc_live_4.htm", "priceEur": 1099, "verified": "2026-07-26" },
+        "gear4music": { "search": "Denon DJ SC Live 4" },
+        "amazon": { "search": "Denon DJ SC Live 4" }
+      }
     },
     {
       "id": "ddj-flx10",
       "role": "controller",
       "name": "Pioneer DJ DDJ-FLX10",
-      "priceUsd": 1599,
-      "why": "Flagship 4-channel with stems separation - for DJs booking real gigs.",
-      "tags": ["premium", "pro", "club-standard"],
-      "search": "Pioneer DJ DDJ-FLX10"
+      "tier": "flagship",
+      "unitPriceEur": 1499,
+      "priceSource": "estimate",
+      "why": "Flagship four-channel with onboard stems separation - for DJs booking real gigs.",
+      "tags": ["4-channel", "stems", "club-layout"],
+      "merchants": {
+        "gear4music": { "search": "Pioneer DJ DDJ-FLX10" },
+        "amazon": { "search": "Pioneer DJ DDJ-FLX10" }
+      }
     },
+
     {
-      "id": "minilab-3",
+      "id": "arturia-minilab3",
       "role": "midi-keyboard",
       "name": "Arturia MiniLab 3",
-      "priceUsd": 109,
-      "why": "Best-feeling mini keys and a serious bundled software suite (Analog Lab).",
-      "tags": ["budget", "compact"],
-      "search": "Arturia MiniLab 3"
+      "tier": "entry",
+      "unitPriceEur": 89,
+      "why": "Best-feeling mini keys at the price, and the bundled Analog Lab is a real instrument library.",
+      "tags": ["compact", "25-key", "software-bundle"],
+      "merchants": {
+        "thomann": { "slug": "arturia_minilab_3_black.htm", "priceEur": 89, "verified": "2026-07-26" },
+        "gear4music": { "search": "Arturia MiniLab 3" },
+        "amazon": { "search": "Arturia MiniLab 3" }
+      }
     },
     {
-      "id": "mpk-mini-mk3",
+      "id": "nektar-gx61",
       "role": "midi-keyboard",
-      "name": "Akai MPK Mini MK3",
-      "priceUsd": 119,
-      "why": "The beatmaker classic: MPC pads plus two octaves of keys in a backpack footprint.",
-      "tags": ["budget", "compact"],
-      "search": "Akai MPK Mini MK3"
+      "name": "Nektar Impact GX 61",
+      "tier": "entry",
+      "unitPriceEur": 109,
+      "why": "Five octaves of full-size keys for mini-keyboard money - buy this if you actually play.",
+      "tags": ["61-key", "full-size-keys"],
+      "merchants": {
+        "thomann": { "slug": "nektar_impact_gx_61.htm", "priceEur": 109, "verified": "2026-07-26" },
+        "gear4music": { "search": "Nektar Impact GX61" },
+        "amazon": { "search": "Nektar Impact GX61" }
+      }
+    },
+    {
+      "id": "launchkey-mini25",
+      "role": "midi-keyboard",
+      "name": "Novation Launchkey Mini 25 MK4",
+      "tier": "entry",
+      "unitPriceEur": 111,
+      "why": "The tightest Ableton integration in a backpack footprint, with a genuinely good arpeggiator.",
+      "tags": ["compact", "25-key", "ableton"],
+      "merchants": {
+        "thomann": { "slug": "novation_launchkey_mini_25_mk4.htm", "priceEur": 111, "verified": "2026-07-26" },
+        "gear4music": { "search": "Novation Launchkey Mini MK4" },
+        "amazon": { "search": "Novation Launchkey Mini MK4" }
+      }
     },
     {
       "id": "launchkey-37",
       "role": "midi-keyboard",
       "name": "Novation Launchkey 37 MK4",
-      "priceUsd": 219,
-      "why": "Full-size keys with deep Ableton integration and a proper arpeggiator.",
-      "tags": ["value"],
-      "search": "Novation Launchkey 37 MK4"
+      "tier": "mid",
+      "unitPriceEur": 159,
+      "why": "Full-size keys with deep Ableton integration - the sweet spot for most bedroom setups.",
+      "tags": ["37-key", "full-size-keys", "ableton"],
+      "merchants": {
+        "thomann": { "slug": "novation_launchkey_37_mk4.htm", "priceEur": 159, "verified": "2026-07-26" },
+        "gear4music": { "search": "Novation Launchkey 37 MK4" },
+        "amazon": { "search": "Novation Launchkey 37 MK4" }
+      }
     },
     {
-      "id": "sm58",
-      "role": "mic",
-      "name": "Shure SM58",
-      "priceUsd": 99,
-      "why": "Indestructible dynamic that forgives untreated rooms - the safe first vocal mic.",
-      "tags": ["budget", "untreated-room"],
-      "search": "Shure SM58"
+      "id": "keylab-ess61",
+      "role": "midi-keyboard",
+      "name": "Arturia KeyLab Essential 61 mk3",
+      "tier": "mid",
+      "unitPriceEur": 209,
+      "why": "Five octaves plus DAW transport control and the full Analog Lab library.",
+      "tags": ["61-key", "full-size-keys", "daw-control", "software-bundle"],
+      "merchants": {
+        "thomann": { "slug": "arturia_keylab_essential_61_mk3_black.htm", "priceEur": 209, "verified": "2026-07-26" },
+        "gear4music": { "search": "Arturia KeyLab Essential 61 mk3" },
+        "amazon": { "search": "Arturia KeyLab Essential 61 mk3" }
+      }
     },
+    {
+      "id": "launchkey-61",
+      "role": "midi-keyboard",
+      "name": "Novation Launchkey 61 MK4",
+      "tier": "high",
+      "unitPriceEur": 289,
+      "why": "The 61-key Launchkey - same Ableton control surface, enough range to play two-handed.",
+      "tags": ["61-key", "full-size-keys", "ableton"],
+      "merchants": {
+        "thomann": { "slug": "novation_launchkey_61_mk4.htm", "priceEur": 289, "verified": "2026-07-26" },
+        "gear4music": { "search": "Novation Launchkey 61 MK4" },
+        "amazon": { "search": "Novation Launchkey 61 MK4" }
+      }
+    },
+    {
+      "id": "keylab-49mk3",
+      "role": "midi-keyboard",
+      "name": "Arturia KeyLab 49 mk3",
+      "tier": "high",
+      "unitPriceEur": 399,
+      "why": "Proper semi-weighted action and a metal chassis - where a controller starts feeling like an instrument.",
+      "tags": ["49-key", "semi-weighted", "daw-control"],
+      "merchants": {
+        "thomann": { "slug": "arturia_keylab_49_mk3_black.htm", "priceEur": 399, "verified": "2026-07-26" },
+        "gear4music": { "search": "Arturia KeyLab 49 mk3" },
+        "amazon": { "search": "Arturia KeyLab 49 mk3" }
+      }
+    },
+    {
+      "id": "keylab-61mk3",
+      "role": "midi-keyboard",
+      "name": "Arturia KeyLab 61 mk3",
+      "tier": "high",
+      "unitPriceEur": 469,
+      "why": "The 61-key KeyLab: aftertouch, semi-weighted keys, and a serious bundled instrument suite.",
+      "tags": ["61-key", "semi-weighted", "daw-control", "aftertouch"],
+      "merchants": {
+        "thomann": { "slug": "arturia_keylab_61_mk3_black.htm", "priceEur": 469, "verified": "2026-07-26" },
+        "gear4music": { "search": "Arturia KeyLab 61 mk3" },
+        "amazon": { "search": "Arturia KeyLab 61 mk3" }
+      }
+    },
+    {
+      "id": "ni-s61mk3",
+      "role": "midi-keyboard",
+      "name": "Native Instruments Kontrol S61 MK3",
+      "tier": "flagship",
+      "unitPriceEur": 869,
+      "why": "Polyphonic aftertouch, twin screens and Komplete integration - the top of the controller world.",
+      "tags": ["61-key", "semi-weighted", "poly-aftertouch", "software-bundle"],
+      "merchants": {
+        "thomann": { "slug": "native_instruments_kontrol_s61_mk3_komplete_15.htm", "priceEur": 869, "verified": "2026-07-26" },
+        "gear4music": { "search": "Native Instruments Kontrol S61 MK3" },
+        "amazon": { "search": "Native Instruments Kontrol S61 MK3" }
+      }
+    },
+
     {
       "id": "at2020",
       "role": "mic",
       "name": "Audio-Technica AT2020",
-      "priceUsd": 99,
+      "tier": "entry",
+      "unitPriceEur": 92,
       "why": "The classic budget condenser: detailed vocals if the room is reasonably quiet.",
-      "tags": ["budget"],
-      "search": "Audio-Technica AT2020"
+      "tags": ["condenser", "xlr"],
+      "merchants": {
+        "thomann": { "slug": "audio_technica_at2020.htm", "priceEur": 92, "verified": "2026-07-26" },
+        "gear4music": { "search": "Audio-Technica AT2020" },
+        "amazon": { "search": "Audio-Technica AT2020" }
+      }
     },
     {
-      "id": "rode-nt1",
+      "id": "shure-sm58",
       "role": "mic",
-      "name": "RODE NT1 (5th Gen)",
-      "priceUsd": 249,
+      "name": "Shure SM58",
+      "tier": "entry",
+      "unitPriceEur": 115,
+      "why": "Indestructible dynamic that forgives an untreated room - the safe first vocal mic.",
+      "tags": ["dynamic", "xlr", "untreated-room"],
+      "merchants": {
+        "thomann": { "slug": "shure_sm58.htm", "priceEur": 115, "verified": "2026-07-26" },
+        "gear4music": { "search": "Shure SM58" },
+        "amazon": { "search": "Shure SM58" }
+      }
+    },
+    {
+      "id": "rode-nt1a",
+      "role": "mic",
+      "name": "Rode NT1-A Complete Vocal Recording",
+      "tier": "entry",
+      "unitPriceEur": 169,
+      "why": "Comes with shockmount, pop shield and cable - the cheapest way to a finished vocal chain.",
+      "tags": ["condenser", "xlr", "includes-accessories"],
+      "merchants": {
+        "thomann": { "slug": "rode_nt1a_complete_vocal_recording.htm", "priceEur": 169, "verified": "2026-07-26" },
+        "gear4music": { "search": "Rode NT1-A Complete Vocal Recording" },
+        "amazon": { "search": "Rode NT1-A Complete Vocal Recording" }
+      }
+    },
+    {
+      "id": "rode-nt1-5g",
+      "role": "mic",
+      "name": "Rode NT1 (5th Generation)",
+      "tier": "mid",
+      "unitPriceEur": 175,
       "why": "Near-silent self-noise and 32-bit float USB output - a condenser to grow into.",
-      "tags": ["value", "premium"],
-      "search": "RODE NT1 5th Generation"
+      "tags": ["condenser", "xlr", "usb"],
+      "merchants": {
+        "thomann": { "slug": "rode_nt1_5th_generation_black.htm", "priceEur": 175, "verified": "2026-07-26" },
+        "gear4music": { "search": "Rode NT1 5th Generation" },
+        "amazon": { "search": "Rode NT1 5th Generation" }
+      }
+    },
+    {
+      "id": "aston-origin",
+      "role": "mic",
+      "name": "Aston Microphones Origin",
+      "tier": "mid",
+      "unitPriceEur": 222,
+      "why": "British-built with a built-in pop filter and a forgiving, forward vocal character.",
+      "tags": ["condenser", "xlr"],
+      "merchants": {
+        "thomann": { "slug": "aston_microphones_origin.htm", "priceEur": 222, "verified": "2026-07-26" },
+        "gear4music": { "search": "Aston Microphones Origin" },
+        "amazon": { "search": "Aston Microphones Origin" }
+      }
+    },
+    {
+      "id": "lewitt-440pure",
+      "role": "mic",
+      "name": "Lewitt LCT 440 PURE",
+      "tier": "high",
+      "unitPriceEur": 269,
+      "why": "Startlingly low noise floor for the price - the one that punches into TLM territory.",
+      "tags": ["condenser", "xlr"],
+      "merchants": {
+        "thomann": { "slug": "lewitt_lct_440_pure.htm", "priceEur": 269, "verified": "2026-07-26" },
+        "gear4music": { "search": "Lewitt LCT 440 PURE" },
+        "amazon": { "search": "Lewitt LCT 440 PURE" }
+      }
+    },
+    {
+      "id": "shure-sm7db",
+      "role": "mic",
+      "name": "Shure SM7dB",
+      "tier": "high",
+      "unitPriceEur": 539,
+      "why": "The broadcast standard with a built-in preamp - rejects room noise better than any condenser.",
+      "tags": ["dynamic", "xlr", "untreated-room", "built-in-preamp"],
+      "merchants": {
+        "thomann": { "slug": "shure_sm_7_db.htm", "priceEur": 539, "verified": "2026-07-26" },
+        "gear4music": { "search": "Shure SM7dB" },
+        "amazon": { "search": "Shure SM7dB" }
+      }
+    },
+    {
+      "id": "austrian-oc18",
+      "role": "mic",
+      "name": "Austrian Audio OC18 Studio Set",
+      "tier": "flagship",
+      "unitPriceEur": 649,
+      "why": "Built by ex-AKG engineers around the CK12 capsule lineage - a genuine large-studio condenser.",
+      "tags": ["condenser", "xlr", "includes-accessories"],
+      "merchants": {
+        "thomann": { "slug": "austrian_audio_oc18_studio_set.htm", "priceEur": 649, "verified": "2026-07-26" },
+        "gear4music": { "search": "Austrian Audio OC18 Studio Set" },
+        "amazon": { "search": "Austrian Audio OC18" }
+      }
+    },
+    {
+      "id": "neumann-tlm102",
+      "role": "mic",
+      "name": "Neumann TLM 102",
+      "tier": "flagship",
+      "unitPriceEur": 679,
+      "why": "The affordable Neumann - that polished top end without the TLM 103's price.",
+      "tags": ["condenser", "xlr"],
+      "merchants": {
+        "thomann": { "slug": "neumann_tlm_102_nickel.htm", "priceEur": 679, "verified": "2026-07-26" },
+        "gear4music": { "search": "Neumann TLM 102" },
+        "amazon": { "search": "Neumann TLM 102" }
+      }
+    },
+    {
+      "id": "neumann-tlm103",
+      "role": "mic",
+      "name": "Neumann TLM 103",
+      "tier": "flagship",
+      "unitPriceEur": 1111,
+      "why": "The modern vocal benchmark. Needs a quiet, treated room to be worth the money.",
+      "tags": ["condenser", "xlr", "needs-treatment"],
+      "merchants": {
+        "thomann": { "slug": "neumann_tlm_103.htm", "priceEur": 1111, "verified": "2026-07-26" },
+        "gear4music": { "search": "Neumann TLM 103" },
+        "amazon": { "search": "Neumann TLM 103" }
+      }
+    },
+
+    {
+      "id": "km-210-9",
+      "role": "mic-stand",
+      "name": "K&M 210/9 Boom Stand",
+      "tier": "entry",
+      "unitPriceEur": 55,
+      "why": "The industry-default boom stand. Buy it once and it outlives the microphone.",
+      "tags": ["boom", "floor-stand"],
+      "merchants": {
+        "thomann": { "slug": "km_210-9_stativ.htm", "priceEur": 55, "verified": "2026-07-26" },
+        "gear4music": { "search": "K&M 210/9 Microphone Stand" },
+        "amazon": { "search": "K&M 210/9 microphone stand" }
+      }
+    },
+    {
+      "id": "km-25900",
+      "role": "mic-stand",
+      "name": "K&M 25900 Desk Stand",
+      "tier": "entry",
+      "unitPriceEur": 61,
+      "why": "Short desk stand for a seated vocal or podcast position, same K&M build quality.",
+      "tags": ["desk-stand"],
+      "merchants": {
+        "thomann": { "slug": "km_25900_basaltgrau.htm", "priceEur": 61, "verified": "2026-07-26" },
+        "gear4music": { "search": "K&M 25900 desk stand" },
+        "amazon": { "search": "K&M 25900 microphone stand" }
+      }
+    },
+    {
+      "id": "rode-psa1plus",
+      "role": "mic-stand",
+      "name": "Rode PSA1+",
+      "tier": "mid",
+      "unitPriceEur": 99,
+      "why": "Damped studio boom arm that clamps to the desk - swings out of the way between takes.",
+      "tags": ["boom-arm", "desk-mount"],
+      "merchants": {
+        "thomann": { "slug": "rode_psa1_529272.htm", "priceEur": 99, "verified": "2026-07-26" },
+        "gear4music": { "search": "Rode PSA1+" },
+        "amazon": { "search": "Rode PSA1 Plus" }
+      }
+    },
+
+    {
+      "id": "cordial-cfm3mv",
+      "role": "cables",
+      "name": "Cordial CFM 3 MV (jack to XLR, 3 m)",
+      "tier": "entry",
+      "unitPriceEur": 9.5,
+      "qty": 2,
+      "why": "Connects interface outputs to monitors. You need one per speaker - this covers a stereo pair.",
+      "tags": ["monitor-cable"],
+      "merchants": {
+        "thomann": { "slug": "cordial_cfm_3_mv_klinke_xlr_kabel.htm", "priceEur": 9.5, "verified": "2026-07-26" },
+        "gear4music": { "search": "Cordial CFM 3 MV" },
+        "amazon": { "search": "jack to XLR cable 3m balanced" }
+      }
+    },
+    {
+      "id": "cordial-ccm5fm",
+      "role": "cables",
+      "name": "Cordial CCM 5 FM (XLR, 5 m)",
+      "tier": "entry",
+      "unitPriceEur": 11.9,
+      "qty": 1,
+      "why": "The mic cable. Nothing records without one, and it is the cheapest line on the whole list.",
+      "tags": ["mic-cable"],
+      "merchants": {
+        "thomann": { "slug": "cordial_ccm_5_fm.htm", "priceEur": 11.9, "verified": "2026-07-26" },
+        "gear4music": { "search": "Cordial CCM 5 FM XLR cable" },
+        "amazon": { "search": "XLR cable 5m balanced" }
+      }
+    },
+
+    {
+      "id": "auralex-mopad",
+      "role": "monitor-isolation",
+      "name": "Auralex MoPAD",
+      "tier": "entry",
+      "unitPriceEur": 33,
+      "why": "Decouples monitors from the desk for under the price of a cable - the highest-value 30 euro in audio.",
+      "tags": ["isolation-pad"],
+      "merchants": {
+        "thomann": { "slug": "auralex_acoustics_mopad.htm", "priceEur": 33, "verified": "2026-07-26" },
+        "gear4music": { "search": "Auralex MoPAD" },
+        "amazon": { "search": "Auralex MoPAD monitor isolation" }
+      }
+    },
+    {
+      "id": "iso-puck-set",
+      "role": "monitor-isolation",
+      "name": "IsoAcoustics ISO-Puck Set",
+      "tier": "entry",
+      "unitPriceEur": 59,
+      "why": "Small pucks that tighten up the low end without raising the speakers much.",
+      "tags": ["isolation-pad"],
+      "merchants": {
+        "thomann": { "slug": "isoacoustics_iso_puck_set.htm", "priceEur": 59, "verified": "2026-07-26" },
+        "gear4music": { "search": "IsoAcoustics ISO-Puck Set" },
+        "amazon": { "search": "IsoAcoustics ISO-Puck" }
+      }
+    },
+    {
+      "id": "iso-155",
+      "role": "monitor-isolation",
+      "name": "IsoAcoustics ISO-155",
+      "tier": "mid",
+      "unitPriceEur": 122,
+      "why": "Height and tilt adjustable stands that get the tweeters to ear level - imaging snaps into place.",
+      "tags": ["isolation-stand", "tilt"],
+      "merchants": {
+        "thomann": { "slug": "isoacoustics_iso_155.htm", "priceEur": 122, "verified": "2026-07-26" },
+        "gear4music": { "search": "IsoAcoustics ISO-155" },
+        "amazon": { "search": "IsoAcoustics ISO-155" }
+      }
+    },
+    {
+      "id": "iso-200",
+      "role": "monitor-isolation",
+      "name": "IsoAcoustics ISO-200",
+      "tier": "high",
+      "unitPriceEur": 155,
+      "why": "The larger ISO stands for 7- and 8-inch cabinets that would topple the smaller ones.",
+      "tags": ["isolation-stand", "tilt", "large-monitors"],
+      "merchants": {
+        "thomann": { "slug": "isoacoustics_iso_200.htm", "priceEur": 155, "verified": "2026-07-26" },
+        "gear4music": { "search": "IsoAcoustics ISO-200" },
+        "amazon": { "search": "IsoAcoustics ISO-200" }
+      }
+    },
+
+    {
+      "id": "se-rfx",
+      "role": "acoustic-treatment",
+      "name": "sE Electronics RF-X Reflexion Filter",
+      "tier": "entry",
+      "unitPriceEur": 92,
+      "why": "Kills the worst room reflections around the mic when treating the whole room is not an option.",
+      "tags": ["vocal-booth", "portable"],
+      "merchants": {
+        "thomann": { "slug": "se_electronics_rf_x_reflexion_filter.htm", "priceEur": 92, "verified": "2026-07-26" },
+        "gear4music": { "search": "sE Electronics RF-X Reflexion Filter" },
+        "amazon": { "search": "sE Electronics RF-X" }
+      }
+    },
+    {
+      "id": "auralex-wedges2",
+      "role": "acoustic-treatment",
+      "name": "Auralex 2\" Studiofoam Wedges",
+      "tier": "mid",
+      "unitPriceEur": 249,
+      "why": "First-reflection absorption for the walls beside and behind the desk. Do this before buying better speakers.",
+      "tags": ["absorption", "first-reflection"],
+      "merchants": {
+        "thomann": { "slug": "auralex_acoustics_2_studiofoam_wedges_charcoal.htm", "priceEur": 249, "verified": "2026-07-26" },
+        "gear4music": { "search": "Auralex Studiofoam Wedges" },
+        "amazon": { "search": "Auralex Studiofoam Wedges 2 inch" }
+      }
+    },
+    {
+      "id": "vicoustic-cinema-round",
+      "role": "acoustic-treatment",
+      "name": "Vicoustic Cinema Round Premium",
+      "tier": "high",
+      "unitPriceEur": 385,
+      "why": "Broadband absorbers that look like furniture - treatment you can live with in a room you also sleep in.",
+      "tags": ["absorption", "broadband"],
+      "merchants": {
+        "thomann": { "slug": "vicoustic_cinema_round_premium_white.htm", "priceEur": 385, "verified": "2026-07-26" },
+        "gear4music": { "search": "Vicoustic Cinema Round Premium" },
+        "amazon": { "search": "Vicoustic Cinema Round Premium" }
+      }
+    },
+    {
+      "id": "vicoustic-flexiwall3",
+      "role": "acoustic-treatment",
+      "name": "Vicoustic Flexi Wall 3 Set",
+      "tier": "flagship",
+      "unitPriceEur": 509,
+      "why": "A full wall system rather than scattered panels - where the room stops being the weak link.",
+      "tags": ["absorption", "broadband", "full-wall"],
+      "merchants": {
+        "thomann": { "slug": "vicoustic_flexi_wall_3_set.htm", "priceEur": 509, "verified": "2026-07-26" },
+        "gear4music": { "search": "Vicoustic Flexi Wall 3" },
+        "amazon": { "search": "Vicoustic Flexi Wall" }
+      }
     }
   ]
 }
