@@ -30,6 +30,12 @@ export const metadata: Metadata = {
   authors: [{ name: "TuneTapper" }],
   creator: "TuneTapper",
   metadataBase: new URL("https://tunetapper.com"),
+  other: {
+    // Ownership proof for the Awin publisher application - they check the page
+    // source for "Awin" to confirm we control this domain. Keep until the
+    // account is approved and both advertisers are live; harmless if left.
+    "awin-verification": "Awin",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
