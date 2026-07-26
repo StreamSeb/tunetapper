@@ -22,6 +22,7 @@ import {
   generateToolSchema,
   generateFaqSchema,
   generateBreadcrumbSchema,
+  socialMetadata,
 } from "@/lib/seo"
 
 export const metadata: Metadata = {
@@ -41,13 +42,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tunetapper.com/tools/camelot",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "Camelot Wheel Chart & Calculator - Harmonic Mixing Key Guide | TuneTapper",
     description:
       "Interactive Camelot wheel plus a full 24-key compatibility chart. Click any key to see every compatible mix, or scan the harmonic mixing table. Free, no signup.",
-    url: "https://tunetapper.com/tools/camelot",
-    images: [{ url: "/og/camelot.png", width: 1200, height: 630, alt: "Camelot Wheel - TuneTapper" }],
-  },
+    path: "/tools/camelot",
+    image: "/og/camelot.png",
+    imageAlt: "Camelot Wheel - TuneTapper",
+  }),
 }
 
 const faqs = [

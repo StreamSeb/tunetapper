@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { BarsToTimeTool } from "@/components/tools/bars-to-time-tool"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { generateToolSchema } from "@/lib/seo"
+import { generateToolSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "Bars to Time Calculator - Convert Bars to Duration",
@@ -18,13 +18,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tunetapper.com/tools/bars-to-time",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "Bars to Time Calculator | TuneTapper",
     description:
       "Calculate exact duration for any number of bars at any BPM. Essential for music arrangement and DJ mixing.",
-    url: "https://tunetapper.com/tools/bars-to-time",
-    images: [{ url: "/og/bars-to-time.png", width: 1200, height: 630, alt: "Bars to Time Calculator - TuneTapper" }],
-  },
+    path: "/tools/bars-to-time",
+    image: "/og/bars-to-time.png",
+    imageAlt: "Bars to Time Calculator - TuneTapper",
+  }),
 }
 
 export default function BarsToTimePage() {

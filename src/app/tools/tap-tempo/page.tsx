@@ -10,7 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { generateToolSchema, generateFaqSchema } from "@/lib/seo"
+import { generateToolSchema, generateFaqSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "Tap BPM Counter - Free Online Tap Tempo Tool",
@@ -32,13 +32,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tunetapper.com/tools/tap-tempo",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "Tap BPM Counter - Free Online Tap Tempo Tool | TuneTapper",
     description:
       "Count the BPM of any song by tapping along to the beat - free, no signup. Works on phone and desktop. Accurate after 4-8 taps.",
-    url: "https://tunetapper.com/tools/tap-tempo",
-    images: [{ url: "/og/tap-tempo.png", width: 1200, height: 630, alt: "Tap BPM Counter - TuneTapper" }],
-  },
+    path: "/tools/tap-tempo",
+    image: "/og/tap-tempo.png",
+    imageAlt: "Tap BPM Counter - TuneTapper",
+  }),
 }
 
 const faqs = [

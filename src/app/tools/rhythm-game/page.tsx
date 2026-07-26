@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { RhythmGame } from "@/components/tools/rhythm-game"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { generateToolSchema, generateFaqSchema } from "@/lib/seo"
+import { generateToolSchema, generateFaqSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "Rhythm Test - How Accurate Is Your Internal Metronome?",
@@ -22,13 +22,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tunetapper.com/tools/rhythm-game",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "Rhythm Test - How Accurate Is Your Internal Metronome? | TuneTapper",
     description:
       "Tap along with a metronome, keep the beat when it goes silent, and get a timing accuracy score out of 100. Can you hit Drum Machine tier?",
-    url: "https://tunetapper.com/tools/rhythm-game",
-    images: [{ url: "/og/rhythm-game.png", width: 1200, height: 630, alt: "Rhythm Test - TuneTapper" }],
-  },
+    path: "/tools/rhythm-game",
+    image: "/og/rhythm-game.png",
+    imageAlt: "Rhythm Test - TuneTapper",
+  }),
 }
 
 const faqs = [

@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { StudioBuilderTool } from "@/components/tools/studio-builder-tool"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { generateToolSchema, generateFaqSchema } from "@/lib/seo"
+import { generateToolSchema, generateFaqSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "Studio Setup Builder - Complete Gear Lists for Any Budget",
@@ -18,13 +18,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tunetapper.com/tools/studio-builder",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "Studio Setup Builder | TuneTapper",
     description:
       "Enter your budget and the music you make, and get a complete studio or DJ setup with hand-picked gear.",
-    url: "https://tunetapper.com/tools/studio-builder",
-    images: [{ url: "/og/default.png", width: 1200, height: 630, alt: "Studio Setup Builder - TuneTapper" }],
-  },
+    path: "/tools/studio-builder",
+    image: "/og/studio-builder.png",
+    imageAlt: "Studio Setup Builder - TuneTapper",
+  }),
 }
 
 const faqs = [

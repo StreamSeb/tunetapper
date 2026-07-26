@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { BpmDelayTool } from "@/components/tools/bpm-delay-tool"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { generateToolSchema } from "@/lib/seo"
+import { generateToolSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "BPM Delay Time Calculator - Sync Delay to Tempo",
@@ -18,13 +18,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tunetapper.com/tools/bpm-delay",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "BPM Delay Time Calculator | TuneTapper",
     description:
       "Calculate precise delay times in milliseconds for any BPM. Perfect for syncing delay effects to your track's tempo.",
-    url: "https://tunetapper.com/tools/bpm-delay",
-    images: [{ url: "/og/bpm-delay.png", width: 1200, height: 630, alt: "BPM Delay Calculator - TuneTapper" }],
-  },
+    path: "/tools/bpm-delay",
+    image: "/og/bpm-delay.png",
+    imageAlt: "BPM Delay Calculator - TuneTapper",
+  }),
 }
 
 export default function BpmDelayPage() {

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { socialMetadata } from "@/lib/seo"
 import Link from "next/link"
 import { BookOpen, Music, Disc, BarChart3 } from "lucide-react"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
@@ -12,12 +13,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tunetapper.com/guides",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "Music Production & DJ Guides | TuneTapper",
-    description: "Learn music production techniques, DJ mixing tips, and audio engineering concepts.",
-    url: "https://tunetapper.com/guides",
-    type: "website",
-  },
+    description:
+      "Learn music production techniques, DJ mixing tips, and audio engineering concepts.",
+    path: "/guides",
+  }),
 }
 
 const categoryIcons: Record<string, React.ReactNode> = {

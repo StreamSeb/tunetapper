@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { KeyAnalyzerTool } from "@/components/tools/key-analyzer-tool"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { generateToolSchema, generateFaqSchema, generateBreadcrumbSchema } from "@/lib/seo"
+import { generateToolSchema, generateFaqSchema, generateBreadcrumbSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "Free Song Key & BPM Analyzer - No Upload Needed",
@@ -29,13 +29,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://tunetapper.com/tools/key-analyzer",
   },
-  openGraph: {
+  ...socialMetadata({
     title: "Free Song Key & BPM Analyzer - No Upload Needed | TuneTapper",
     description:
       "Find the key, Camelot code, and BPM of any song free - no upload, no software, no account. Analysed privately in your browser.",
-    url: "https://tunetapper.com/tools/key-analyzer",
-    images: [{ url: "/og/key-analyzer.png", width: 1200, height: 630, alt: "Key & BPM Analyzer - TuneTapper" }],
-  },
+    path: "/tools/key-analyzer",
+    image: "/og/key-analyzer.png",
+    imageAlt: "Key & BPM Analyzer - TuneTapper",
+  }),
 }
 
 const faqs = [

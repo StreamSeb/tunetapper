@@ -50,6 +50,54 @@ export function generateMetadata({
   }
 }
 
+/**
+ * The openGraph + twitter pair, built from one source.
+ *
+ * Declaring `openGraph` on a page replaces the root layout's block outright
+ * rather than merging into it - so pages that set only `openGraph` shipped the
+ * site-wide Twitter title on every page, and, where no image was named, no
+ * share image at all. Emitting both here keeps them in step. Pages that call
+ * `generateMetadata` above already get this; this is for the ones that need to
+ * hand-roll the rest of their metadata.
+ */
+export function socialMetadata({
+  title,
+  description,
+  path,
+  image = "/og/default.png",
+  imageAlt,
+}: {
+  title: string
+  description: string
+  path: string
+  /** Path to a 1200x630 share image under public/, e.g. "/og/tap-tempo.png" */
+  image?: string
+  imageAlt?: string
+}): Pick<Metadata, "openGraph" | "twitter"> {
+  const url = `${SITE_URL}${path}`
+  const images = [
+    { url: image, width: 1200, height: 630, alt: imageAlt ?? title },
+  ]
+
+  return {
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: SITE_NAME,
+      type: "website",
+      locale: "en_US",
+      images,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images,
+    },
+  }
+}
+
 export function generateBpmPageMetadata(bpm: number): Metadata {
   return generateMetadata({
     title: `${bpm} BPM Delay Times & Bars Calculator`,
