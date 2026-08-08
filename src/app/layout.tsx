@@ -35,6 +35,10 @@ export const metadata: Metadata = {
     // source for "Awin" to confirm we control this domain. Keep until the
     // account is approved and both advertisers are live; harmless if left.
     "awin-verification": "Awin",
+    // Same for FlexOffers, which we joined to reach Sweetwater for the studio
+    // builder. FlexOffers only asks for it on the home page, but emitting it
+    // from the layout covers that and costs nothing.
+    "fo-verify": "6796302f-0f18-4bbd-8f0f-de06f45ee248",
   },
   openGraph: {
     type: "website",
