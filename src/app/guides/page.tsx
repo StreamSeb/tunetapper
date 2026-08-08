@@ -1,7 +1,8 @@
 import type { Metadata } from "next"
 import { socialMetadata } from "@/lib/seo"
 import Link from "next/link"
-import { BookOpen, Music, Disc, BarChart3 } from "lucide-react"
+import Image from "next/image"
+import { Music, Disc, BarChart3 } from "lucide-react"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -40,10 +41,17 @@ export default function GuidesPage() {
     <div className="mx-auto max-w-4xl px-4 py-12">
       <Breadcrumbs items={[{ name: "Guides", path: "/guides" }]} />
       {/* Hero Section */}
+      <div className="relative mb-8 h-40 overflow-hidden rounded-xl sm:h-52 lg:h-60">
+        <Image
+          src="/images/dj-home-studio.webp"
+          alt="A home DJ setup on a wooden desk - turntable, controller and laptop, with studio monitors and shelves of vinyl behind"
+          fill
+          priority
+          sizes="(min-width: 896px) 896px, 100vw"
+          className="object-cover"
+        />
+      </div>
       <div className="text-center mb-12">
-        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[var(--primary)]/10 mb-6">
-          <BookOpen className="h-8 w-8 text-[var(--primary)]" />
-        </div>
         <h1 className="text-4xl font-bold tracking-tight mb-4">
           Music Production & DJ Guides
         </h1>
