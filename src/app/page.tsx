@@ -149,11 +149,20 @@ export default function HomePage() {
               song&apos;s key and BPM, test your rhythm, and more. All the
               essential utilities you need, free and easy to use.
             </p>
+            {/* Camelot Wheel and Studio Setup Builder lead here on purpose -
+                they are the two tools worth promoting hardest, so they take the
+                two filled buttons and BPM Delay drops to the grid below. */}
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button asChild size="lg">
-                <Link href="/tools/bpm-delay">
-                  <Clock className="mr-2 h-5 w-5" />
-                  BPM Delay Calculator
+                <Link href="/tools/camelot">
+                  <Disc3 className="mr-2 h-5 w-5" />
+                  Camelot Wheel
+                </Link>
+              </Button>
+              <Button asChild size="lg">
+                <Link href="/tools/studio-builder">
+                  <Wrench className="mr-2 h-5 w-5" />
+                  Studio Setup Builder
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
