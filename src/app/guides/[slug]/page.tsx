@@ -19,6 +19,8 @@ const guideContent: Record<
     content: React.ReactNode
     faqs: { question: string; answer: string }[]
     relatedTools: { href: string; label: string }[]
+    /** Optional photo band above the guide title. Omit for guides without one. */
+    hero?: { src: string; alt: string }
   }
 > = {
   "delay-times-explained": {
@@ -282,6 +284,10 @@ const guideContent: Record<
     ],
   },
   "bpm-genres": {
+    hero: {
+      src: "/images/vinyl-crate-digging.webp",
+      alt: "A hand pulling a record from a crate in front of a wall of shelved vinyl",
+    },
     content: (
       <>
         <h2>Understanding BPM in Different Genres</h2>
@@ -395,6 +401,10 @@ const guideContent: Record<
     ],
   },
   "tap-tempo-guide": {
+    hero: {
+      src: "/images/tap-tempo-metronome.webp",
+      alt: "A finger pressing the tap button on a handheld metronome, with a phone running a tap tempo app next to it",
+    },
     content: (
       <>
         <h2>What is Tap Tempo?</h2>
@@ -760,6 +770,10 @@ const guideContent: Record<
     ],
   },
   "beatmatching-guide": {
+    hero: {
+      src: "/images/club-dj-booth.webp",
+      alt: "A club DJ booth with two media players either side of a four-channel mixer, a turntable and a laptop, overlooking an empty dance floor",
+    },
     content: (
       <>
         <h2>What is Beatmatching?</h2>
@@ -1080,7 +1094,7 @@ export default async function GuidePage({ params }: Props) {
     notFound()
   }
 
-  const { content, faqs, relatedTools } = guideContent[slug]
+  const { content, faqs, relatedTools, hero } = guideContent[slug]
 
   return (
     <>
@@ -1094,6 +1108,18 @@ export default async function GuidePage({ params }: Props) {
         <Breadcrumbs items={[{ name: "Guides", path: "/guides" }, { name: guide.title, path: `/guides/${slug}` }]} />
         {/* Header */}
         <div className="mb-8">
+          {hero && (
+            <div className="relative mb-6 h-40 overflow-hidden rounded-xl sm:h-52 lg:h-60">
+              <Image
+                src={hero.src}
+                alt={hero.alt}
+                fill
+                priority
+                sizes="(min-width: 896px) 896px, 100vw"
+                className="object-cover"
+              />
+            </div>
+          )}
           <Badge variant="secondary" className="mb-2">
             {guide.category}
           </Badge>
