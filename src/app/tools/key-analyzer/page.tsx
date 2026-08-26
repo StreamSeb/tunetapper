@@ -1,41 +1,29 @@
 import type { Metadata } from "next"
 import { KeyAnalyzerTool } from "@/components/tools/key-analyzer-tool"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
-import { generateToolSchema, generateFaqSchema, generateBreadcrumbSchema, socialMetadata } from "@/lib/seo"
+import { generateToolSchema, generateFaqSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "Free Song Key & BPM Analyzer - No Upload Needed",
+  title: "Song Key Finder - Detect the Key of Any MP3, No Upload",
   description:
-    "Find the musical key, Camelot code, and BPM of any song free - no upload, no software, no account. Drop in an MP3, WAV, or FLAC and it's analysed privately in your browser.",
+    "Free online key finder: drop in an MP3, WAV, or FLAC and read its musical key and Camelot code in seconds. Nothing is uploaded - the file is analysed privately in your browser.",
   keywords: [
-    "online key finder",
-    "song bpm and key analyzer",
-    "bpm and key finder",
-    "find key of song online",
-    "key finder no upload",
-    "key finder without uploading",
-    "find song key without software",
-    "free key finder no download",
-    "private key finder",
-    "audio key detector",
-    "song key analyzer",
-    "free key detection",
-    "what key is this song",
+    "song key finder",
+    "key detector",
+    "mp3 key finder",
     "camelot key finder",
-    "musical key detector",
-    "key finder DJ",
-    "harmonic mixing key finder",
+    "key finder no upload",
   ],
   alternates: {
     canonical: "https://tunetapper.com/tools/key-analyzer",
   },
   ...socialMetadata({
-    title: "Free Song Key & BPM Analyzer - No Upload Needed | TuneTapper",
+    title: "Song Key Finder - Detect the Key of Any MP3, No Upload | TuneTapper",
     description:
-      "Find the key, Camelot code, and BPM of any song free - no upload, no software, no account. Analysed privately in your browser.",
+      "Drop in an MP3 and read its musical key and Camelot code in seconds. Nothing is uploaded - analysed privately in your browser.",
     path: "/tools/key-analyzer",
     image: "/og/key-analyzer.png",
-    imageAlt: "Key & BPM Analyzer - TuneTapper",
+    imageAlt: "Song Key Finder - TuneTapper",
   }),
 }
 
@@ -74,17 +62,11 @@ const faqs = [
 
 export default function KeyAnalyzerPage() {
   const toolSchema = generateToolSchema({
-    name: "Free Online Key Finder",
+    name: "Song Key Finder",
     description:
-      "Detect the musical key and Camelot notation of any audio file. Runs entirely in your browser.",
+      "Detect the musical key and Camelot notation of any audio file. Runs entirely in your browser - nothing is uploaded.",
     url: "/tools/key-analyzer",
   })
-
-  const breadcrumbItems = [
-    { name: "Home", path: "/" },
-    { name: "Tools", path: "/tools" },
-    { name: "Key Finder", path: "/tools/key-analyzer" },
-  ]
 
   return (
     <>
@@ -96,15 +78,12 @@ export default function KeyAnalyzerPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(generateFaqSchema(faqs)) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateBreadcrumbSchema(breadcrumbItems)),
-        }}
-      />
       <div className="mx-auto max-w-4xl px-4 pt-6">
         <Breadcrumbs
-          items={[{ name: "Key Finder", path: "/tools/key-analyzer" }]}
+          items={[
+            { name: "Tools", path: "/tools" },
+            { name: "Key Finder", path: "/tools/key-analyzer" },
+          ]}
         />
       </div>
       <KeyAnalyzerTool faqs={faqs} />

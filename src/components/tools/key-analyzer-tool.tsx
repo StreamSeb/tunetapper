@@ -171,11 +171,11 @@ export function KeyAnalyzerTool({
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl font-bold lg:text-4xl">
-          Free Online Key &amp; BPM Analyzer
+          Free Online Key Finder
         </h1>
         <p className="mt-3 text-lg text-[var(--muted-foreground)]">
-          Drop in any track to detect its musical key, Camelot code, and BPM -
-          100% in your browser, no upload to any server.
+          Drop in any track to detect its musical key and Camelot code -
+          100% in your browser, with nothing uploaded to any server.
         </p>
       </div>
 
@@ -418,7 +418,29 @@ export function KeyAnalyzerTool({
 
       {/* SEO prose + FAQ */}
       <section className="mt-4 prose prose-neutral dark:prose-invert max-w-none">
-        <h2>Find the Key of Any Song - Free, Private, Instant</h2>
+        <h2>Find a Song&apos;s Key Without Uploading Anything</h2>
+        <p>
+          Unlike most online key finders, this tool never uploads your audio.
+          The file is decoded and analysed entirely on your device through the
+          browser&apos;s Web Audio API, so nothing is sent to a server, stored,
+          or shared. That means you can <strong>find the key of a song without
+          software</strong>, without creating an account, and without waiting on
+          an upload - just drop a file in and read the result. It works on
+          desktop and mobile, with no download required, making it a fast,
+          private alternative to apps like Mixed In Key when you only need to
+          check a track or two.
+        </p>
+        <h2>MP3 Key Finder</h2>
+        <p>
+          Drop in an MP3, WAV, FLAC, AAC, OGG, or M4A file and the key finder
+          reads its musical key straight from the audio. Because decoding happens
+          in the browser, an <strong>MP3 key finder</strong> that runs this way
+          needs no plugin, no desktop install, and no upload step - the file
+          never leaves the folder you dragged it from. Large files work too; only
+          the first 90 seconds are analysed, which is ample for a reliable
+          reading.
+        </p>
+        <h2>Song Key Detector: How It Works</h2>
         <p>
           TuneTapper&apos;s key finder analyzes your audio file directly in your
           browser using the Web Audio API and the{" "}
@@ -450,17 +472,14 @@ export function KeyAnalyzerTool({
           Atonal, heavily chromatic, or extremely percussive tracks may produce
           lower confidence scores.
         </p>
-        <h3>Find a Song&apos;s Key Without Uploading or Installing Anything</h3>
+        <h3>Looking for the Tempo Instead?</h3>
         <p>
-          Unlike most online key finders, this tool never uploads your audio.
-          The file is decoded and analysed entirely on your device through the
-          browser&apos;s Web Audio API, so nothing is sent to a server, stored,
-          or shared. That means you can <strong>find the key of a song without
-          software</strong>, without creating an account, and without waiting on
-          an upload - just drop a file in and read the result. It works on
-          desktop and mobile, with no download required, making it a fast,
-          private alternative to apps like Mixed In Key when you only need to
-          check a track or two.
+          This page reports a BPM alongside the key, but if tempo is what you
+          actually came for there are better-suited tools. The{" "}
+          <Link href="/tools/bpm-detector">BPM detector</Link> finds the tempo of
+          music playing in the room through your microphone, and the{" "}
+          <Link href="/tools/tap-tempo">tap BPM counter</Link> measures it from
+          your own taps.
         </p>
 
         {faqs && faqs.length > 0 && (
