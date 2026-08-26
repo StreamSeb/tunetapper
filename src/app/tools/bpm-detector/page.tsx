@@ -100,6 +100,45 @@ export default function BpmDetectorPage() {
             the tempo from your taps - it works on anything you can hear, even
             through headphones.
           </p>
+          <h2>Find the BPM of a Song Playing on a Speaker</h2>
+          <p>
+            Point the device at the speaker, start listening, and the tempo
+            appears within a few bars. Nothing needs to be connected to the
+            sound system - the detector works from the sound in the air, so it
+            reads a track coming out of a club PA, a monitor, a laptop, or a
+            Bluetooth speaker just as well as one playing on headphones held
+            close to the mic.
+          </p>
+
+          <h2>BPM Counter Using Your Phone&apos;s Microphone</h2>
+          <p>
+            The page runs in the mobile browser, so your phone becomes a
+            pocket <strong>BPM counter</strong> with nothing to install. Open it
+            on the dancefloor, in a record shop, or in a rehearsal room, hold the
+            phone toward the source, and read the tempo. Because the analysis is
+            on-device, it keeps working with no signal.
+          </p>
+
+          <h2>Detect BPM from Vinyl, Radio, or a Live DJ Set</h2>
+          <p>
+            Sources with no file to analyse are exactly where microphone
+            detection earns its place. A record on a turntable, a radio
+            broadcast, a support DJ&apos;s set you want to mix into - none of
+            them exist as an audio file you can drop into an analyzer, but all of
+            them are audible in the room. Pitch-adjusted vinyl works too: the
+            detector reads the tempo actually playing, not the tempo printed on
+            the label.
+          </p>
+
+          <h2>Find the Tempo of a Live Band or Drummer</h2>
+          <p>
+            Live performance drifts, and the detector follows it. Point it at a
+            drummer to check whether the band is rushing, confirm a click-track
+            tempo in rehearsal, or capture the tempo of a live take you want to
+            rebuild in the studio later. A clear, steady backbeat gives the most
+            stable reading.
+          </p>
+
           <h2>Privacy</h2>
           <p>
             The audio stream never leaves your device. The detector converts

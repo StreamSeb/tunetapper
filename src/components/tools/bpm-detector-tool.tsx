@@ -142,7 +142,9 @@ export function BpmDetectorTool() {
     <div className="mx-auto max-w-2xl px-4 py-8 lg:py-12">
       {/* Header */}
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold lg:text-4xl">BPM Detector</h1>
+        <h1 className="text-3xl font-bold lg:text-4xl">
+          BPM Detector &ndash; Find Tempo With Your Microphone
+        </h1>
         <p className="mt-3 text-lg text-[var(--muted-foreground)]">
           Play music out loud and let your microphone find the tempo -
           nothing is recorded or uploaded.

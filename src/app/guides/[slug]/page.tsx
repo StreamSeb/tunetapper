@@ -520,6 +520,7 @@ const guideContent: Record<
     ],
     relatedTools: [
       { href: "/tools/tap-tempo", label: "Tap Tempo Tool" },
+      { href: "/tools/bpm-detector", label: "BPM Counter Using Your Microphone" },
       { href: "/tools/bpm-delay", label: "BPM Delay Calculator" },
       { href: "/bpm", label: "BPM Reference" },
     ],
@@ -907,6 +908,10 @@ const guideContent: Record<
     ],
     relatedTools: [
       { href: "/tools/tap-tempo", label: "Tap Tempo - Find Track BPM" },
+      {
+        href: "/tools/bpm-detector",
+        label: "Detect BPM Through Your Microphone",
+      },
       { href: "/tools/bpm-transition", label: "BPM Transition Helper" },
       { href: "/tools/camelot", label: "Camelot Wheel - Harmonic Mixing" },
     ],
