@@ -1,192 +1,257 @@
 {
-  "capturedAt": "2026-08-24T08:56:18.310Z",
-  "windowStart": "2026-07-24",
-  "windowEnd": "2026-08-21",
+  "capturedAt": "2026-08-31T16:05:00.313Z",
+  "windowStart": "2026-07-31",
+  "windowEnd": "2026-08-28",
   "ga4": {
-    "sessions": 20,
-    "users": 15,
-    "pageviews": 35,
-    "bounceRate": 0.55,
+    "sessions": 31,
+    "users": 16,
+    "pageviews": 57,
+    "bounceRate": 0.3870967741935484,
     "topPages": [
       {
-        "path": "/tools/key-analyzer",
-        "sessions": 10
-      },
-      {
         "path": "/tools/camelot",
-        "sessions": 5
+        "sessions": 13
       },
       {
         "path": "/tools/bpm-detector",
+        "sessions": 8
+      },
+      {
+        "path": "/tools/key-analyzer",
         "sessions": 4
       },
       {
-        "path": "/tools/bpm-delay",
+        "path": "/",
+        "sessions": 2
+      },
+      {
+        "path": "/bars",
+        "sessions": 1
+      },
+      {
+        "path": "/camelot/8a",
+        "sessions": 1
+      },
+      {
+        "path": "/tools/rhythm-game",
+        "sessions": 1
+      },
+      {
+        "path": "/tools/tap-tempo**​",
         "sessions": 1
       }
     ]
   },
   "gsc": {
-    "impressions": 29839,
-    "clicks": 140,
-    "ctr": 0.004691846241496028,
-    "position": 12.18278092429371,
+    "impressions": 29795,
+    "clicks": 141,
+    "ctr": 0.004732337640543716,
+    "position": 13.500050344017453,
     "topPages": [
       {
         "page": "https://tunetapper.com/tools/camelot",
-        "impressions": 12542,
-        "clicks": 92,
-        "ctr": 0.0073353532132036355,
-        "position": 9.835831605804497
+        "impressions": 11587,
+        "clicks": 81,
+        "ctr": 0.0069905929058427544,
+        "position": 9.803055148010701
       },
       {
         "page": "https://tunetapper.com/",
-        "impressions": 226,
-        "clicks": 15,
-        "ctr": 0.06637168141592921,
-        "position": 24.876106194690266
-      },
-      {
-        "page": "https://tunetapper.com/bars",
-        "impressions": 13983,
-        "clicks": 8,
-        "ctr": 0.0005721232925695488,
-        "position": 8.134520489165414
+        "impressions": 243,
+        "clicks": 17,
+        "ctr": 0.06995884773662552,
+        "position": 27.74074074074074
       },
       {
         "page": "https://tunetapper.com/tools/bpm-detector",
-        "impressions": 399,
-        "clicks": 8,
-        "ctr": 0.020050125313283207,
-        "position": 34.40100250626566
+        "impressions": 489,
+        "clicks": 13,
+        "ctr": 0.026584867075664622,
+        "position": 33.280163599182
       },
       {
         "page": "https://tunetapper.com/tools/rhythm-game",
-        "impressions": 206,
+        "impressions": 223,
+        "clicks": 11,
+        "ctr": 0.04932735426008968,
+        "position": 26.10762331838565
+      },
+      {
+        "page": "https://tunetapper.com/bars",
+        "impressions": 13725,
         "clicks": 8,
-        "ctr": 0.038834951456310676,
-        "position": 27.16990291262136
+        "ctr": 0.0005828779599271403,
+        "position": 8.008087431693989
       },
       {
         "page": "https://tunetapper.com/tools/key-analyzer",
-        "impressions": 679,
-        "clicks": 5,
-        "ctr": 0.007363770250368188,
-        "position": 56.390279823269516
+        "impressions": 906,
+        "clicks": 7,
+        "ctr": 0.00772626931567329,
+        "position": 58.90397350993378
       },
       {
         "page": "https://tunetapper.com/camelot/4b",
-        "impressions": 697,
-        "clicks": 4,
-        "ctr": 0.005738880918220947,
-        "position": 13.855093256814921
-      },
-      {
-        "page": "https://tunetapper.com/guides/camelot-wheel-guide",
-        "impressions": 987,
-        "clicks": 1,
-        "ctr": 0.0010131712259371835,
-        "position": 53.64336372847011
-      },
-      {
-        "page": "https://tunetapper.com/guides/tap-tempo-guide",
-        "impressions": 50,
-        "clicks": 1,
-        "ctr": 0.02,
-        "position": 11.44
-      },
-      {
-        "page": "https://tunetapper.com/tools/tap-tempo",
-        "impressions": 214,
-        "clicks": 1,
-        "ctr": 0.004672897196261682,
-        "position": 29.046728971962615
+        "impressions": 634,
+        "clicks": 3,
+        "ctr": 0.00473186119873817,
+        "position": 14.511041009463723
       },
       {
         "page": "https://tunetapper.com/about",
-        "impressions": 15,
-        "clicks": 0,
-        "ctr": 0,
-        "position": 9.333333333333334
+        "impressions": 21,
+        "clicks": 1,
+        "ctr": 0.047619047619047616,
+        "position": 16.095238095238095
+      },
+      {
+        "page": "https://tunetapper.com/camelot/11a",
+        "impressions": 61,
+        "clicks": 1,
+        "ctr": 0.01639344262295082,
+        "position": 11.131147540983607
+      },
+      {
+        "page": "https://tunetapper.com/camelot/1a",
+        "impressions": 38,
+        "clicks": 1,
+        "ctr": 0.02631578947368421,
+        "position": 15.210526315789474
+      },
+      {
+        "page": "https://tunetapper.com/guides/camelot-wheel-guide",
+        "impressions": 1255,
+        "clicks": 1,
+        "ctr": 0.0007968127490039841,
+        "position": 56.8804780876494
+      },
+      {
+        "page": "https://tunetapper.com/guides/tap-tempo-guide",
+        "impressions": 56,
+        "clicks": 1,
+        "ctr": 0.017857142857142856,
+        "position": 12.642857142857142
+      },
+      {
+        "page": "https://tunetapper.com/tools/tap-tempo",
+        "impressions": 217,
+        "clicks": 1,
+        "ctr": 0.004608294930875576,
+        "position": 29.244239631336406
       },
       {
         "page": "https://tunetapper.com/bpm",
-        "impressions": 1,
+        "impressions": 5,
         "clicks": 0,
         "ctr": 0,
-        "position": 1
+        "position": 28.4
       },
       {
-        "page": "https://tunetapper.com/tools",
-        "impressions": 1,
+        "page": "https://tunetapper.com/camelot",
+        "impressions": 94,
         "clicks": 0,
         "ctr": 0,
-        "position": 1
+        "position": 69.46808510638297
       },
       {
-        "page": "https://tunetapper.com/tools/bars-to-time",
-        "impressions": 1,
+        "page": "https://tunetapper.com/camelot/12b",
+        "impressions": 35,
         "clicks": 0,
         "ctr": 0,
-        "position": 1
+        "position": 22.857142857142858
       },
       {
-        "page": "https://tunetapper.com/tools/embed",
-        "impressions": 33,
+        "page": "https://tunetapper.com/camelot/3a",
+        "impressions": 28,
         "clicks": 0,
         "ctr": 0,
-        "position": 16.666666666666664
+        "position": 18.035714285714285
+      },
+      {
+        "page": "https://tunetapper.com/camelot/8a",
+        "impressions": 42,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 20.452380952380953
+      },
+      {
+        "page": "https://tunetapper.com/camelot/8b",
+        "impressions": 27,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 36.48148148148148
+      },
+      {
+        "page": "https://tunetapper.com/guides",
+        "impressions": 16,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 65.1875
       }
     ],
     "topQueries": [
       {
         "query": "camelot wheel calculator",
         "impressions": 13,
-        "clicks": 7,
-        "ctr": 0.5384615384615384,
-        "position": 1
+        "clicks": 6,
+        "ctr": 0.46153846153846156,
+        "position": 3.230769230769231
       },
       {
         "query": "10b camelot wheel",
-        "impressions": 11,
+        "impressions": 7,
         "clicks": 2,
-        "ctr": 0.18181818181818182,
-        "position": 8.818181818181818
+        "ctr": 0.2857142857142857,
+        "position": 8.571428571428571
       },
       {
         "query": "bpm detector microphone",
-        "impressions": 18,
+        "impressions": 20,
         "clicks": 2,
-        "ctr": 0.1111111111111111,
-        "position": 10.38888888888889
+        "ctr": 0.1,
+        "position": 8.1
       },
       {
-        "query": "12a music",
-        "impressions": 1,
+        "query": "internal metronome test",
+        "impressions": 15,
+        "clicks": 2,
+        "ctr": 0.13333333333333333,
+        "position": 7.666666666666667
+      },
+      {
+        "query": "11a key",
+        "impressions": 22,
         "clicks": 1,
-        "ctr": 1,
-        "position": 1
+        "ctr": 0.045454545454545456,
+        "position": 7.681818181818182
       },
       {
         "query": "12b key",
-        "impressions": 40,
+        "impressions": 50,
         "clicks": 1,
-        "ctr": 0.025,
-        "position": 9.525
+        "ctr": 0.02,
+        "position": 9.46
       },
       {
-        "query": "camelot 4b",
-        "impressions": 20,
+        "query": "camelot 1a",
+        "impressions": 7,
         "clicks": 1,
-        "ctr": 0.05,
-        "position": 5.85
+        "ctr": 0.14285714285714285,
+        "position": 13.857142857142858
+      },
+      {
+        "query": "camelot bpm",
+        "impressions": 55,
+        "clicks": 1,
+        "ctr": 0.01818181818181818,
+        "position": 9.745454545454546
       },
       {
         "query": "camelot chart",
-        "impressions": 148,
+        "impressions": 139,
         "clicks": 1,
-        "ctr": 0.006756756756756757,
-        "position": 8.128378378378379
+        "ctr": 0.007194244604316547,
+        "position": 8.323741007194243
       },
       {
         "query": "camelot finder",
@@ -197,45 +262,38 @@
       },
       {
         "query": "camelot key",
-        "impressions": 715,
+        "impressions": 588,
         "clicks": 1,
-        "ctr": 0.0013986013986013986,
-        "position": 10.165034965034964
+        "ctr": 0.0017006802721088435,
+        "position": 9.977891156462585
       },
       {
         "query": "camelot to key chart",
-        "impressions": 35,
+        "impressions": 32,
         "clicks": 1,
-        "ctr": 0.02857142857142857,
-        "position": 12
+        "ctr": 0.03125,
+        "position": 12.28125
       },
       {
         "query": "camelot wheel finder",
-        "impressions": 14,
+        "impressions": 6,
         "clicks": 1,
-        "ctr": 0.07142857142857142,
-        "position": 39.642857142857146
-      },
-      {
-        "query": "internal metronome test",
-        "impressions": 13,
-        "clicks": 1,
-        "ctr": 0.07692307692307693,
-        "position": 7
+        "ctr": 0.16666666666666666,
+        "position": 38.166666666666664
       },
       {
         "query": "key camelot",
-        "impressions": 89,
+        "impressions": 88,
         "clicks": 1,
-        "ctr": 0.011235955056179775,
-        "position": 8.404494382022472
+        "ctr": 0.011363636363636364,
+        "position": 7.931818181818182
       },
       {
         "query": "\"12b\" \"1a\" camelot compatible",
-        "impressions": 4,
+        "impressions": 3,
         "clicks": 0,
         "ctr": 0,
-        "position": 8.75
+        "position": 8.666666666666668
       },
       {
         "query": "\"8a\" \"10b\" camelot",
@@ -245,11 +303,18 @@
         "position": 11
       },
       {
-        "query": "\"8a\" \"9b\" camelot wheel compatible",
-        "impressions": 3,
+        "query": "\"8a\" \"9b\" camelot",
+        "impressions": 1,
         "clicks": 0,
         "ctr": 0,
-        "position": 6.333333333333333
+        "position": 11
+      },
+      {
+        "query": "\"8a\" \"9b\" camelot wheel compatible",
+        "impressions": 1,
+        "clicks": 0,
+        "ctr": 0,
+        "position": 2
       },
       {
         "query": "\"8a\" \"a minor\" camelot",
@@ -264,20 +329,6 @@
         "clicks": 0,
         "ctr": 0,
         "position": 11
-      },
-      {
-        "query": "10a camelot",
-        "impressions": 36,
-        "clicks": 0,
-        "ctr": 0,
-        "position": 8.777777777777779
-      },
-      {
-        "query": "10a camelot key",
-        "impressions": 15,
-        "clicks": 0,
-        "ctr": 0,
-        "position": 8.666666666666668
       }
     ]
   }
