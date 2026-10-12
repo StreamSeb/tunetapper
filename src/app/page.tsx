@@ -134,7 +134,7 @@ export default function HomePage() {
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[var(--muted)]/50 to-transparent">
+      <section className="relative overflow-hidden border-b-[1.5px] border-[var(--border)]">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:py-24 lg:px-8">
           <div className="text-center">
             <Badge variant="secondary" className="mb-4">
@@ -142,7 +142,7 @@ export default function HomePage() {
             </Badge>
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
               Tools for DJs &<br />
-              <span className="text-[var(--primary)]">Music Producers</span>
+              Music Producers
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--muted-foreground)]">
               Calculate BPM delay times, find compatible keys, detect any
@@ -187,7 +187,7 @@ export default function HomePage() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool) => (
             <Link key={tool.href} href={tool.href} className="group">
-              <Card className="h-full transition-shadow hover:shadow-lg">
+              <Card className="h-full transition-colors hover:border-[var(--primary)]">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="rounded-lg bg-[var(--primary)] p-2 text-[var(--primary-foreground)]">

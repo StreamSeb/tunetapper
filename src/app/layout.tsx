@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google"
 import "./globals.css"
 import { Analytics as VercelAnalytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/layout/theme-provider"
@@ -9,6 +10,9 @@ import { CookieConsent } from "@/components/cookie-consent/cookie-consent"
 import { Analytics } from "@/components/ads/analytics"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { generateWebSiteSchema } from "@/lib/seo"
+
+const display = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-display", display: "swap" })
+const body = Instrument_Sans({ subsets: ["latin"], variable: "--font-body", display: "swap" })
 
 export const metadata: Metadata = {
   title: {
@@ -75,7 +79,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
