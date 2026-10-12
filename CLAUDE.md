@@ -16,6 +16,7 @@ Sessions may run unattended on the mini-PC through Remote Control, started from 
 4. **Don't commit ignored files** (`.env*`, `service-account-key.json`, `reports/`) to this repo, on any branch, and never use `git add -f`. Every branch of a public repo is public.
 5. **Leave other work alone.** The working tree is shared between sessions and may hold someone else's uncommitted changes. Don't stash, reset, checkout over, or commit changes you didn't make.
 6. If a rule blocks the task, stop and report what is blocked. Don't look for a way around it.
+7. **Design changes go through the `design-options` skill** (`.claude/skills/design-options/`): three options as screenshots, Seb picks, nothing is built on a timeout. `client-design` and `site-rebuild` are for client leads and don't apply here. Screenshots never go in this repo; if they can't be shown inline they go to the private `tunetapper-reports` repo under `design/<topic>/`.
 
 ## Commands
 
