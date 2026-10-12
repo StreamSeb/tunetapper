@@ -147,7 +147,7 @@ export function BpmDelayTool() {
                         >
                           {formatMs(row.normal)}
                           {copiedValue === `${row.name}-normal` ? (
-                            <Check className="ml-1 h-3 w-3 text-green-500" />
+                            <Check className="ml-1 h-3 w-3 text-green-700 dark:text-green-400" />
                           ) : (
                             <Copy className="ml-1 h-3 w-3 opacity-50" />
                           )}
@@ -169,7 +169,7 @@ export function BpmDelayTool() {
                         >
                           {formatMs(row.dotted)}
                           {copiedValue === `${row.name}-dotted` ? (
-                            <Check className="ml-1 h-3 w-3 text-green-500" />
+                            <Check className="ml-1 h-3 w-3 text-green-700 dark:text-green-400" />
                           ) : (
                             <Copy className="ml-1 h-3 w-3 opacity-50" />
                           )}
@@ -191,7 +191,7 @@ export function BpmDelayTool() {
                         >
                           {formatMs(row.triplet)}
                           {copiedValue === `${row.name}-triplet` ? (
-                            <Check className="ml-1 h-3 w-3 text-green-500" />
+                            <Check className="ml-1 h-3 w-3 text-green-700 dark:text-green-400" />
                           ) : (
                             <Copy className="ml-1 h-3 w-3 opacity-50" />
                           )}

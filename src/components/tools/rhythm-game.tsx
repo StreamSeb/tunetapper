@@ -421,7 +421,7 @@ export function RhythmGame() {
             <div className="flex flex-wrap justify-center gap-3">
               <Button onClick={handleCopy}>
                 {copied ? (
-                  <Check className="mr-2 h-4 w-4 text-green-500" />
+                  <Check className="mr-2 h-4 w-4 text-green-700 dark:text-green-400" />
                 ) : (
                   <Copy className="mr-2 h-4 w-4" />
                 )}

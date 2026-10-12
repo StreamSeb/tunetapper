@@ -256,7 +256,7 @@ export function TapTempoTool() {
               disabled={!bpm}
             >
               {copied ? (
-                <Check className="mr-2 h-4 w-4 text-green-500" />
+                <Check className="mr-2 h-4 w-4 text-green-700 dark:text-green-400" />
               ) : (
                 <Copy className="mr-2 h-4 w-4" />
               )}

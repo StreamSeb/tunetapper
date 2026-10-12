@@ -157,7 +157,7 @@ export default function ToolsHubPage() {
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {tools.map((tool) => (
           <Link key={tool.href} href={tool.href} className="group">
-            <Card className="h-full transition-shadow hover:shadow-lg">
+            <Card className="h-full transition-colors hover:border-[var(--primary)]">
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="rounded-lg bg-[var(--primary)] p-2 text-[var(--primary-foreground)]">

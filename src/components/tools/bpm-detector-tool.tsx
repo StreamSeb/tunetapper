@@ -207,7 +207,7 @@ export function BpmDetectorTool() {
           </button>
 
           {status === "denied" && (
-            <div className="mt-4 flex items-center gap-2 rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3 text-red-600 dark:text-red-400">
+            <div className="mt-4 flex items-center gap-2 rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3 text-red-700 dark:text-red-400">
               <AlertCircle className="h-4 w-4 shrink-0" />
               <p className="text-sm">
                 Microphone access was blocked. Allow it in your browser&apos;s
@@ -220,7 +220,7 @@ export function BpmDetectorTool() {
             </div>
           )}
           {status === "error" && (
-            <div className="mt-4 flex items-center gap-2 rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3 text-red-600 dark:text-red-400">
+            <div className="mt-4 flex items-center gap-2 rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3 text-red-700 dark:text-red-400">
               <AlertCircle className="h-4 w-4 shrink-0" />
               <p className="text-sm">
                 Could not start audio processing in this browser. Try the{" "}

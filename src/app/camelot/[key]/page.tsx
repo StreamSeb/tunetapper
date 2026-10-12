@@ -122,9 +122,9 @@ export default async function CamelotKeyPage({ params }: Props) {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs opacity-75">{label}</p>
+                    <p className="text-xs opacity-80">{label}</p>
                     <p className="text-2xl font-bold">{ck.camelot}</p>
-                    <p className="text-sm opacity-75">{ck.musical}</p>
+                    <p className="text-sm opacity-80">{ck.musical}</p>
                   </div>
                   {ck.camelot === keyData.camelot && (
                     <Badge variant="outline" className="text-xs">

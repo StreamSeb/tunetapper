@@ -59,7 +59,7 @@ function CompatibleKeyBadge({
           COMPATIBLE_COLORS[type]
         )}
       >
-        <p className="text-xs opacity-75 mb-0.5">{label}</p>
+        <p className="text-xs opacity-80 mb-0.5">{label}</p>
         <p className="text-lg font-bold leading-none">{keyData.camelot}</p>
         <p className="text-sm opacity-80 mt-0.5">{keyData.musical}</p>
       </div>
@@ -216,7 +216,7 @@ export function KeyAnalyzerTool({
             </div>
 
             {status === "error" && error && (
-              <div className="mt-4 flex items-center gap-2 rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3 text-red-600 dark:text-red-400">
+              <div className="mt-4 flex items-center gap-2 rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-3 text-red-700 dark:text-red-400">
                 <AlertCircle className="h-4 w-4 shrink-0" />
                 <p className="text-sm">{error}</p>
               </div>
@@ -256,7 +256,7 @@ export function KeyAnalyzerTool({
           <Card className="mb-6">
             <CardHeader>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="h-5 w-5 text-green-500" />
+                <CheckCircle2 className="h-5 w-5 text-green-700 dark:text-green-400" />
                 <CardTitle>Track Analyzed</CardTitle>
               </div>
               <CardDescription>
