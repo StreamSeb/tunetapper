@@ -36,8 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
-# claude code (local settings + agent state)
-.claude/
+# claude code (local settings + agent state); skills are shared
+.claude/*
+!.claude/skills/
 
 # typescript
 *.tsbuildinfo

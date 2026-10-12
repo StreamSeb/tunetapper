@@ -2,6 +2,21 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## What TuneTapper is
+
+TuneTapper (https://tunetapper.com) is a free site of music production tools for DJs and producers: tap tempo, BPM/delay and bar-length calculators, a Camelot wheel, a studio gear builder, plus guides and programmatic SEO pages. It is a solo project. Traffic comes almost entirely from Google Search, so GA4 and Search Console data drive most decisions. The GitHub repo is **public**.
+
+## Rules for every session (including unattended ones)
+
+Sessions may run unattended on the mini-PC through Remote Control, started from a claude.ai project, with nobody watching the terminal. These rules apply whether or not anyone is watching:
+
+1. **Never deploy without asking.** No `vercel deploy`, `vercel --prod`, promotions, rollbacks, or changes to Vercel project settings, env vars or domains. Treat any push to `main` as a production deploy.
+2. **Never push to `main` without asking.** That covers `git push` on `main`, merging a PR into `main`, and force-pushes anywhere. Work on a branch and push the branch; open a PR if the work should land. If nobody is there to ask, stop at the pushed branch and say so in your final message.
+3. **Never print secrets.** Do not `cat`, `echo`, `grep` or otherwise display values from `.env*`, `~/.tunetapper.env`, `service-account-key.json`, or `printenv`/`env` output. To check configuration, print key *names* and whether each is set. Never put secret values in a commit, report, issue, PR or chat message. `GA4_PROPERTY_ID` counts as a value not to print.
+4. **Don't commit ignored files** (`.env*`, `service-account-key.json`, `reports/`) to this repo, on any branch, and never use `git add -f`. Every branch of a public repo is public.
+5. **Leave other work alone.** The working tree is shared between sessions and may hold someone else's uncommitted changes. Don't stash, reset, checkout over, or commit changes you didn't make.
+6. If a rule blocks the task, stop and report what is blocked. Don't look for a way around it.
+
 ## Commands
 
 ```bash
@@ -64,6 +79,49 @@ NEXT_PUBLIC_ADSENSE_ID=ca-pub-XXXXXXXX   # AdSense publisher ID
 ```
 
 Vercel Analytics loads unconditionally (no PII, no consent needed).
+
+## Data and analytics scripts
+
+All scripts are plain Node ESM in `scripts/`. Run them from the repo root (the credentials path is relative to it):
+
+```bash
+node --env-file-if-exists=.env.local scripts/<name>.mjs
+```
+
+Remote Control sessions on the mini-PC already inherit the variables from `~/.tunetapper.env`; elsewhere they come from `.env.local`. The flag above works in both cases and never overrides variables that are already set.
+
+| Variable | Meaning |
+|---|---|
+| `GA4_PROPERTY_ID` | Numeric GA4 property ID. Required by the GA4 scripts. |
+| `GOOGLE_APPLICATION_CREDENTIALS` | Path to the Google service-account JSON key (read-only GA4 + Search Console access). Required by every Google script. |
+| `GSC_SITE_URL` | Search Console property. Optional, defaults to `https://tunetapper.com`. |
+| `ANTHROPIC_API_KEY` | Only for `agents/weekly-analytics.mjs`. Deliberately **not** in `~/.tunetapper.env`; pass it for that one run. |
+| `ANTHROPIC_MODEL` | Optional model override for `agents/weekly-analytics.mjs`. |
+| `GH_TOKEN` | Used by the `agents/` scripts in GitHub Actions. Locally they use the existing `gh auth login`. |
+| `CHROME_PATH` | Optional browser path for `og-card.mjs`. |
+
+Search Console data lags about 3 days, so every GSC window ends 3 days ago. See `ANALYTICS-SETUP.md` for how the credentials were created.
+
+### Report scripts (read-only, safe to run unattended)
+
+| Script | What it fetches | Needs | Output |
+|---|---|---|---|
+| `fetch-analytics.mjs` | GA4: last 30 days vs the 30 before (overview, top 20 pages, channels). GSC: 28-day summary, top 25 queries, top 25 pages, low-CTR opportunities, sitemap index coverage. | `GA4_PROPERTY_ID`, `GOOGLE_APPLICATION_CREDENTIALS`, `GSC_SITE_URL` | Overwrites `reports/analytics-snapshot.md` |
+| `bars-trend.mjs` | GSC weekly impressions and clicks for the whole site vs `/bars*`, about 10 weeks. | `GOOGLE_APPLICATION_CREDENTIALS`, `GSC_SITE_URL` | stdout |
+| `tap-tempo-report.mjs` | GSC, about 90 days, for pages containing `tap-tempo`: per-page totals, queries, weekly trend. | same | stdout |
+| `page-survival.mjs` | GSC per-page impressions: fixed baseline 2026-04-22..2026-05-05 (before the May 2026 core update) vs the latest 14 days. | same | stdout |
+| `inspect-urls.mjs` | GSC URL Inspection (index verdict, coverage, last crawl, canonical) for five URLs hard-coded in the file. | same | stdout |
+
+`reports/` stays gitignored here. Dated reports (`reports/YYYY-MM-DD.md`) are written by the `analytics-report` skill and published only to the private repo `StreamSeb/tunetapper-reports` (cloned at `~/repos/tunetapper-reports`), where the skill commits the one report file and pushes to that repo's `main`; that push is the skill's standing permission and is not covered by rule 2. Because that repo is private a report may include traffic figures, but still never secrets, the GA4 property ID or credentials paths.
+
+### Scripts with side effects (do not run unattended unless the task says so)
+
+| Script | What it does | Needs | Side effects |
+|---|---|---|---|
+| `agents/weekly-analytics.mjs` | Fetches GA4 + GSC metrics, diffs against `.github/agent-state/analytics.json`, asks Claude which signals deserve a GitHub issue. Runs Mondays 08:00 UTC in `.github/workflows/weekly-analytics.yml`, which commits the state file to `main` as "chore(agent): update analytics baseline". | `GA4_PROPERTY_ID`, `GOOGLE_APPLICATION_CREDENTIALS`, `ANTHROPIC_API_KEY`, `gh` auth | Opens issues labelled `analytics-bot` and rewrites the state file. Locally always add `--dry-run`, which does neither. |
+| `agents/nightly-maintenance.mjs` | `pnpm audit` for high/critical vulnerabilities and a forbidden-licence check on production deps. No Google or Anthropic access. | `gh` auth | Opens issues labelled `nightly-maintenance`. Locally add `--dry-run`. |
+| `gear-price-check.mjs` | Loads Thomann product pages in a headless browser and compares prices with `src/data/gear.json`. | `playwright-core` + Chromium (not project dependencies) | `--write` edits `gear.json`. Don't run it unattended: it scrapes a merchant site, and the Awin datafeed is the intended price source (`docs/studio-builder-plan.md`). |
+| `og-card.mjs` | Not a data script: renders a 1200x630 OG image from the running dev server. | `playwright-core`, dev server on :3000, optional `CHROME_PATH` | Writes into `public/og/`. |
 
 ## Project Roadmap
 
