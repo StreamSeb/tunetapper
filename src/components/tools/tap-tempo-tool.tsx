@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from "react"
 import Link from "next/link"
-import { Copy, Check, RotateCcw, Keyboard, Mouse, Play, Square } from "lucide-react"
+import { Copy, Check, RotateCcw, Play, Square } from "lucide-react"
 import { analytics } from "@/lib/analytics"
 import { Metronome } from "@/lib/metronome"
 import { Button } from "@/components/ui/button"
@@ -13,7 +13,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
 export function TapTempoTool() {
@@ -156,6 +155,20 @@ export function TapTempoTool() {
     }
   }, [])
 
+  // Gaps between the recent taps, and how much they wander relative to their average
+  const intervals = taps.slice(1).map((t, i) => t - taps[i])
+  const avgInterval = intervals.length
+    ? intervals.reduce((a, b) => a + b, 0) / intervals.length
+    : 0
+  const spread =
+    intervals.length >= 2
+      ? Math.sqrt(
+          intervals.reduce((sum, v) => sum + (v - avgInterval) ** 2, 0) / intervals.length
+        ) / avgInterval
+      : null
+  const steadiness =
+    spread === null ? null : spread < 0.03 ? "steady" : spread < 0.08 ? "settling" : "uneven"
+
   return (
     <div className="mx-auto max-w-2xl px-4 py-8 lg:py-12">
       {/* Header */}
@@ -166,20 +179,41 @@ export function TapTempoTool() {
         </p>
       </div>
 
-      {/* Main Tap Area */}
+      {/* Main Tap Area: an instrument-style readout, then the tap bar */}
       <Card className="mb-8">
         <CardContent className="pt-6">
-          {/* BPM Display */}
-          <div className="text-center mb-8">
-            <p className="text-sm text-[var(--muted-foreground)] mb-2">
-              {taps.length > 0 ? `${taps.length} taps` : "Start tapping"}
+          <div className="rounded-xl bg-[var(--muted)] px-5 pb-4 pt-4" aria-live="polite">
+            <p className="text-center text-xs font-medium text-[var(--muted-foreground)]">
+              {taps.length === 0 ? "Waiting for taps" : `${taps.length} taps${steadiness ? `, ${steadiness}` : ""}`}
             </p>
-            <div className="text-6xl font-bold font-mono">
-              {bpm ?? "---"}
-              <span className="text-2xl text-[var(--muted-foreground)] ml-2">
-                BPM
+            <div className="mt-1 flex items-baseline justify-center gap-2">
+              <span className="font-mono text-7xl font-bold tabular-nums tracking-tight sm:text-8xl">
+                {bpm ?? "---"}
               </span>
+              <span className="text-xl font-semibold text-[var(--muted-foreground)]">BPM</span>
             </div>
+            {/* One bar per gap between taps, scaled to the average: even bars mean even taps */}
+            <div className="mt-4 flex h-12 items-end justify-center gap-1.5" aria-hidden="true">
+              {Array.from({ length: 7 }, (_, i) => {
+                const gap = intervals[intervals.length - 7 + i]
+                const height = gap ? Math.min(100, Math.max(15, (gap / avgInterval) * 60)) : 15
+                return (
+                  <span
+                    key={i}
+                    className={cn(
+                      "w-7 rounded-sm",
+                      gap ? "bg-[var(--primary)]" : "bg-[var(--muted-foreground)]/30"
+                    )}
+                    style={{ height: `${height}%` }}
+                  />
+                )
+              })}
+            </div>
+            <p className="mt-2 text-center text-xs text-[var(--muted-foreground)]">
+              Gaps between your last taps
+            </p>
+          </div>
+          <div className="text-center">
             {bpm && (
               <div className="mt-3 flex items-center justify-center gap-2">
                 <Button
@@ -205,39 +239,26 @@ export function TapTempoTool() {
             )}
           </div>
 
-          {/* Tap Button */}
           <button
             ref={tapButtonRef}
             onClick={handleTap}
+            aria-label="Tap the beat"
             className={cn(
-              "w-full h-40 rounded-xl text-2xl font-bold transition-all",
-              "bg-[var(--primary)] text-[var(--primary-foreground)]",
-              "hover:opacity-90 active:scale-[0.98]",
-              "focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2",
-              "relative overflow-hidden",
-              lastTap && "animate-pulse"
+              "relative mt-4 flex h-32 w-full select-none items-center justify-center gap-3 overflow-hidden rounded-xl text-2xl font-bold transition-transform duration-75",
+              "bg-[var(--primary)] text-[var(--primary-foreground)] hover:opacity-90 active:scale-[0.985]",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--card)]"
             )}
           >
             <span className="relative z-10">TAP</span>
+            <span className="relative z-10 rounded-md border border-current px-2 py-0.5 text-xs font-semibold opacity-80">
+              Space
+            </span>
             {lastTap && (
               <span className="absolute inset-0 bg-white/20 animate-pulse-ring" />
             )}
           </button>
 
-          {/* Instructions */}
-          <div className="mt-4 flex justify-center gap-4">
-            <Badge variant="secondary" className="gap-1">
-              <Mouse className="h-3 w-3" />
-              Click
-            </Badge>
-            <Badge variant="secondary" className="gap-1">
-              <Keyboard className="h-3 w-3" />
-              Space / Enter
-            </Badge>
-          </div>
-
-          {/* Actions */}
-          <div className="mt-6 flex justify-center gap-3">
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Button variant="outline" onClick={togglePlayback} disabled={!bpm}>
               {isPlaying ? (
                 <Square className="mr-2 h-4 w-4" />
@@ -250,11 +271,7 @@ export function TapTempoTool() {
               <RotateCcw className="mr-2 h-4 w-4" />
               Reset
             </Button>
-            <Button
-              variant="outline"
-              onClick={handleCopy}
-              disabled={!bpm}
-            >
+            <Button variant="outline" onClick={handleCopy} disabled={!bpm}>
               {copied ? (
                 <Check className="mr-2 h-4 w-4 text-green-700 dark:text-green-400" />
               ) : (
