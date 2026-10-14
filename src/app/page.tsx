@@ -134,7 +134,7 @@ export default function HomePage() {
       />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b-[1.5px] border-[var(--border)]">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[var(--muted)]/50 to-transparent">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:py-24 lg:px-8">
           <div className="text-center">
             <Badge variant="secondary" className="mb-4">
