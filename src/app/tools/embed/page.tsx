@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { generateMetadata as genMeta } from "@/lib/seo"
+import { TAP_TEMPO_EMBED_SNIPPET } from "@/lib/embed"
 
 export const metadata: Metadata = genMeta({
   title: "Embed a Free BPM Counter Widget on Your Site",
@@ -17,17 +18,6 @@ export const metadata: Metadata = genMeta({
   path: "/tools/embed",
   image: "/og/embed.png",
 })
-
-const SNIPPET = `<iframe
-  src="https://tunetapper.com/embed/tap-tempo"
-  width="100%" height="340"
-  style="border:0;border-radius:12px"
-  title="Tap Tempo - BPM counter by TuneTapper"
-  loading="lazy"></iframe>
-<p>
-  Widget by
-  <a href="https://tunetapper.com/tools/tap-tempo">TuneTapper Tap BPM Counter</a>
-</p>`
 
 export default function EmbedDocsPage() {
   return (
@@ -79,7 +69,7 @@ export default function EmbedDocsPage() {
         </CardHeader>
         <CardContent>
           <pre className="overflow-x-auto rounded-lg border border-[var(--border)] bg-[var(--muted)] p-4 text-sm">
-            <code>{SNIPPET}</code>
+            <code>{TAP_TEMPO_EMBED_SNIPPET}</code>
           </pre>
         </CardContent>
       </Card>

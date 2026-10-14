@@ -14,6 +14,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
+import { TimingStrip } from "./timing-strip"
 
 export function TapTempoTool() {
   const [taps, setTaps] = useState<number[]>([])
@@ -182,9 +183,14 @@ export function TapTempoTool() {
       {/* Main Tap Area: an instrument-style readout, then the tap bar */}
       <Card className="mb-8">
         <CardContent className="pt-6">
-          <div className="rounded-xl bg-[var(--muted)] px-5 pb-4 pt-4" aria-live="polite">
+          <span className="sr-only" aria-live="polite">
+            {bpm ? `${bpm} BPM` : ""}
+          </span>
+          <div className="rounded-xl bg-[var(--muted)] px-5 pb-4 pt-4">
             <p className="text-center text-xs font-medium text-[var(--muted-foreground)]">
-              {taps.length === 0 ? "Waiting for taps" : `${taps.length} taps${steadiness ? `, ${steadiness}` : ""}`}
+              {taps.length === 0
+                ? "Waiting for taps"
+                : `${taps.length} taps${steadiness ? `, ${steadiness}` : ""}`}
             </p>
             <div className="mt-1 flex items-baseline justify-center gap-2">
               <span className="font-mono text-7xl font-bold tabular-nums tracking-tight sm:text-8xl">
@@ -192,51 +198,32 @@ export function TapTempoTool() {
               </span>
               <span className="text-xl font-semibold text-[var(--muted-foreground)]">BPM</span>
             </div>
-            {/* One bar per gap between taps, scaled to the average: even bars mean even taps */}
-            <div className="mt-4 flex h-12 items-end justify-center gap-1.5" aria-hidden="true">
-              {Array.from({ length: 7 }, (_, i) => {
-                const gap = intervals[intervals.length - 7 + i]
-                const height = gap ? Math.min(100, Math.max(15, (gap / avgInterval) * 60)) : 15
-                return (
-                  <span
-                    key={i}
-                    className={cn(
-                      "w-7 rounded-sm",
-                      gap ? "bg-[var(--primary)]" : "bg-[var(--muted-foreground)]/30"
-                    )}
-                    style={{ height: `${height}%` }}
-                  />
-                )
-              })}
-            </div>
+            <TimingStrip intervals={intervals} className="mt-4 h-12" />
             <p className="mt-2 text-center text-xs text-[var(--muted-foreground)]">
               Gaps between your last taps
             </p>
           </div>
-          <div className="text-center">
-            {bpm && (
-              <div className="mt-3 flex items-center justify-center gap-2">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => scaleBpm(0.5)}
-                  title="Halve - you may have tapped double-time"
-                >
-                  /2
-                </Button>
-                <span className="text-xs text-[var(--muted-foreground)]">
-                  half/double-time?
-                </span>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => scaleBpm(2)}
-                  title="Double - you may have tapped half-time"
-                >
-                  x2
-                </Button>
-              </div>
-            )}
+          {/* Space stays reserved before the first reading so the TAP bar does not jump */}
+          <div
+            className={cn("mt-3 flex items-center justify-center gap-2", !bpm && "invisible")}
+          >
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => scaleBpm(0.5)}
+              title="Halve - you may have tapped double-time"
+            >
+              /2
+            </Button>
+            <span className="text-xs text-[var(--muted-foreground)]">half/double-time?</span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => scaleBpm(2)}
+              title="Double - you may have tapped half-time"
+            >
+              x2
+            </Button>
           </div>
 
           <button
@@ -280,6 +267,14 @@ export function TapTempoTool() {
               Copy BPM
             </Button>
           </div>
+          <p className="mt-4 text-center text-sm">
+            <a
+              href="#embed"
+              className="text-[var(--muted-foreground)] underline underline-offset-4 hover:text-[var(--foreground)]"
+            >
+              Put this tap tempo on your own site
+            </a>
+          </p>
         </CardContent>
       </Card>
 

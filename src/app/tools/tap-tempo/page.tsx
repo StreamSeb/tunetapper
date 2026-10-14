@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { TapTempoTool } from "@/components/tools/tap-tempo-tool"
+import { EmbedPromo } from "@/components/tools/embed-promo"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import {
   Table,
@@ -127,6 +128,9 @@ export default function TapTempoPage() {
         />
       </div>
       <TapTempoTool />
+      <div className="mx-auto max-w-2xl px-4 pb-8">
+        <EmbedPromo />
+      </div>
       <div className="mx-auto max-w-2xl px-4 pb-12">
         <section className="prose prose-neutral dark:prose-invert max-w-none">
           <h2>How This Tap Tempo Tool Works</h2>

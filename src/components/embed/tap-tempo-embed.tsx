@@ -2,11 +2,13 @@
 
 import { useState, useCallback, useEffect, useRef } from "react"
 import { cn } from "@/lib/utils"
+import { TimingStrip } from "@/components/tools/timing-strip"
 
 /**
  * Compact tap-tempo widget for third-party embedding (iframe).
- * Deliberately self-contained and chrome-free: one button, one number,
- * and the attribution link.
+ * Deliberately self-contained and chrome-free: the same readout and tap bar
+ * as the tap tempo page, sized to fit a 300-340 px tall iframe, plus the
+ * attribution link.
  */
 export function TapTempoEmbed() {
   const [taps, setTaps] = useState<number[]>([])
@@ -48,25 +50,40 @@ export function TapTempoEmbed() {
     }
   }, [handleTap])
 
+  const intervals = taps.slice(1).map((t, i) => t - taps[i])
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 p-4">
-      <div className="text-center">
-        <span className="text-5xl font-bold font-mono">{bpm ?? "---"}</span>
-        <span className="ml-2 text-xl text-[var(--muted-foreground)]">BPM</span>
-        <p className="mt-1 text-xs text-[var(--muted-foreground)]">
+    <div className="flex min-h-screen flex-col items-center justify-center gap-3 p-3">
+      <span className="sr-only" aria-live="polite">
+        {bpm ? `${bpm} BPM` : ""}
+      </span>
+      <div className="w-full max-w-sm rounded-xl bg-[var(--muted)] px-4 pb-3 pt-3">
+        <p className="text-center text-xs font-medium text-[var(--muted-foreground)]">
           {taps.length > 0 ? `${taps.length} taps` : "Tap along to the beat"}
         </p>
+        <div className="flex items-baseline justify-center gap-2">
+          <span className="font-mono text-5xl font-bold tabular-nums tracking-tight">
+            {bpm ?? "---"}
+          </span>
+          <span className="text-lg font-semibold text-[var(--muted-foreground)]">BPM</span>
+        </div>
+        <TimingStrip intervals={intervals} className="mt-2 h-8" />
       </div>
       <button
         onClick={handleTap}
+        aria-label="Tap the beat"
         className={cn(
-          "w-full max-w-sm h-28 rounded-xl text-xl font-bold transition-all",
+          "flex h-20 w-full max-w-sm select-none items-center justify-center gap-3 rounded-xl text-xl font-bold transition-transform duration-75",
           "bg-[var(--primary)] text-[var(--primary-foreground)]",
-          "hover:opacity-90 active:scale-[0.98]",
-          flash && "scale-[0.98] opacity-90"
+          "hover:opacity-90 active:scale-[0.985]",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]",
+          flash && "scale-[0.985] opacity-90"
         )}
       >
         TAP
+        <span className="rounded-md border border-current px-2 py-0.5 text-xs font-semibold opacity-80">
+          Space
+        </span>
       </button>
       <a
         href="https://tunetapper.com/tools/tap-tempo?utm_source=embed&utm_medium=widget"
