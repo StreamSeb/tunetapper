@@ -27,6 +27,7 @@ import {
   type CamelotKey,
 } from "@/lib/camelot"
 import { CamelotWheel } from "@/components/tools/camelot-wheel"
+import { ToolSupportNote } from "@/components/support-link"
 
 function KeyBadge({
   keyData,
@@ -193,6 +194,8 @@ export function CamelotTool({ faqs }: { faqs?: { question: string; answer: strin
           </CardContent>
         </Card>
       )}
+
+      <ToolSupportNote tool="camelot" />
 
       {/* Quick Links */}
       <Card className="mb-8">

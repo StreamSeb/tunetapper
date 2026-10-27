@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import { ToolSupportNote } from "@/components/support-link"
 
 type Phase = "idle" | "listen" | "silent" | "done"
 
@@ -452,6 +453,8 @@ export function RhythmGame() {
           </CardContent>
         </Card>
       )}
+
+      {phase === "done" && result && <ToolSupportNote tool="rhythm_game" />}
     </div>
   )
 }

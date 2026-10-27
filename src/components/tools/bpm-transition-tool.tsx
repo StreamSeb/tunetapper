@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { getGenreForBpm } from "@/lib/calculations"
+import { ToolSupportNote } from "@/components/support-link"
 
 interface TransitionStrategy {
   name: string
@@ -246,6 +247,8 @@ export function BpmTransitionTool() {
           </Card>
         ))}
       </div>
+
+      <ToolSupportNote tool="bpm_transition" />
 
       {/* Related Links */}
       <Card>

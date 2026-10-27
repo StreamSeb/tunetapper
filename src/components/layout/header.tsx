@@ -7,6 +7,7 @@ import { Menu, X, Music } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "./theme-toggle"
+import { SupportLink } from "@/components/support-link"
 
 const navigation = [
   {
@@ -116,6 +117,12 @@ export function Header() {
 
         {/* Right side */}
         <div className="flex items-center gap-2">
+          <SupportLink
+            placement="header"
+            className="rounded-md px-2 py-1.5 text-sm font-medium text-[var(--muted-foreground)] transition-colors hover:text-[var(--primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--ring)]"
+          >
+            <span className="sr-only sm:not-sr-only">Buy me a coffee</span>
+          </SupportLink>
           <ThemeToggle />
           <Button
             variant="ghost"

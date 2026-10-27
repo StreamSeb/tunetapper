@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import { ToolSupportNote } from "@/components/support-link"
 
 type Status = "idle" | "listening" | "denied" | "error"
 
@@ -238,6 +239,8 @@ export function BpmDetectorTool() {
           </div>
         </CardContent>
       </Card>
+
+      <ToolSupportNote tool="bpm_detector" />
 
       {/* Use BPM */}
       {bpm && status === "listening" && (

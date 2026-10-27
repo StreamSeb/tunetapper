@@ -16,6 +16,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
+import { ToolSupportNote } from "@/components/support-link"
 
 type Status = "idle" | "decoding" | "analyzing" | "done" | "error"
 
@@ -321,6 +322,8 @@ export function KeyAnalyzerTool({
               </div>
             </CardContent>
           </Card>
+
+          <ToolSupportNote tool="key_analyzer" className="-mt-2 mb-6" />
 
           {/* Compatible keys */}
           {compatible && currentKey && (

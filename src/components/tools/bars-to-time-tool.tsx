@@ -34,6 +34,7 @@ import {
   formatDuration,
   getBarsDurationTable,
 } from "@/lib/calculations"
+import { ToolSupportNote } from "@/components/support-link"
 
 export function BarsToTimeTool() {
   const [bpm, setBpm] = useState(128)
@@ -144,6 +145,8 @@ export function BarsToTimeTool() {
           </div>
         </CardContent>
       </Card>
+
+      <ToolSupportNote tool="bars_to_time" />
 
       {/* Quick Reference Table */}
       <Card className="mb-8">

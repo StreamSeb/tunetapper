@@ -29,6 +29,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import { getAllDelayTimes, formatMs, getGenreForBpm } from "@/lib/calculations"
+import { ToolSupportNote } from "@/components/support-link"
 
 export function BpmDelayTool() {
   const [bpm, setBpm] = useState(128)
@@ -206,6 +207,8 @@ export function BpmDelayTool() {
           </Table>
         </CardContent>
       </Card>
+
+      <ToolSupportNote tool="bpm_delay" />
 
       {/* Related Links */}
       <Card>

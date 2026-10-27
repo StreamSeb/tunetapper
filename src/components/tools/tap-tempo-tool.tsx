@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import { TimingStrip } from "./timing-strip"
+import { ToolSupportNote } from "@/components/support-link"
 
 export function TapTempoTool() {
   const [taps, setTaps] = useState<number[]>([])
@@ -277,6 +278,8 @@ export function TapTempoTool() {
           </p>
         </CardContent>
       </Card>
+
+      <ToolSupportNote tool="tap_tempo" />
 
       {/* Use BPM */}
       {bpm && (

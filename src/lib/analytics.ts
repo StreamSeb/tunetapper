@@ -84,6 +84,11 @@ export const analytics = {
   affiliateLinkClicked: (merchant: string, itemId: string) => {
     trackEvent("affiliate_link_clicked", { merchant, item_id: itemId })
   },
+
+  // Buy Me a Coffee link
+  supportClicked: (placement: string) => {
+    trackEvent("support_clicked", { placement })
+  },
 }
 
 // TypeScript declaration for gtag

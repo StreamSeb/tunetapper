@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Music } from "lucide-react"
+import { SupportLink } from "@/components/support-link"
 
 const footerLinks = {
   tools: [
@@ -118,9 +119,15 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="mt-12 border-t border-[var(--border)] pt-8">
-          <p className="text-center text-sm text-[var(--muted-foreground)]">
-            © {new Date().getFullYear()} TuneTapper. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center gap-3 text-sm text-[var(--muted-foreground)] sm:flex-row sm:justify-between">
+            <p>© {new Date().getFullYear()} TuneTapper. All rights reserved.</p>
+            <SupportLink
+              placement="footer"
+              className="hover:text-[var(--foreground)] transition-colors"
+            >
+              Buy me a coffee
+            </SupportLink>
+          </div>
         </div>
       </div>
     </footer>
