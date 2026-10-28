@@ -3,6 +3,7 @@ import Link from "next/link"
 import type { Metadata } from "next"
 import { Music, Zap, Heart, Code, Instagram, Linkedin, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { SupportLink } from "@/components/support-link"
 import {
   Card,
   CardContent,
@@ -185,12 +186,13 @@ export default function AboutPage() {
             className="h-20 w-20 shrink-0 rounded-full object-cover"
           />
           <div className="space-y-4">
-            <p className="text-[var(--muted-foreground)]">
+            <p className="max-w-xl text-pretty text-[var(--muted-foreground)]">
               Hi, I&apos;m Sebastian. There&apos;s no company or team behind
               TuneTapper: I design, build and run every tool myself, because I
               love music and wanted the little calculators I kept reaching for
-              to be fast, free and ad-light. By day I&apos;m a fullstack
-              developer.
+              to be fast and free. By day I&apos;m a fullstack developer.
+              TuneTapper runs on my spare time, so if it saves you some, a
+              coffee keeps it going.
             </p>
             <div className="flex flex-wrap gap-2">
               {makerLinks.map((link) => (
@@ -201,6 +203,9 @@ export default function AboutPage() {
                   </a>
                 </Button>
               ))}
+              <Button variant="outline" size="sm" asChild>
+                <SupportLink placement="about" />
+              </Button>
             </div>
           </div>
         </CardContent>
