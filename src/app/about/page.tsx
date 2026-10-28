@@ -1,6 +1,7 @@
+import Image from "next/image"
 import Link from "next/link"
 import type { Metadata } from "next"
-import { Music, Zap, Heart, Code } from "lucide-react"
+import { Music, Zap, Heart, Code, Instagram, Linkedin, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Card,
@@ -33,8 +34,14 @@ const features = [
     icon: Heart,
     title: "Made for Musicians",
     description:
-      "Every tool is designed by music makers, for music makers. We understand what you need.",
+      "Every tool is built by one music lover, for everyone who makes or plays music.",
   },
+]
+
+const makerLinks = [
+  { href: "https://www.instagram.com/streamseb/", label: "Instagram", handle: "@streamseb", icon: Instagram },
+  { href: "https://www.linkedin.com/in/leo-sebastian-nilsson/", label: "LinkedIn", handle: "Sebastian Nilsson", icon: Linkedin },
+  { href: "https://techwave.se", label: "techwave.se", handle: "techwave.se", icon: Globe },
 ]
 
 export default function AboutPage() {
@@ -160,6 +167,42 @@ export default function AboutPage() {
               </span>
             </li>
           </ul>
+        </CardContent>
+      </Card>
+
+      {/* Maker */}
+      <Card className="mb-8">
+        <CardHeader>
+          <CardTitle>Who Makes TuneTapper</CardTitle>
+          <CardDescription>A one-person project, made for the love of music</CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-5 sm:flex-row sm:items-start">
+          <Image
+            src="/images/seb-headshot.webp"
+            alt="Sebastian, the maker of TuneTapper"
+            width={80}
+            height={80}
+            className="h-20 w-20 shrink-0 rounded-full object-cover"
+          />
+          <div className="space-y-4">
+            <p className="text-[var(--muted-foreground)]">
+              Hi, I&apos;m Sebastian. There&apos;s no company or team behind
+              TuneTapper: I design, build and run every tool myself, because I
+              love music and wanted the little calculators I kept reaching for
+              to be fast, free and ad-light. By day I&apos;m a fullstack
+              developer.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {makerLinks.map((link) => (
+                <Button key={link.href} variant="outline" size="sm" asChild>
+                  <a href={link.href} target="_blank" rel="noopener noreferrer">
+                    <link.icon className="h-4 w-4" />
+                    {link.label}
+                  </a>
+                </Button>
+              ))}
+            </div>
+          </div>
         </CardContent>
       </Card>
 
