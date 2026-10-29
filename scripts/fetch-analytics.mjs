@@ -166,7 +166,40 @@ async function fetchGA4(authClient) {
     sessions: Number(r.metricValues[0].value),
   }));
 
-  return { overview, topPages, channels };
+  // Custom events (tool usage, affiliate and Buy Me a Coffee clicks), 30 days vs previous 30.
+  // Automatic GA4 events are left out so only the site's own trackEvent() calls remain.
+  const AUTO_EVENTS = [
+    "page_view", "session_start", "first_visit", "user_engagement", "scroll",
+    "click", "form_start", "form_submit", "file_download", "video_start",
+    "video_progress", "video_complete", "view_search_results",
+  ];
+  const eventsRes = await analyticsdata.properties.runReport({
+    property,
+    requestBody: {
+      dateRanges: [
+        { startDate: isoDate(30), endDate: isoDate(1), name: "current" },
+        { startDate: isoDate(60), endDate: isoDate(31), name: "previous" },
+      ],
+      dimensions: [{ name: "eventName" }],
+      metrics: [{ name: "eventCount" }],
+      dimensionFilter: {
+        notExpression: { filter: { fieldName: "eventName", inListFilter: { values: AUTO_EVENTS } } },
+      },
+    },
+  });
+
+  const eventMap = new Map();
+  for (const r of eventsRes.data.rows || []) {
+    const name = r.dimensionValues[0].value;
+    const range = r.dimensionValues[1]?.value;
+    const e = eventMap.get(name) || { name, count: 0, countPrev: 0 };
+    if (range === "previous") e.countPrev = Number(r.metricValues[0].value);
+    else e.count = Number(r.metricValues[0].value);
+    eventMap.set(name, e);
+  }
+  const events = [...eventMap.values()].sort((a, b) => b.count - a.count);
+
+  return { overview, topPages, channels, events };
 }
 
 // ─── Search Console ───────────────────────────────────────────────────────────
@@ -310,7 +343,7 @@ function assessPhase2({ ga4, gsc }) {
 // ─── Report builder ───────────────────────────────────────────────────────────
 
 function buildReport({ ga4, gsc, coverage }) {
-  const { overview, topPages, channels } = ga4;
+  const { overview, topPages, channels, events } = ga4;
   const { summary, queries, pages, opportunities, startDate, endDate } = gsc;
   const phase2 = assessPhase2({ ga4, gsc });
 
@@ -410,6 +443,31 @@ function buildReport({ ga4, gsc, coverage }) {
       topPages.map((p) => [p.path, num(p.sessions), num(p.pageviews)])
     )
   );
+  lines.push(``);
+
+  // ── Custom Events (GA4) ──
+  lines.push(`### Custom Events`);
+  lines.push(``);
+  lines.push(
+    `GA4 only loads after cookie consent, so these counts (like every GA4 figure above) cover consenting visitors only.`
+  );
+  lines.push(``);
+  const support = events.find((e) => e.name === "support_clicked");
+  lines.push(
+    `Buy Me a Coffee clicks (\`support_clicked\`): **${num(support?.count || 0)}**` +
+      (support ? ` ${trend(support.count, support.countPrev)}` : "")
+  );
+  lines.push(``);
+  if (events.length) {
+    lines.push(
+      mdTable(
+        ["Event", "Count", "Trend"],
+        events.map((e) => [e.name, num(e.count), trend(e.count, e.countPrev)])
+      )
+    );
+  } else {
+    lines.push(`No custom events recorded.`);
+  }
   lines.push(``);
 
   // ── GSC Overview ──

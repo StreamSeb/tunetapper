@@ -76,10 +76,11 @@ Look for:
 - **Channels**: any shift in the mix. Organic Search is the one that matters.
 - **Indexing**: change in sitemap submitted/indexed counts; any `inspect-urls` verdict that is not indexed.
 - **Opportunities**: new entries in the low-CTR list, and ones that dropped off it.
+- **Custom events**: Buy Me a Coffee clicks (`support_clicked`) always get one line, even at zero. Mention other tool events only if they moved noticeably.
 
 Numbers below those thresholds are noise on a site this size. A quiet period is a valid finding; don't inflate it.
 
-Known context: `/bars` is a confirmed zero-click page, and the `/bpm/*` and `/bars/*` leaf pages are deliberately noindexed. Don't report those as problems or recommend snippet work on `/bars`.
+Known context: GA4 loads only after cookie consent and sees roughly one visitor in ten. Say so whenever you quote GA4 visitor numbers, and compare GA4 only with GA4. Vercel Web Analytics has the full count, but its query API returns 404 on the Hobby plan, so it can't be fetched here. `/bars` is a confirmed zero-click page, and the `/bpm/*` and `/bars/*` leaf pages are deliberately noindexed. Don't report those as problems or recommend snippet work on `/bars`.
 
 ## 5. Write `reports/$D.md`
 

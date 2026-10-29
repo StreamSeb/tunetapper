@@ -107,7 +107,7 @@ Search Console data lags about 3 days, so every GSC window ends 3 days ago. See 
 
 | Script | What it fetches | Needs | Output |
 |---|---|---|---|
-| `fetch-analytics.mjs` | GA4: last 30 days vs the 30 before (overview, top 20 pages, channels). GSC: 28-day summary, top 25 queries, top 25 pages, low-CTR opportunities, sitemap index coverage. | `GA4_PROPERTY_ID`, `GOOGLE_APPLICATION_CREDENTIALS`, `GSC_SITE_URL` | Overwrites `reports/analytics-snapshot.md` |
+| `fetch-analytics.mjs` | GA4: last 30 days vs the 30 before (overview, top 20 pages, channels, custom events incl. Buy Me a Coffee clicks). GSC: 28-day summary, top 25 queries, top 25 pages, low-CTR opportunities, sitemap index coverage. | `GA4_PROPERTY_ID`, `GOOGLE_APPLICATION_CREDENTIALS`, `GSC_SITE_URL` | Overwrites `reports/analytics-snapshot.md` |
 | `bars-trend.mjs` | GSC weekly impressions and clicks for the whole site vs `/bars*`, about 10 weeks. | `GOOGLE_APPLICATION_CREDENTIALS`, `GSC_SITE_URL` | stdout |
 | `tap-tempo-report.mjs` | GSC, about 90 days, for pages containing `tap-tempo`: per-page totals, queries, weekly trend. | same | stdout |
 | `page-survival.mjs` | GSC per-page impressions: fixed baseline 2026-04-22..2026-05-05 (before the May 2026 core update) vs the latest 14 days. | same | stdout |
