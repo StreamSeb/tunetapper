@@ -82,6 +82,8 @@ Numbers below those thresholds are noise on a site this size. A quiet period is 
 
 Known context: GA4 loads only after cookie consent and sees roughly one visitor in ten. Say so whenever you quote GA4 visitor numbers, and compare GA4 only with GA4. Vercel Web Analytics has the full count, but its query API returns 404 on the Hobby plan, so it can't be fetched here. `/bars` is a confirmed zero-click page, and the `/bpm/*` and `/bars/*` leaf pages are deliberately noindexed. Don't report those as problems or recommend snippet work on `/bars`.
 
+Low CTR is not by itself a reason to recommend a title change. Check the page's queries first (page + query breakdown): a page sitting at position 9 or worse gets few clicks whatever its title, and calculator-style queries (BPM delay, key lookups) are often answered by AI Overviews or Google's own result. `/tools/bpm-delay` and `/tools/key-analyzer` titles were reviewed in November 2026: both already match their queries, and their low CTR is a ranking problem (positions 9 to 21 behind established sites), not a snippet problem. Recommend ranking work there (content depth, internal links), not another title test.
+
 ## 5. Write `reports/$D.md`
 
 ```markdown
