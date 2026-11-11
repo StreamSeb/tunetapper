@@ -439,9 +439,9 @@ export function KeyAnalyzerTool({
           reads its musical key straight from the audio. Because decoding happens
           in the browser, an <strong>MP3 key finder</strong> that runs this way
           needs no plugin, no desktop install, and no upload step - the file
-          never leaves the folder you dragged it from. Large files work too; only
-          the first 90 seconds are analysed, which is ample for a reliable
-          reading.
+          never leaves the folder you dragged it from. Full-length tracks and
+          long DJ mixes work too; the analysis reads up to two minutes from the
+          main part of the track, which is ample for a reliable reading.
         </p>
         <h2>Song Key Detector: How It Works</h2>
         <p>
@@ -449,8 +449,46 @@ export function KeyAnalyzerTool({
           browser using the Web Audio API and the{" "}
           <strong>Krumhansl-Schmuckler key-finding algorithm</strong> - the same
           approach used by professional audio analysis tools. No account required,
-          no file uploads, completely free.
+          no file uploads, completely free. Step by step, this is what happens
+          when you drop in a file:
         </p>
+        <ol>
+          <li>
+            <strong>Skip the intro.</strong> Dance tracks often open with
+            drums only, which carry no key. The analysis skips the first quarter
+            of the track (at least 20 seconds, at most 90) and reads up to two
+            minutes from there, so it lands in the main, melodic section.
+          </li>
+          <li>
+            <strong>Build a chromagram.</strong>{" "}
+            The audio is split into short
+            overlapping slices of about a third of a second. For each slice, the
+            energy between roughly 300 Hz and 2 kHz is folded into the 12 pitch
+            classes, C through B. Kick drums and sub-bass sit below that range,
+            so they don&apos;t pull the result.
+          </li>
+          <li>
+            <strong>Balance the slices.</strong>{" "}
+            Each slice is normalized before
+            it is added up, so one loud synth stab or riser can&apos;t outweigh
+            two minutes of steady harmony.
+          </li>
+          <li>
+            <strong>Find the tonic.</strong> The 12-note profile is compared with
+            the Krumhansl-Schmuckler major and minor key profiles in all 12
+            transpositions. The root that fits best is the tonic.
+          </li>
+          <li>
+            <strong>Decide major or minor.</strong> A second pass looks only at
+            the higher frequencies, where melodies and chords sit, to choose
+            between major and minor. This is where most key finders go wrong,
+            so it gets its own step.
+          </li>
+          <li>
+            <strong>Convert to Camelot.</strong> The key is mapped to its Camelot
+            code, and the compatible keys for mixing are listed with it.
+          </li>
+        </ol>
         <h3>What Is Musical Key Detection?</h3>
         <p>
           Musical key detection (also called <em>key estimation</em> or{" "}
@@ -475,7 +513,56 @@ export function KeyAnalyzerTool({
           Atonal, heavily chromatic, or extremely percussive tracks may produce
           lower confidence scores.
         </p>
-        <h3>Looking for the Tempo Instead?</h3>
+        <h2>Reading Your Result</h2>
+        <p>
+          The result shows the key in standard notation (for example{" "}
+          <strong>Am</strong> or <strong>E♭</strong>), its Camelot code (for
+          example <Link href="/camelot/8a">8A</Link>), and a confidence score.
+          The confidence score is how closely the track&apos;s pitch profile
+          matches the textbook profile for that key, on a scale up to 99. High
+          scores mean a clear tonal center. Scores below about 70 usually mean
+          the track is sparse, changes key, or leans on a mode that sits
+          between major and minor, so treat the result as a starting point and
+          trust your ears.
+        </p>
+        <p>
+          Under the result you get the keys that mix cleanly with it: the same
+          code, one step up or down the wheel, and the relative major or minor.
+          To see every compatible key at once, open the{" "}
+          <Link href="/camelot">Camelot key pages</Link> or the{" "}
+          <Link href="/tools/camelot">Camelot Wheel Calculator</Link>.
+        </p>
+        <h2>Why Key Finders Disagree</h2>
+        <p>
+          If this tool, Rekordbox, Serato, Traktor and Mixed In Key give you
+          different answers for the same track, it is rarely random. The usual
+          reasons are:
+        </p>
+        <ul>
+          <li>
+            <strong>Relative major and minor.</strong> A minor and C major use
+            exactly the same notes, so the only difference is which note feels
+            like home. Detectors often swap the two. On the Camelot wheel these
+            are 8A and 8B, which mix together anyway.
+          </li>
+          <li>
+            <strong>Key changes.</strong> A track that modulates for its last
+            chorus has two right answers. Each tool picks a different stretch
+            of audio to analyse, so each can land on a different key.
+          </li>
+          <li>
+            <strong>Sparse or percussive tracks.</strong> Techno loops, drum
+            tools and rap beats with one bass note give the algorithm little to
+            work with, and every tool has to guess more.
+          </li>
+          <li>
+            <strong>Tuning and pitch shifting.</strong> Detection assumes
+            standard A = 440 Hz tuning. A track that is tuned noticeably sharp or
+            flat, or that was sped up or slowed down without key lock, can read
+            one semitone away from its original key.
+          </li>
+        </ul>
+        <h2>Looking for the Tempo Instead?</h2>
         <p>
           This page reports a BPM alongside the key, but if tempo is what you
           actually came for there are better-suited tools. The{" "}
