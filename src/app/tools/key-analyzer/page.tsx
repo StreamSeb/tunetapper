@@ -56,7 +56,22 @@ const faqs = [
   {
     question: "How long can the audio file be?",
     answer:
-      "The tool analyzes up to the first 90 seconds of a track, which is more than enough for reliable key detection. Longer files are supported - only the analysis window is capped for performance.",
+      "Any length. The tool skips the intro (the first quarter of the track, between 20 and 90 seconds) and analyzes up to two minutes from there, which is more than enough for reliable key detection. Only the analysis window is capped, for speed.",
+  },
+  {
+    question: "It says A minor but my DJ software says C major. Which is right?",
+    answer:
+      "Possibly both. A minor and C major share exactly the same notes, so key detectors often swap them. On the Camelot wheel they are 8A and 8B, which mix together without clashing, so for harmonic mixing the difference rarely matters.",
+  },
+  {
+    question: "Can I find the key of a song on Spotify or YouTube?",
+    answer:
+      "Not directly. Streaming audio is protected, so the key finder needs an audio file on your device, such as an MP3 you bought or a bounce from your own project. If you only need the tempo of something playing, the BPM detector can listen through your microphone.",
+  },
+  {
+    question: "Does the key finder work on a phone?",
+    answer:
+      "Yes. It runs in any modern mobile browser. Pick a file from your phone's storage and it is analyzed on the device itself, just like on a computer.",
   },
 ]
 
