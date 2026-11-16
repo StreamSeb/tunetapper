@@ -10,6 +10,7 @@ import {
   Gauge,
   Mic,
   Wrench,
+  ListMusic,
 } from "lucide-react"
 import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import {
@@ -25,12 +26,20 @@ import { generateMetadata as genMeta, generateBreadcrumbSchema } from "@/lib/seo
 export const metadata: Metadata = genMeta({
   title: "Free Music Production & DJ Tools",
   description:
-    "Every free TuneTapper tool in one place - BPM delay calculator, bars-to-time converter, tap tempo, Camelot wheel, BPM transition helper, key & BPM analyzer, BPM detector for files and microphone, and a rhythm accuracy test. No signup, no upload.",
+    "Every free TuneTapper tool in one place - DJ set planner, BPM delay calculator, bars-to-time converter, tap tempo, Camelot wheel, BPM transition helper, key & BPM analyzer, BPM detector for files and microphone, and a rhythm accuracy test. No signup, no upload.",
   path: "/tools",
   image: "/og/tools.png",
 })
 
 const tools = [
+  {
+    title: "DJ Set Planner",
+    description:
+      "Drop in a folder of tracks and get a harmonic set order. Key, Camelot and BPM for every track, transitions rated, export to CSV or M3U. Nothing uploaded.",
+    href: "/tools/set-planner",
+    icon: ListMusic,
+    badge: "New",
+  },
   {
     title: "BPM Delay Calculator",
     description:
@@ -148,7 +157,7 @@ export default function ToolsHubPage() {
           A complete set of free, browser-based utilities for DJs and producers
           - calculate delay times, convert bars to time, tap out a tempo, mix in
           key with the Camelot wheel, plan BPM transitions, detect the key and
-          BPM of any track, and test your rhythm against a metronome. No signup,
+          BPM of any track, sort a playlist into a harmonic DJ set, and test your rhythm against a metronome. No signup,
           nothing to install.
         </p>
       </div>

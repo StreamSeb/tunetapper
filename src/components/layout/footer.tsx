@@ -4,6 +4,7 @@ import { SupportLink } from "@/components/support-link"
 
 const footerLinks = {
   tools: [
+    { name: "DJ Set Planner", href: "/tools/set-planner" },
     { name: "BPM Delay Calculator", href: "/tools/bpm-delay" },
     { name: "Bars to Time", href: "/tools/bars-to-time" },
     { name: "Tap Tempo", href: "/tools/tap-tempo" },

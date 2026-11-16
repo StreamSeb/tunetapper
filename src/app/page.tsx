@@ -10,6 +10,8 @@ import {
   Gauge,
   Mic,
   Wrench,
+  ListMusic,
+  ArrowRight,
 } from "lucide-react"
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/seo"
 import { Button } from "@/components/ui/button"
@@ -23,6 +25,14 @@ import {
 import { Badge } from "@/components/ui/badge"
 
 const tools = [
+  {
+    title: "DJ Set Planner",
+    description:
+      "Drop in a folder of tracks and get a harmonic set order. Key, Camelot and BPM for every track, transitions rated, export to CSV or M3U. Nothing uploaded.",
+    href: "/tools/set-planner",
+    icon: ListMusic,
+    badge: "New",
+  },
   {
     title: "BPM Delay Calculator",
     description:
@@ -145,8 +155,8 @@ export default function HomePage() {
               Music Producers
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--muted-foreground)]">
-              Calculate BPM delay times, find compatible keys, detect any
-              song&apos;s key and BPM, test your rhythm, and more. All the
+              Plan a harmonic DJ set, calculate BPM delay times, find
+              compatible keys, detect any song&apos;s key and BPM, and more. All the
               essential utilities you need, free and easy to use.
             </p>
             {/* Camelot Wheel and Studio Setup Builder lead here on purpose -
@@ -174,6 +184,56 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Featured: DJ Set Planner */}
+      <section className="mx-auto w-full max-w-7xl px-4 pt-4 lg:px-8">
+        <Link
+          href="/tools/set-planner"
+          className="group block rounded-2xl border border-[var(--primary)]/40 bg-[var(--primary)]/[0.06] p-6 transition-colors hover:border-[var(--primary)] sm:p-8"
+        >
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-2xl">
+              <Badge className="mb-3">New</Badge>
+              <h2 className="flex items-center gap-3 text-2xl font-bold sm:text-3xl">
+                <ListMusic className="h-7 w-7 shrink-0 text-[var(--primary)]" aria-hidden="true" />
+                DJ Set Planner
+              </h2>
+              <p className="mt-3 text-[var(--muted-foreground)]">
+                Drop in a folder of tracks. The planner detects the key, Camelot
+                code and BPM of each one and sorts them into a set that mixes
+                harmonically, with every transition rated. Export to CSV or an
+                M3U playlist for your DJ software. It all runs in your browser.
+              </p>
+            </div>
+            <div className="flex shrink-0 flex-col items-start gap-3 md:items-end">
+              {/* A preview of the output: a short harmonic run */}
+              <div className="flex items-center gap-1.5" aria-hidden="true">
+                {[
+                  ["8A", 8, true],
+                  ["9A", 9, true],
+                  ["9B", 9, false],
+                  ["10B", 10, false],
+                ].map(([code, num, minor]) => (
+                  <span
+                    key={code as string}
+                    className={`inline-flex h-9 w-12 items-center justify-center rounded-md text-sm font-bold ${minor ? "text-white" : "text-black"}`}
+                    style={{
+                      background: minor
+                        ? `hsl(${((num as number) - 1) * 30}, 72%, 40%)`
+                        : `hsl(${((num as number) - 1) * 30}, 62%, 62%)`,
+                    }}
+                  >
+                    {code}
+                  </span>
+                ))}
+              </div>
+              <span className="inline-flex items-center gap-2 rounded-md bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-[var(--primary-foreground)]">
+                Plan a set <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </div>
+          </div>
+        </Link>
       </section>
 
       {/* Tools Grid */}
@@ -284,6 +344,14 @@ export default function HomePage() {
             </CardHeader>
             <CardContent>
               <ul className="space-y-2">
+                <li>
+                  <Link
+                    href="/guides/dj-set-planner"
+                    className="text-sm hover:underline"
+                  >
+                    How to Plan a DJ Set by Key and BPM →
+                  </Link>
+                </li>
                 <li>
                   <Link
                     href="/guides/delay-times-explained"

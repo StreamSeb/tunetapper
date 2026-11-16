@@ -280,6 +280,7 @@ const guideContent: Record<
       { href: "/tools/camelot", label: "Camelot Wheel Tool" },
       { href: "/tools/key-analyzer", label: "Free Key Finder" },
       { href: "/camelot", label: "All Camelot Keys" },
+      { href: "/tools/set-planner", label: "DJ Set Planner" },
       { href: "/tools/bpm-transition", label: "BPM Transition Helper" },
     ],
   },
@@ -1067,6 +1068,191 @@ const guideContent: Record<
       { href: "/tools/key-analyzer", label: "Free Key Finder" },
       { href: "/tools/camelot", label: "Camelot Wheel Calculator" },
       { href: "/camelot", label: "All Camelot Keys" },
+      { href: "/tools/set-planner", label: "DJ Set Planner" },
+      { href: "/guides/camelot-wheel-guide", label: "Camelot Wheel Guide" },
+    ],
+  },
+  "dj-set-planner": {
+    content: (
+      <>
+        <p>
+          TuneTapper has a new tool: the{" "}
+          <Link href="/tools/set-planner">DJ Set Planner</Link>. Drop in the
+          tracks you want to play, and it detects the key, Camelot code and BPM
+          of each one, then sorts them into an order that mixes harmonically.
+          You can export the result as a spreadsheet or as a playlist for your
+          DJ software. It is free, needs no account, and runs entirely in your
+          browser, so your music is never uploaded.
+        </p>
+        <p>
+          This guide covers why set order matters, how the planner chooses it,
+          and how to get the most out of it.
+        </p>
+
+        <h2>Why the Order of Your Set Matters</h2>
+        <p>
+          A good set feels like one long piece of music. Two things decide
+          whether a mix between two tracks sounds smooth: their{" "}
+          <strong>keys</strong> and their <strong>tempos</strong>. Tracks in
+          compatible keys can overlap for a full phrase without the basslines
+          and melodies fighting each other. Tracks with close tempos can be
+          beatmatched with a small nudge of the pitch fader, without anyone on
+          the dancefloor noticing a speed change.
+        </p>
+        <p>
+          The <Link href="/guides/camelot-wheel-guide">Camelot wheel</Link> makes
+          the key half of that easy. Every key gets a code from 1A to 12B, and
+          compatible keys sit next to each other. The hard part is applying it
+          to a crate of 30 or 60 tracks: finding an order where every step is
+          a good one is a puzzle with millions of possible answers. That is the
+          puzzle the planner solves.
+        </p>
+
+        <h2>How to Plan a Set in Four Steps</h2>
+        <ol>
+          <li>
+            <strong>Gather the tracks.</strong> Put the candidates for your
+            next gig in one folder. Use a few more than you need; you can remove
+            tracks later.
+          </li>
+          <li>
+            <strong>Drop the folder on the planner.</strong> On a computer you
+            can drag the whole folder (subfolders included) onto the page or use{" "}
+            <em>Choose a folder</em>. On a phone, tap <em>Choose tracks</em> and
+            select several files. Each track takes a second or two to analyse,
+            and several are analysed at once.
+          </li>
+          <li>
+            <strong>Choose how to order it.</strong>{" "}
+            <em>Smoothest mix</em> finds the order with the fewest key clashes
+            and tempo jumps. <em>Build energy</em> keeps the harmonic rules but
+            makes the tempo climb from your slowest track to your fastest, which
+            suits a warm-up set. <em>Open with</em> lets you fix the first track
+            and have the planner arrange the rest around it.
+          </li>
+          <li>
+            <strong>Fine-tune and export.</strong> Move tracks up or down or
+            remove them. Every transition is rated as you go. When you are
+            happy, export a CSV tracklist, an M3U playlist, or copy the
+            tracklist as text.
+          </li>
+        </ol>
+
+        <h2>How the Planner Scores a Transition</h2>
+        <p>
+          For every pair of tracks the planner works out how well the first
+          mixes into the second, and gives it a cost:
+        </p>
+        <ul>
+          <li>
+            <strong>Key.</strong> Same key is free. One step around the wheel
+            (8A to 9A) and the relative major or minor (8A to 8B) cost a
+            little. An energy boost of two steps (8A to 10A) and diagonal moves
+            (8A to 9B) cost more. Keys that clash cost a lot.
+          </li>
+          <li>
+            <strong>Tempo.</strong> A change of up to about 3% is a pitch-fader
+            nudge and costs almost nothing. Up to 8% is still mixable. Beyond
+            that the cost rises quickly. Half and double time are recognised, so
+            an 87 BPM track and a 174 BPM track count as a match, with a small
+            extra cost.
+          </li>
+        </ul>
+        <p>
+          The planner then searches for the order with the lowest total cost.
+          It tries every track as an opener, builds a greedy chain from each,
+          keeps the best, and then improves it by reversing and moving sections
+          until no change helps. For a typical crate this lands on the best
+          possible order or very close to it, in well under a second.
+        </p>
+        <p>
+          Each transition gets a rating: <strong>Smooth</strong>,{" "}
+          <strong>Good</strong>, <strong>Workable</strong> or{" "}
+          <strong>Rough</strong>, with the Camelot move and the tempo change in
+          percent. A rough transition isn&apos;t forbidden. It tells you to plan
+          a cut, an echo out, or a breakdown at that point instead of a long
+          blend.
+        </p>
+
+        <h2>Exporting to rekordbox, Serato, Traktor or VirtualDJ</h2>
+        <p>
+          The <strong>M3U playlist</strong> lists the files in set order with
+          paths relative to the folder you added. Save it inside that folder
+          and import it into your DJ software: rekordbox, Serato, Traktor and
+          VirtualDJ all read M3U playlists. The <strong>CSV</strong> opens in
+          Excel, Numbers or Google Sheets and includes artist, title, Camelot
+          code, key, BPM, length and the rating of each transition, which makes
+          a handy printed set list.
+        </p>
+
+        <h2>Private and Offline</h2>
+        <p>
+          Most online playlist tools ask you to upload your music. The set
+          planner doesn&apos;t. It decodes every file in your browser with the
+          Web Audio API and runs the same detection as the{" "}
+          <Link href="/tools/key-analyzer">key finder</Link> and the{" "}
+          <Link href="/tools/bpm-detector">BPM detector</Link>, in background
+          workers so the page stays responsive. Only the results are kept in
+          your browser, so your set is still there when you come back.
+        </p>
+
+        <h2>Tips for Better Results</h2>
+        <ul>
+          <li>
+            <strong>Trust your ears on a question mark.</strong> A key marked
+            with <em>?</em> had low detection confidence. Sparse, percussive or
+            key-changing tracks are hardest. Check those by ear.
+          </li>
+          <li>
+            <strong>Don&apos;t chase a perfect score.</strong> A set where
+            every transition is the same key gets flat. An occasional +2 energy
+            boost or a planned key change keeps the set moving.
+          </li>
+          <li>
+            <strong>Use the opener.</strong> If you know which track starts
+            your set, pin it with <em>Open with</em> and let the planner do the
+            rest.
+          </li>
+          <li>
+            <strong>Mind the phrasing.</strong> Harmonic order makes the blend
+            sound right. You still need to line up phrases. The{" "}
+            <Link href="/tools/bars-to-time">bars to time calculator</Link>{" "}
+            shows how long a 16 or 32 bar mix-in lasts at your tempo.
+          </li>
+        </ul>
+
+        <p>
+          <Link href="/tools/set-planner">Open the DJ Set Planner</Link> and
+          plan your next set.
+        </p>
+      </>
+    ),
+    faqs: [
+      {
+        question: "Is the DJ Set Planner free?",
+        answer:
+          "Yes. It is free with no account and no limits beyond 500 tracks per set. It runs in your browser, so there is nothing to install.",
+      },
+      {
+        question: "How do I sort a playlist by key?",
+        answer:
+          "Drop the tracks into the TuneTapper set planner and choose Smoothest mix. It detects the Camelot key of each track and orders them so each one moves to the same key, one step around the wheel, or the relative major or minor, while keeping tempo changes small. Then export the order as an M3U playlist.",
+      },
+      {
+        question: "Does it upload my music?",
+        answer:
+          "No. All decoding and analysis happens on your device. Nothing is sent to a server.",
+      },
+      {
+        question: "Which file types does it read?",
+        answer:
+          "MP3, WAV, FLAC, AAC, OGG, M4A and AIFF, as long as your browser can decode them. Files protected with DRM, such as streaming downloads, can't be read.",
+      },
+    ],
+    relatedTools: [
+      { href: "/tools/set-planner", label: "DJ Set Planner" },
+      { href: "/tools/key-analyzer", label: "Free Key Finder" },
+      { href: "/tools/camelot", label: "Camelot Wheel Calculator" },
       { href: "/guides/camelot-wheel-guide", label: "Camelot Wheel Guide" },
     ],
   },

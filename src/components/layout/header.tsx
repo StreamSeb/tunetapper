@@ -15,6 +15,7 @@ import {
   KeyboardMusic,
   KeyRound,
   LayoutGrid,
+  ListMusic,
   Menu,
   Mic,
   Music,
@@ -28,11 +29,14 @@ import { cn } from "@/lib/utils"
 import { ThemeToggle } from "./theme-toggle"
 import { SupportLink } from "@/components/support-link"
 
-type NavLink = { name: string; href: string; icon: LucideIcon }
+type NavLink = { name: string; href: string; icon: LucideIcon; badge?: string }
+
+const setPlanner: NavLink = { name: "DJ Set Planner", href: "/tools/set-planner", icon: ListMusic, badge: "New" }
 
 // The most used tools, picked from GA4 and Search Console data.
 // Shown first in the mobile menu; revisit when the analytics reports shift.
 const popularTools: NavLink[] = [
+  setPlanner,
   { name: "BPM Detector", href: "/tools/bpm-detector", icon: Mic },
   { name: "Key Finder", href: "/tools/key-analyzer", icon: KeyRound },
   { name: "Camelot Wheel", href: "/tools/camelot", icon: Disc3 },
@@ -45,6 +49,7 @@ const navigation: { name: string; href: string; children: NavLink[] }[] = [
     href: "/tools",
     children: [
       { name: "All Tools", href: "/tools", icon: LayoutGrid },
+      setPlanner,
       { name: "Key Finder", href: "/tools/key-analyzer", icon: KeyRound },
       { name: "Camelot Wheel", href: "/tools/camelot", icon: Disc3 },
       { name: "BPM Delay Calculator", href: "/tools/bpm-delay", icon: Calculator },
@@ -67,6 +72,7 @@ const navigation: { name: string; href: string; children: NavLink[] }[] = [
     name: "DJ Tools",
     href: "/tools/camelot",
     children: [
+      setPlanner,
       { name: "Camelot Wheel", href: "/tools/camelot", icon: Disc3 },
       { name: "Key Finder", href: "/tools/key-analyzer", icon: KeyRound },
       { name: "BPM Transition", href: "/tools/bpm-transition", icon: ArrowLeftRight },
@@ -159,6 +165,7 @@ export function Header() {
                         )}
                       >
                         {child.name}
+                        {child.badge && <NewBadge label={child.badge} />}
                       </Link>
                     ))}
                   </div>
@@ -213,6 +220,7 @@ export function Header() {
                     href={tool.href}
                     className={cn(
                       "flex items-center gap-2.5 rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover:bg-[var(--accent)]",
+                      tool.badge && "col-span-2",
                       pathname === tool.href
                         ? "border-[var(--primary)] text-[var(--primary)]"
                         : "border-[var(--border)] text-[var(--foreground)]"
@@ -224,6 +232,7 @@ export function Header() {
                       aria-hidden="true"
                     />
                     {tool.name}
+                    {tool.badge && <NewBadge label={tool.badge} />}
                   </Link>
                 ))}
               </div>
@@ -257,6 +266,7 @@ export function Header() {
                     >
                       <child.icon className="h-4 w-4 shrink-0" aria-hidden="true" />
                       {child.name}
+                      {child.badge && <NewBadge label={child.badge} />}
                     </Link>
                   ))}
                 </div>
@@ -266,5 +276,13 @@ export function Header() {
         </div>
       )}
     </header>
+  )
+}
+
+function NewBadge({ label }: { label: string }) {
+  return (
+    <span className="ml-2 rounded-full bg-[var(--primary)] px-1.5 py-0.5 text-[10px] font-semibold uppercase leading-none text-[var(--primary-foreground)]">
+      {label}
+    </span>
   )
 }
