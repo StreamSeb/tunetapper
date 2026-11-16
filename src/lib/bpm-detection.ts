@@ -2,7 +2,8 @@
  * Client-side BPM detection from decoded PCM.
  *
  * Pipeline (operates on the ~11 kHz mono output of decodeToMono):
- *  1. Take up to 60 s from after the intro (25% in, like key detection)
+ *  1. Take up to 60 s from after the intro (25% in, like key detection);
+ *     files too short to skip an intro are read from the start
  *  2. Onset-strength envelope via half-wave-rectified spectral flux
  *     (FFT 512, hop 128 -> ~86 Hz envelope rate)
  *  3. Autocorrelate the detrended envelope over lags for 60-200 BPM
@@ -69,17 +70,20 @@ function fft(re: Float32Array, im: Float32Array): void {
 
 export function detectBpm({ samples, sampleRate }: DecodedAudio): BpmResult {
   // ── 1. Analysis segment: skip the intro, use up to 60 s ──────────────────
-  const skip = Math.min(
+  let skip = Math.min(
     Math.max(Math.floor(samples.length * 0.25), sampleRate * 20),
     sampleRate * 90
   )
+  // Short files (loops, clips, samples): skipping the intro would leave too
+  // little audio, so read them from the start instead
+  if (samples.length - skip < sampleRate * 15) skip = 0
   const segment = samples.slice(skip, skip + sampleRate * 60)
 
   // ── 2. Onset-strength envelope via spectral flux ──────────────────────────
   const envRate = sampleRate / HOP_SIZE
   const numFrames = Math.floor((segment.length - FFT_SIZE) / HOP_SIZE)
-  if (numFrames < envRate * 10) {
-    // Under ~10 s of usable audio - not enough periodicity to measure
+  if (numFrames < envRate * 6) {
+    // Under ~6 s of usable audio - not enough periodicity to measure
     return { bpm: 0, confidence: 0, alternativeBpm: 0 }
   }
 
@@ -183,6 +187,11 @@ export function estimateTempoFromEnvelope(
   if (bpm < 90 && bpm * 2 <= MAX_BPM && acAt(halfLag) >= 0.4 * y1) {
     bpm *= 2
   }
+  // Below ~78 BPM the half-time reading is almost always the wrong one for
+  // DJ and produced music (a 140 dubstep track felt at 70, a 124 house
+  // track whose hats confuse the comb). Prefer the double; the slow
+  // reading stays available as alternativeBpm.
+  if (bpm < 78 && bpm * 2 <= MAX_BPM) bpm *= 2
 
   // Produced dance/pop tracks sit on integer BPMs; snap when we're close
   if (Math.abs(bpm - Math.round(bpm)) < 0.25) bpm = Math.round(bpm)

@@ -5,12 +5,14 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { generateToolSchema, generateFaqSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "BPM Detector - Find a Song's Tempo With Your Microphone",
+  title: "BPM Detector - Find the BPM of an MP3 or Any Song Online",
   description:
-    "Free online BPM detector: play music out loud and your microphone finds the tempo automatically. No recording, no upload - all analysis happens on your device. No app needed.",
+    "Free online BPM detector: drop in an MP3, WAV or FLAC file, or let your microphone listen, and get the tempo in seconds. Nothing is uploaded - all analysis happens in your browser.",
   keywords: [
     "bpm detector",
     "bpm detector online",
+    "mp3 bpm detector",
+    "bpm finder from file",
     "bpm finder microphone",
     "detect bpm from audio",
     "automatic bpm detection",
@@ -22,9 +24,9 @@ export const metadata: Metadata = {
     canonical: "https://tunetapper.com/tools/bpm-detector",
   },
   ...socialMetadata({
-    title: "BPM Detector - Find a Song's Tempo With Your Microphone | TuneTapper",
+    title: "BPM Detector - Find the BPM of an MP3 or Any Song Online | TuneTapper",
     description:
-      "Play music out loud and your microphone finds the tempo automatically. No recording, no upload - all analysis on your device.",
+      "Drop in an audio file or let your microphone listen and get the tempo in seconds. Nothing is uploaded - all analysis in your browser.",
     path: "/tools/bpm-detector",
     image: "/og/bpm-detector.png",
     imageAlt: "BPM Detector - TuneTapper",
@@ -35,7 +37,12 @@ const faqs = [
   {
     question: "How does the BPM detector work?",
     answer:
-      "It listens through your microphone, measures the energy of the incoming audio about 47 times per second, and finds the repeating pattern of energy spikes - the drum hits. The spacing of that pattern is the tempo. Everything runs in your browser; no audio is recorded, stored, or sent anywhere.",
+      "It builds an onset curve - how sharply the sound changes from moment to moment - and finds the repeating pattern of spikes in it, which are the drum hits. The spacing of that pattern is the tempo. For a file, the curve comes from the decoded audio; with the microphone, it comes from the live input. Everything runs in your browser; no audio is recorded, stored, or sent anywhere.",
+  },
+  {
+    question: "Can I find the BPM of an MP3 file?",
+    answer:
+      "Yes. Drop an MP3, WAV, FLAC, AAC, OGG or M4A file onto the page, or click to pick one. The file is decoded in your browser, the tempo is read from up to a minute of the main section, and you get the BPM, the half- or double-time reading and the musical key. The file is never uploaded.",
   },
   {
     question: "Why does it need microphone access?",
@@ -55,15 +62,15 @@ const faqs = [
   {
     question: "Is there a BPM detector that works without installing an app?",
     answer:
-      "Yes - this one. It runs in any modern browser on desktop or mobile using the Web Audio API, with no app, account, or upload. For a file on disk, the key & BPM analyzer reads the tempo directly from the audio file instead.",
+      "Yes - this one. It runs in any modern browser on desktop or mobile using the Web Audio API, with no app, account, or upload. It reads a file on your device, or listens through the microphone when the music is playing in the room.",
   },
 ]
 
 export default function BpmDetectorPage() {
   const toolSchema = generateToolSchema({
-    name: "BPM Detector (Microphone)",
+    name: "BPM Detector",
     description:
-      "Detect a song's BPM automatically through the microphone. On-device analysis, no recording.",
+      "Detect a song's BPM automatically from an audio file or through the microphone. On-device analysis, nothing uploaded.",
     url: "/tools/bpm-detector",
   })
 
@@ -90,16 +97,27 @@ export default function BpmDetectorPage() {
         <section className="prose prose-neutral dark:prose-invert max-w-none">
           <h2>Three Ways to Find a Song&apos;s BPM</h2>
           <p>
-            This page listens through the microphone, which is ideal when the
-            music is playing in the room - a DJ set, vinyl, the radio. If you
-            have the track as a file, the{" "}
-            <Link href="/tools/key-analyzer">key &amp; BPM analyzer</Link> reads
-            the tempo (and musical key) straight from the audio with no
-            microphone involved. And if you would rather trust your own ears,
+            If you have the track as a file, drop it on this page and the
+            tempo is read straight from the audio - the most accurate option.
+            When the music is playing in the room - a DJ set, vinyl, the radio -
+            let the detector listen through the microphone instead. And if you
+            would rather trust your own ears,
             the <Link href="/tools/tap-tempo">tap BPM counter</Link> measures
             the tempo from your taps - it works on anything you can hear, even
             through headphones.
           </p>
+          <h2>Find the BPM of an MP3 or Audio File</h2>
+          <p>
+            Drag an MP3, WAV, FLAC, AAC, OGG or M4A file onto the drop zone. The
+            browser decodes it on your device, skips the intro so the reading
+            comes from the main groove, and measures the tempo from up to a
+            minute of audio. Short loops and samples are read from the start.
+            Next to the BPM you get the half- or double-time reading and the
+            track&apos;s key in Camelot notation, so you can check whether it
+            mixes with the next record. For a closer look at the key, open the{" "}
+            <Link href="/tools/key-analyzer">key finder</Link>.
+          </p>
+
           <h2>Find the BPM of a Song Playing on a Speaker</h2>
           <p>
             Point the device at the speaker, start listening, and the tempo
@@ -141,7 +159,8 @@ export default function BpmDetectorPage() {
 
           <h2>Privacy</h2>
           <p>
-            The audio stream never leaves your device. The detector converts
+            Files you drop in are decoded and analysed in the browser and never
+            leave your device. With the microphone, the detector converts
             the microphone input into a loudness envelope - a few dozen numbers
             per second describing how energy rises and falls - and finds the
             repeating beat pattern in that envelope. No recording is made, no

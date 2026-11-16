@@ -566,8 +566,8 @@ export function KeyAnalyzerTool({
         <p>
           This page reports a BPM alongside the key, but if tempo is what you
           actually came for there are better-suited tools. The{" "}
-          <Link href="/tools/bpm-detector">BPM detector</Link> finds the tempo of
-          music playing in the room through your microphone, and the{" "}
+          <Link href="/tools/bpm-detector">BPM detector</Link> reads the tempo
+          from an audio file or from music playing in the room, and the{" "}
           <Link href="/tools/tap-tempo">tap BPM counter</Link> measures it from
           your own taps.
         </p>

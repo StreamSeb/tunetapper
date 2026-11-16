@@ -58,7 +58,7 @@ const navigation: { name: string; href: string; children: NavLink[] }[] = [
     children: [
       { name: "BPM Delay Calculator", href: "/tools/bpm-delay", icon: Calculator },
       { name: "Tap Tempo", href: "/tools/tap-tempo", icon: Pointer },
-      { name: "BPM Detector (Mic)", href: "/tools/bpm-detector", icon: Mic },
+      { name: "BPM Detector", href: "/tools/bpm-detector", icon: Mic },
       { name: "Rhythm Test", href: "/tools/rhythm-game", icon: Gamepad2 },
       { name: "BPM Reference", href: "/bpm", icon: Gauge },
     ],
