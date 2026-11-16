@@ -315,6 +315,9 @@ export function KeyAnalyzerTool({
                     </Link>
                   </Button>
                 )}
+                <Button variant="outline" asChild>
+                  <Link href="/tools/set-planner">Plan a set from many tracks</Link>
+                </Button>
                 <Button variant="ghost" onClick={reset}>
                   <RotateCcw className="mr-2 h-4 w-4" />
                   Analyze another track
@@ -404,6 +407,9 @@ export function KeyAnalyzerTool({
           <CardTitle>Related Tools</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-wrap gap-3">
+          <Button variant="outline" asChild>
+            <Link href="/tools/set-planner">DJ Set Planner</Link>
+          </Button>
           <Button variant="outline" asChild>
             <Link href="/tools/camelot">Camelot Wheel Calculator</Link>
           </Button>

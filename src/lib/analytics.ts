@@ -67,6 +67,27 @@ export const analytics = {
     trackEverywhere("bpm_file_failed", { reason })
   },
 
+  // Set Planner (GA4 + Vercel)
+  setPlannerFilesAdded: (count: number, source: string) => {
+    trackEverywhere("set_planner_files_added", { count, source })
+  },
+
+  setPlannerAnalysisDone: (tracks: number, failed: number, seconds: number) => {
+    trackEverywhere("set_planner_analysis_done", { tracks, failed, seconds })
+  },
+
+  setPlannerTrackFailed: (reason: string) => {
+    trackEvent("set_planner_track_failed", { reason })
+  },
+
+  setPlannerReordered: (mode: string) => {
+    trackEverywhere("set_planner_reordered", { mode })
+  },
+
+  setPlannerExported: (format: string, tracks: number) => {
+    trackEverywhere("set_planner_exported", { format, tracks })
+  },
+
   // BPM Transition
   bpmTransitionCalculated: (fromBpm: number, toBpm: number) => {
     trackEvent("bpm_transition_calculated", { from_bpm: fromBpm, to_bpm: toBpm })

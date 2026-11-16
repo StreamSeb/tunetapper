@@ -252,6 +252,9 @@ export function CamelotTool({ faqs }: { faqs?: { question: string; answer: strin
               </Link>
             </Button>
             <Button variant="outline" asChild>
+              <Link href="/tools/set-planner">Sort a Playlist by Key</Link>
+            </Button>
+            <Button variant="outline" asChild>
               <Link href="/tools/bpm-transition">BPM Transition Helper</Link>
             </Button>
             <Button variant="outline" asChild>

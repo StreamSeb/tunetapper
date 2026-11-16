@@ -1,6 +1,12 @@
 {
   "guides": [
     {
+      "slug": "dj-set-planner",
+      "title": "How to Plan a DJ Set by Key and BPM (New Free Set Planner)",
+      "description": "Meet TuneTapper's new DJ set planner: drop in your tracks, get key, Camelot and BPM for each, and sort the playlist into a harmonic set order. Free, in your browser.",
+      "category": "DJing"
+    },
+    {
       "slug": "delay-times-explained",
       "title": "How to Use Delay Times in Music Production",
       "description": "Learn how to sync delay effects to your track's BPM for professional-sounding mixes. Covers note divisions, dotted delays, and practical tips.",
