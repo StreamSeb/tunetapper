@@ -82,7 +82,7 @@ const tools = [
   {
     title: "BPM Detector",
     description:
-      "Play music out loud and let your microphone find the tempo automatically. All analysis happens on your device - nothing is recorded or uploaded.",
+      "Drop in an MP3 or let your microphone listen, and get the tempo in seconds. All analysis happens on your device - nothing is uploaded.",
     href: "/tools/bpm-detector",
     icon: Mic,
     badge: "New",

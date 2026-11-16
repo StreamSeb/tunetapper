@@ -4,10 +4,12 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs"
 import { generateToolSchema, generateFaqSchema, socialMetadata } from "@/lib/seo"
 
 export const metadata: Metadata = {
-  title: "Song Key Finder - Detect the Key of Any MP3, No Upload",
+  title: "Key Finder for MP3 & Songs - Free, No Upload",
   description:
-    "Free online key finder: drop in an MP3, WAV, or FLAC and read its musical key and Camelot code in seconds. Nothing is uploaded - the file is analysed privately in your browser.",
+    "Free key finder: drop in an MP3, WAV or FLAC and get the song's key, Camelot code and BPM in seconds. It runs in your browser, so the file is never uploaded. No sign-up.",
   keywords: [
+    "key finder",
+    "key finder mp3",
     "song key finder",
     "key detector",
     "mp3 key finder",
@@ -18,12 +20,12 @@ export const metadata: Metadata = {
     canonical: "https://tunetapper.com/tools/key-analyzer",
   },
   ...socialMetadata({
-    title: "Song Key Finder - Detect the Key of Any MP3, No Upload | TuneTapper",
+    title: "Key Finder for MP3 & Songs - Free, No Upload | TuneTapper",
     description:
-      "Drop in an MP3 and read its musical key and Camelot code in seconds. Nothing is uploaded - analysed privately in your browser.",
+      "Drop in an MP3 and get its key, Camelot code and BPM in seconds. The file never leaves your browser.",
     path: "/tools/key-analyzer",
     image: "/og/key-analyzer.png",
-    imageAlt: "Song Key Finder - TuneTapper",
+    imageAlt: "Key Finder - TuneTapper",
   }),
 }
 
@@ -77,9 +79,9 @@ const faqs = [
 
 export default function KeyAnalyzerPage() {
   const toolSchema = generateToolSchema({
-    name: "Song Key Finder",
+    name: "Key Finder",
     description:
-      "Detect the musical key and Camelot notation of any audio file. Runs entirely in your browser - nothing is uploaded.",
+      "Find the musical key, Camelot code and BPM of any MP3 or audio file. Runs entirely in your browser - nothing is uploaded.",
     url: "/tools/key-analyzer",
   })
 

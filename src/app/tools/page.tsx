@@ -25,7 +25,7 @@ import { generateMetadata as genMeta, generateBreadcrumbSchema } from "@/lib/seo
 export const metadata: Metadata = genMeta({
   title: "Free Music Production & DJ Tools",
   description:
-    "Every free TuneTapper tool in one place - BPM delay calculator, bars-to-time converter, tap tempo, Camelot wheel, BPM transition helper, key & BPM analyzer, microphone BPM detector, and a rhythm accuracy test. No signup, no upload.",
+    "Every free TuneTapper tool in one place - BPM delay calculator, bars-to-time converter, tap tempo, Camelot wheel, BPM transition helper, key & BPM analyzer, BPM detector for files and microphone, and a rhythm accuracy test. No signup, no upload.",
   path: "/tools",
   image: "/og/tools.png",
 })
@@ -90,7 +90,7 @@ const tools = [
   {
     title: "BPM Detector",
     description:
-      "Play music out loud and let the microphone find the tempo automatically. All analysis on-device - nothing is recorded or uploaded.",
+      "Drop in an MP3 or let the microphone listen, and get the tempo in seconds. All analysis on-device - nothing is uploaded.",
     href: "/tools/bpm-detector",
     icon: Mic,
     badge: "New",

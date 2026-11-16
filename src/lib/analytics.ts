@@ -1,11 +1,22 @@
 // Google Analytics 4 Event Tracking
 
+import { track } from "@vercel/analytics"
+
 type EventParams = Record<string, string | number | boolean>
 
 export function trackEvent(eventName: string, params?: EventParams) {
   if (typeof window !== "undefined" && typeof window.gtag === "function") {
     window.gtag("event", eventName, params)
   }
+}
+
+/**
+ * Send an event to GA4 (consent-gated) and Vercel Web Analytics (cookieless,
+ * counts every visitor). Use for events we want a true count of.
+ */
+export function trackEverywhere(eventName: string, params?: EventParams) {
+  track(eventName, params)
+  trackEvent(eventName, params)
 }
 
 // Tool-specific events
@@ -45,6 +56,15 @@ export const analytics = {
 
   keyAnalyzerFailed: (reason: string) => {
     trackEvent("key_analyzer_failed", { reason })
+  },
+
+  // BPM Detector - file mode
+  bpmFileAnalyzed: (bpm: number, fileType: string) => {
+    trackEverywhere("bpm_file_analyzed", { bpm, file_type: fileType })
+  },
+
+  bpmFileFailed: (reason: string) => {
+    trackEverywhere("bpm_file_failed", { reason })
   },
 
   // BPM Transition
