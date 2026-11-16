@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import {
   ArrowLeftRight,
   BookOpen,
@@ -97,33 +97,8 @@ export function Header() {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  // Lock the page behind the mobile menu so touch scrolling moves the menu,
-  // not the page. Setting overflow on both <html> and <body> is what iOS
-  // Safari needs; the menu itself uses overscroll-contain to stop scroll
-  // chaining once it reaches its top or bottom.
-  useEffect(() => {
-    if (!mobileMenuOpen) return
-    const { documentElement: html, body } = document
-    const prevHtml = html.style.overflow
-    const prevBody = body.style.overflow
-    html.style.overflow = "hidden"
-    body.style.overflow = "hidden"
-
-    // Unlock if the viewport grows past the lg breakpoint, where the menu
-    // is hidden but would otherwise keep the page locked.
-    const mq = window.matchMedia("(min-width: 1024px)")
-    const onChange = () => mq.matches && setMobileMenuOpen(false)
-    mq.addEventListener("change", onChange)
-
-    return () => {
-      html.style.overflow = prevHtml
-      body.style.overflow = prevBody
-      mq.removeEventListener("change", onChange)
-    }
-  }, [mobileMenuOpen])
-
   return (
-    <header className="[--header-height:4rem] sticky top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/60">
+    <header className="sticky top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/60">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
@@ -184,9 +159,6 @@ export function Header() {
             size="icon"
             className="lg:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={mobileMenuOpen}
-            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? (
               <X className="h-5 w-5" />
@@ -199,10 +171,7 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div
-          id="mobile-menu"
-          className="lg:hidden max-h-[calc(100dvh-var(--header-height))] overflow-y-auto overscroll-contain border-t border-[var(--border)]"
-        >
+        <div className="lg:hidden border-t border-[var(--border)]">
           <div className="px-4 py-3 space-y-3">
             <div className="pb-3 border-b border-[var(--border)]">
               <p className="py-2 text-xs font-semibold uppercase tracking-wider text-[var(--muted-foreground)]">
