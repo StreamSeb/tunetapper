@@ -2,63 +2,93 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useState } from "react"
-import { Menu, X, Music } from "lucide-react"
+import { useEffect, useState } from "react"
+import {
+  ArrowLeftRight,
+  BookOpen,
+  Calculator,
+  Clock,
+  Disc3,
+  Gamepad2,
+  Gauge,
+  Hourglass,
+  KeyboardMusic,
+  KeyRound,
+  LayoutGrid,
+  Menu,
+  Mic,
+  Music,
+  Pointer,
+  Speaker,
+  X,
+  type LucideIcon,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { ThemeToggle } from "./theme-toggle"
 import { SupportLink } from "@/components/support-link"
 
-const navigation = [
+type NavLink = { name: string; href: string; icon: LucideIcon }
+
+// The most used tools, picked from GA4 and Search Console data.
+// Shown first in the mobile menu; revisit when the analytics reports shift.
+const popularTools: NavLink[] = [
+  { name: "BPM Detector", href: "/tools/bpm-detector", icon: Mic },
+  { name: "Key Finder", href: "/tools/key-analyzer", icon: KeyRound },
+  { name: "Camelot Wheel", href: "/tools/camelot", icon: Disc3 },
+  { name: "Rhythm Test", href: "/tools/rhythm-game", icon: Gamepad2 },
+]
+
+const navigation: { name: string; href: string; children: NavLink[] }[] = [
   {
     name: "All Tools",
     href: "/tools",
     children: [
-      { name: "All Tools", href: "/tools" },
-      { name: "Key Finder", href: "/tools/key-analyzer" },
-      { name: "Camelot Wheel", href: "/tools/camelot" },
-      { name: "BPM Delay Calculator", href: "/tools/bpm-delay" },
-      { name: "Rhythm Test", href: "/tools/rhythm-game" },
-      { name: "Studio Setup Builder", href: "/tools/studio-builder" },
+      { name: "All Tools", href: "/tools", icon: LayoutGrid },
+      { name: "Key Finder", href: "/tools/key-analyzer", icon: KeyRound },
+      { name: "Camelot Wheel", href: "/tools/camelot", icon: Disc3 },
+      { name: "BPM Delay Calculator", href: "/tools/bpm-delay", icon: Calculator },
+      { name: "Rhythm Test", href: "/tools/rhythm-game", icon: Gamepad2 },
+      { name: "Studio Setup Builder", href: "/tools/studio-builder", icon: Speaker },
     ],
   },
   {
     name: "BPM Tools",
     href: "/bpm",
     children: [
-      { name: "BPM Delay Calculator", href: "/tools/bpm-delay" },
-      { name: "Tap Tempo", href: "/tools/tap-tempo" },
-      { name: "BPM Detector (Mic)", href: "/tools/bpm-detector" },
-      { name: "Rhythm Test", href: "/tools/rhythm-game" },
-      { name: "BPM Reference", href: "/bpm" },
+      { name: "BPM Delay Calculator", href: "/tools/bpm-delay", icon: Calculator },
+      { name: "Tap Tempo", href: "/tools/tap-tempo", icon: Pointer },
+      { name: "BPM Detector (Mic)", href: "/tools/bpm-detector", icon: Mic },
+      { name: "Rhythm Test", href: "/tools/rhythm-game", icon: Gamepad2 },
+      { name: "BPM Reference", href: "/bpm", icon: Gauge },
     ],
   },
   {
     name: "DJ Tools",
     href: "/tools/camelot",
     children: [
-      { name: "Camelot Wheel", href: "/tools/camelot" },
-      { name: "Key Finder", href: "/tools/key-analyzer" },
-      { name: "BPM Transition", href: "/tools/bpm-transition" },
-      { name: "Studio Setup Builder", href: "/tools/studio-builder" },
-      { name: "Key Reference", href: "/camelot" },
+      { name: "Camelot Wheel", href: "/tools/camelot", icon: Disc3 },
+      { name: "Key Finder", href: "/tools/key-analyzer", icon: KeyRound },
+      { name: "BPM Transition", href: "/tools/bpm-transition", icon: ArrowLeftRight },
+      { name: "Studio Setup Builder", href: "/tools/studio-builder", icon: Speaker },
+      { name: "Key Reference", href: "/camelot", icon: KeyboardMusic },
     ],
   },
   {
     name: "Time Tools",
     href: "/tools/bars-to-time",
     children: [
-      { name: "Bars to Time", href: "/tools/bars-to-time" },
-      { name: "Duration Reference", href: "/bars" },
+      { name: "Bars to Time", href: "/tools/bars-to-time", icon: Clock },
+      { name: "Duration Reference", href: "/bars", icon: Hourglass },
     ],
   },
   {
     name: "Guides",
     href: "/guides",
     children: [
-      { name: "Delay Times Explained", href: "/guides/delay-times-explained" },
-      { name: "Camelot Wheel Guide", href: "/guides/camelot-wheel-guide" },
-      { name: "BPM Genre Reference", href: "/guides/bpm-genres" },
+      { name: "Delay Times Explained", href: "/guides/delay-times-explained", icon: BookOpen },
+      { name: "Camelot Wheel Guide", href: "/guides/camelot-wheel-guide", icon: BookOpen },
+      { name: "BPM Genre Reference", href: "/guides/bpm-genres", icon: BookOpen },
     ],
   },
 ]
@@ -67,8 +97,33 @@ export function Header() {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  // Lock the page behind the mobile menu so touch scrolling moves the menu,
+  // not the page. Setting overflow on both <html> and <body> is what iOS
+  // Safari needs; the menu itself uses overscroll-contain to stop scroll
+  // chaining once it reaches its top or bottom.
+  useEffect(() => {
+    if (!mobileMenuOpen) return
+    const { documentElement: html, body } = document
+    const prevHtml = html.style.overflow
+    const prevBody = body.style.overflow
+    html.style.overflow = "hidden"
+    body.style.overflow = "hidden"
+
+    // Unlock if the viewport grows past the lg breakpoint, where the menu
+    // is hidden but would otherwise keep the page locked.
+    const mq = window.matchMedia("(min-width: 1024px)")
+    const onChange = () => mq.matches && setMobileMenuOpen(false)
+    mq.addEventListener("change", onChange)
+
+    return () => {
+      html.style.overflow = prevHtml
+      body.style.overflow = prevBody
+      mq.removeEventListener("change", onChange)
+    }
+  }, [mobileMenuOpen])
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/60">
+    <header className="[--header-height:4rem] sticky top-0 z-50 w-full border-b border-[var(--border)] bg-[var(--background)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--background)]/60">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
@@ -129,6 +184,9 @@ export function Header() {
             size="icon"
             className="lg:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             {mobileMenuOpen ? (
               <X className="h-5 w-5" />
@@ -141,8 +199,37 @@ export function Header() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[var(--border)]">
+        <div
+          id="mobile-menu"
+          className="lg:hidden max-h-[calc(100dvh-var(--header-height))] overflow-y-auto overscroll-contain border-t border-[var(--border)]"
+        >
           <div className="px-4 py-3 space-y-3">
+            <div className="pb-3 border-b border-[var(--border)]">
+              <p className="py-2 text-xs font-semibold uppercase tracking-wider text-[var(--muted-foreground)]">
+                Popular tools
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {popularTools.map((tool) => (
+                  <Link
+                    key={tool.href}
+                    href={tool.href}
+                    className={cn(
+                      "flex items-center gap-2.5 rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover:bg-[var(--accent)]",
+                      pathname === tool.href
+                        ? "border-[var(--primary)] text-[var(--primary)]"
+                        : "border-[var(--border)] text-[var(--foreground)]"
+                    )}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    <tool.icon
+                      className="h-4 w-4 shrink-0 text-[var(--primary)]"
+                      aria-hidden="true"
+                    />
+                    {tool.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
             {navigation.map((item) => (
               <div key={item.name}>
                 <Link
@@ -157,25 +244,24 @@ export function Header() {
                 >
                   {item.name}
                 </Link>
-                {item.children && (
-                  <div className="pl-4 space-y-1">
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className={cn(
-                          "block text-sm py-1",
-                          pathname === child.href
-                            ? "text-[var(--primary)]"
-                            : "text-[var(--muted-foreground)]"
-                        )}
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {child.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                <div className="pl-4 space-y-1">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      className={cn(
+                        "flex items-center gap-2.5 text-sm py-1.5",
+                        pathname === child.href
+                          ? "text-[var(--primary)]"
+                          : "text-[var(--muted-foreground)]"
+                      )}
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <child.icon className="h-4 w-4 shrink-0" aria-hidden="true" />
+                      {child.name}
+                    </Link>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
