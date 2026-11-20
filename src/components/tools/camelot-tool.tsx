@@ -82,6 +82,13 @@ export function CamelotTool({ faqs }: { faqs?: { question: string; answer: strin
         <p className="mt-3 text-lg text-[var(--muted-foreground)]">
           Select any Camelot key and instantly find every compatible key for harmonic mixing. Free online tool for DJs.
         </p>
+        <p className="mt-2 text-sm text-[var(--muted-foreground)]">
+          Not sure what key your track is in?{" "}
+          <Link href="/tools/key-analyzer" className="underline hover:text-[var(--foreground)]">
+            Find it with the free key finder
+          </Link>
+          , then pick it on the wheel below.
+        </p>
       </div>
 
       {/* Key Selector */}
@@ -273,6 +280,12 @@ export function CamelotTool({ faqs }: { faqs?: { question: string; answer: strin
           The Camelot Wheel is a visual tool that helps DJs mix tracks
           harmonically. It arranges all 24 musical keys in a circle where
           adjacent keys are musically compatible.
+        </p>
+        <p>
+          To place a track on the wheel you first need its key. Drop the file
+          into the <Link href="/tools/key-analyzer">key finder</Link> and it
+          returns both the musical key and the Camelot code, so you can come
+          straight back here and see what it mixes with.
         </p>
         <h3>How to Use Camelot Keys</h3>
         <ul>

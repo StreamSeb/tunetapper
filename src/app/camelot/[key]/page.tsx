@@ -98,6 +98,13 @@ export default async function CamelotKeyPage({ params }: Props) {
           Compatible keys and mixing guide for {keyData.camelot} on the Camelot
           Wheel.
         </p>
+        <p className="mt-2 text-sm text-[var(--muted-foreground)]">
+          Not sure your track is in {keyData.camelot}?{" "}
+          <Link href="/tools/key-analyzer" className="underline hover:text-[var(--foreground)]">
+            Check its key with the free key finder
+          </Link>
+          .
+        </p>
       </div>
 
       {/* Compatible Keys */}
