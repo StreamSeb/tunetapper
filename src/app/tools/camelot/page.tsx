@@ -91,7 +91,7 @@ const faqs = [
   {
     question: "How do I find the Camelot key of a song?",
     answer:
-      "Use a key-detection tool (such as our Key Analyzer) or DJ software like Mixed In Key, Serato, or rekordbox, then look up the detected musical key in the chart below to get its Camelot code.",
+      "Use a key-detection tool (such as our free Key Finder) or DJ software like Mixed In Key, Serato, or rekordbox, then look up the detected musical key in the chart below to get its Camelot code.",
   },
   {
     question: "Can I mix keys that are not adjacent on the Camelot Wheel?",
